@@ -1,18 +1,62 @@
 <html>
 	<head>
-		<title>Three Divs</title>
+		<title>Team Activity 2 - Three Divs</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link href="styles.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div id="div1" class="block">Div 1</div>
-		<div class="block">Div 2</div>
-		<div class="block">Div 3</div>
-		<button id="action">Click Me</button>
-		<div>
-			<h3>Change Div Color</h3>
-			<input type="text" id="color" placeholder="Enter Color here: #000" />
-			<button id="actionChangeColor">Change Color</button>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-6 col-md-4 col-12">
+					<div class="card mb-3">
+						<img class="card-img-top" src="https://www.discoverandchange.com/wp-content/uploads/2016/02/StephenHeadShot1-200x200.png" alt="Stephen Nielson" />
+						<div class="card-header">Info Card</div>
+						<div class="card-body block" id="div1">
+							<h5 class="card-title">Div 1</h5>
+							<p class="card-text"> Change the card color by setting the hex code below.</p>
+						</div>
+						<div class="card-body">
+							<div class="input-group">
+								<input type="text" id="color" placeholder="Enter Color here: #000" />
+								<div class="input-group-append">
+									<button id="actionChangeColor" type="button" class="btn btn-info">Change</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-12">
+					<div class="card mb-3">
+						<img class="card-img-top" src="https://www.discoverandchange.com/wp-content/uploads/2016/02/StephenHeadShot1-200x200.png" alt="Stephen Nielson" />
+						<div class="card-header">Alert Card</div>
+						<div class="card-body block" id="div2">
+							<h5 class="card-title">Div 2</h5>
+							<p class="card-text"> If you click the 'Click Me' button below it will display an alert box.</p>
+						</div>
+						<div class="card-body">
+							<button id="action" class="btn btn-warning ">Click Me</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-12">
+					<div class="card mb-3">
+						<img class="card-img-top" src="https://www.discoverandchange.com/wp-content/uploads/2016/02/StephenHeadShot1-200x200.png" alt="Stephen Nielson" />
+						<div class="card-header">Fade Card</div>
+						<div class="card-body block" id="div3">
+							<h5 class="card-title">Div 3</h5>
+							<p class="card-text"> Click the 'Fade-Out' or 'Fade-In' buttons to hide/display Div 3.</p>
+						</div>
+						<div class="card-body">
+							<button id="actionFade" class="btn btn-success mt-md-0 mt-3">Fade-Out</button>
+							<button id="actionDisplay" class="btn btn-success mt-md-0 mt-3">Fade-In</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>
