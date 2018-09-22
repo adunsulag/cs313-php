@@ -1,0 +1,34 @@
+{% extends "layout.html.twig" %}
+{% block title %}Assignments{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+	<div class="col">
+        <h1 class="h1-responsive text-center mb-3 mt-3">Assignments</h1>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date Due</th>
+                    <th>Date Completed</th>
+                    <th>Assignment</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for assignment in assignments %}
+                <tr>
+                    <td>{{assignment.due}}</td>
+                    <td>{{assignment.completed}}</td>
+                    <td>{{assignment.assignment}}</td>
+                    <td>
+                        {% if assignment.completed != '' %}
+                        <a href="{{assignment.link}}">View</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
