@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+{% block title %}View Cart{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+	<div class="col">
+        <h1 class="h1-responsive text-center mb-3 mt-3">View Cart <a href="browse.php" class="btn btn-primary">Back to shopping</a></h1>
+        <hr />
+    </div>
+</div>
+{% for item in items %}
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-9">
+        {% include "week3/_cart-item.html.twig" with {'controls': true} %}
+    </div>
+</div>
+{% endfor %}
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-9">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                    <h3>Total:</h3>
+                    </div>
+                    <div class="col-2">
+                        <h3 class="text-danger">${{cartTotal}}
+                       
+                        </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <a href="checkout.php" class="btn btn-success">Checkout</a>
+                    </div>
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1
+        ,"name": "Treating Trauma from Sexual Betrayal Bundle"
+        ,"price": 99.95
+        ,"img": "https://www.discoverandchange.com/wp-content/uploads/2017/01/BookWithDVD-600x600.jpg"
+        ,"description": "I have asked my team to package the e-book, Treating Trauma from Sexual Betrayal and the 10 Training Online Video Classes together. When you purchase the package you will be given immediate access to a digital copy of the book and the 10 video classes. This package would be equivalent to spending more than six hours with me in therapy–a $750 value."
+    }
+    ,{
+        "id": 3
+        ,"name": "Personal Guide – Treating Pornography Addiction"
+        ,"price": 29.95
+        ,"img": "https://www.discoverandchange.com/wp-content/uploads/2016/04/TPA_PersonalGuide_550x550.jpg"
+        ,"description": "Our Essential Tools for Recovery Personal Guide will teach you these things, just like you were sitting down for a therapy session with Dr. Kevin Skinner himself. The audio book covers three hours of the tools that you need for recovery. The first two hours discuss how to develop a plan and prepare to succeed. The last covers relapse prevention strategies."
+    }
+    ,{
+        "id": 2
+        ,"name": "Parent’s Guide – Treating Pornography Addiction"
+        ,"price": 9.95
+        ,"img": "https://www.discoverandchange.com/wp-content/uploads/2016/04/TPA_ParentsGuide_550x550.jpg"
+        ,"description": "This book has the tools to help your child overcome a pornography problem. This hour long audio book is designed for parents who do not know where to turn or what to do. Many parents simply do not know how to respond to a teen struggling with pornography. In this audio recording, you will learn specific steps to help you give your child direction and assistance."
+    }
+]

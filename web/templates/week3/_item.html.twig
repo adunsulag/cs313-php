@@ -1,0 +1,17 @@
+<div class="card mb-3">
+    <img class="card-img-top" src="{{item.img}}"/>
+    <div class="card-header text-center bg-info text-light"><h4>{{item.name}}</h4></div>
+    <div class="card-body">
+        <p>
+        {{item.description}}
+        </p>
+        {% if addCart is not empty %}
+        <div class="text-center">
+            <button class="addToCart btn btn-primary" data-item="{{item.id}}" 
+                type="button">
+                ${{item.price |number_format(2, '.', ',')}} - Add to cart
+            </button>
+        </div>
+        {% endif %}
+    </div>
+</div>

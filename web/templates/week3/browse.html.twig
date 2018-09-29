@@ -1,0 +1,31 @@
+{% extends "layout.html.twig" %}
+{% block title %}Browse and Shop{% endblock %}
+    {% block content %}
+    <div class="row justify-content-center">
+        <div class="col">
+            <h1 class="h1-responsive text-center mb-3 mt-3">
+            Browse and Shop
+            {% include 'week3/_cart-widget.html.twig' with {'cartCount': cartCount} %}
+            </h1>
+            <hr />
+        </div>
+    </div>
+    <form class="week2 form-shop" method="post" action="browse.php">
+        <input type="hidden" id="item-add-id" name="item-add-id" value="" />
+        <input type="hidden" name="action" value="add-cart" />
+        <div class="row justify-content-center">
+        {% if items is empty %}
+            <div class="col"><p class="alert alert-danger">No items in the store found. Please check back later.</p></div>
+        {% endif %}
+        
+        {% for item in items %}
+            <div class="col-2">
+                {% include "week3/_item.html.twig" with {'addCart': true} %}
+            </div>
+        {% endfor %}
+        </div>
+    </form>
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}
