@@ -7,7 +7,7 @@
         </p>
         {% if addCart is not empty %}
         <div class="text-center">
-            <button class="addToCart btn btn-primary" data-item="{{item.id}}" 
+            <button class="addToCart btn btn-success" data-item="{{item.id}}" 
                 type="button">
                 ${{item.price |number_format(2, '.', ',')}} - Add to cart
             </button>

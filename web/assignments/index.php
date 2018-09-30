@@ -20,9 +20,14 @@
 		,'link' => '/'
 		]
 		,['due' => '09/29/2018'
-		,'completed' => ''
+		,'completed' => '09/29/2018'
 		,'assignment' => 'Week 2 - Project 1 Proposal'
-		,'link' => '/'
+		,'link' => '/week2/Nielson_Project1_Proposal.docx'
+		]
+		,['due' => '10/06/2018'
+		,'completed' => '09/29/2018'
+		,'assignment' => 'Week 3 - Shopping Cart'
+		,'link' => '/week3/browse.php'
 		]
 	];
 	echo $twig->render('assignments.html.twig', ['assignments' => $assignments]);

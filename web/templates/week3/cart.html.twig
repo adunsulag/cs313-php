@@ -7,37 +7,10 @@
         <hr />
     </div>
 </div>
-{% for item in items %}
-<div class="row justify-content-center">
-    <div class="col-md-12 col-lg-10 col-xl-9">
-        {% include "week3/_cart-item.html.twig" with {'controls': true} %}
-    </div>
-</div>
-{% endfor %}
-<div class="row justify-content-center">
-    <div class="col-md-12 col-lg-10 col-xl-9">
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-10">
-                    <h3>Total:</h3>
-                    </div>
-                    <div class="col-2">
-                        <h3 class="text-danger">${{cartTotal}}
-                       
-                        </h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-10">
-                    </div>
-                    <div class="col-2">
-                        <a href="checkout.php" class="btn btn-success">Checkout</a>
-                    </div>
-                </div>
-                 
-            </div>
-        </div>
-    </div>
-</div>
+<form method="post" action="cart.php" class="week3 form-cart">
+<input type="hidden" name="item-id" id="item-id" value="" />
+<input type="hidden" name="item-quantity" id="item-quantity" value="" />
+<input type="hidden" id="form-action" name="action" value="" />
+{% include 'week3/_cart.html.twig' with {'controls': true} %}
+</form>
 {% endblock %}

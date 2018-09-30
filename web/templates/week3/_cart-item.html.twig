@@ -6,13 +6,22 @@
             </div>
             <div class="col-5">
                 {{item.name}}
+                {% if controls %}
+                <br />
+                <input type="button" class="removeItem btn btn-secondary" data-item="{{item.id}}" value="Remove Item" />
+                {% endif %}
             </div>
             <div class="col-1">
-                <input class="form-control" type="text" value="{{item.count}}" name="quantity" />
-                
+                {% if controls %}
+                <input class="form-control" id="quantity-{{item.id}}" type="number" value="{{item.count}}" name="quantity" />
+                {% else %}
+                <input class="form-control" type="number" value="{{item.count}}" disabled="disabled" name="quantity" />
+                {% endif %}
             </div>
             <div class="col-2">
-                <input type="button" class="setQuantity btn btn-secondary" value="Update Cart" />
+                {% if controls %}
+                <input type="button" class="setQuantity btn btn-secondary" data-item="{{item.id}}" value="Update Cart" />
+                {% endif %}
             </div>
             <div class="col-2 text-danger">
                 ${{item.total|number_format(2, '.', ',')}}

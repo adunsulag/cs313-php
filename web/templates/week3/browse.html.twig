@@ -10,7 +10,14 @@
             <hr />
         </div>
     </div>
-    <form class="week2 form-shop" method="post" action="browse.php">
+    {% if addedItem is not empty %}
+     <div class="row justify-content-center">
+        <div class="col-6 alert alert-success">
+        {{addedItem.name}} has been added to your cart!
+        </div>
+    </div>
+    {% endif %}
+    <form class="week3 form-shop" method="post" action="browse.php">
         <input type="hidden" id="item-add-id" name="item-add-id" value="" />
         <input type="hidden" name="action" value="add-cart" />
         <div class="row justify-content-center">

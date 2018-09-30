@@ -1,10 +1,43 @@
-{% extends "../layout.html.twig" %}
+{% extends "layout.html.twig" %}
 {% block title %}Order Confirmation{% endblock %}
 {% block content %}
 <div class="row justify-content-center">
 	<div class="col">
-        <h1 class="h1-responsive text-center mb-3 mt-3">Order Confirmation</h1>
+        <h1 class="h1-responsive text-center mb-3 mt-3">Order Confirmation <a href="browse.php" class="btn btn-primary">Back to shopping</a></h1>
         <hr />
+    </div>
+</div>
+{% include 'week3/_cart.html.twig' with {'controls': false} %}
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-9">
+        <div class="card mb-3">
+            <div class="card-body">
+            <h3>Shipping Address</h3>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td class="w-25">Street 1</td>
+                        <td>{{address.street1}}
+                    </tr>
+                    <tr>
+                        <td>Street 2</td>
+                        <td>{{address.street2}}
+                    </tr>
+                     <tr>
+                        <td>City</td>
+                        <td>{{address.city}}
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>{{address.state}}
+                    </tr>
+                    <tr>
+                        <td>Zipcode</td>
+                        <td>{{address.zipcode}}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}

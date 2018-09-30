@@ -1,11 +1,45 @@
-{% extends "../layout.html.twig" %}
+{% extends "layout.html.twig" %}
 {% block title %}Checkout Items{% endblock %}
 {% block content %}
 <div class="row justify-content-center">
-	<div class="col">
-        <h1 class="h1-responsive text-center mb-3 mt-3">View Cart</h1>
+    <div class="col-md-12 col-lg-10 col-xl-9">
+        <h1 class="h1-responsive text-center mb-3 mt-3">Checkout <a href="cart.php" class="btn btn-primary">Back to cart</a></h1>
         <hr />
-        Cart items go here
+        {% if errors is not empty %}
+        <div class="alert alert-danger">
+            <p>There were errors in your address please fix the following items</p>
+            <ul>
+            {% for error in errors %}
+                <li>{{error}}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
     </div>
 </div>
+<form action="checkout.php" method="post">
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-9">
+        <h4>Enter Shipping Address</h4>
+            <input type="hidden" name="action" value="checkout" />
+            <input class="form-control mb-2" type="text" name="street1" value="{{address.street1}}" placeholder="Street Address..." />
+            <input class="form-control mb-2" type="text" name="street2" value="{{address.street2}}" placeholder="Street Address 2..." />
+            <input class="form-control mb-2" type="text" name="city" value="{{address.city}}" placeholder="City" />
+            <input class="form-control mb-2" type="text" name="state" value="{{address.state}}" placeholder="State.." />
+            <input class="form-control mb-2" type="text" name="zipcode" value="{{address.zipcode}}" placeholder="Zipcode..." />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-9">
+            <h3>Order Details</h3>
+            <hr />
+        </div>
+    </div>
+    {% include 'week3/_cart.html.twig' with {'controls': false} %}
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-9 pull-right">
+            <input class="btn btn-success btn-default float-right" type="submit" value="Checkout"/>
+        </div>
+    </div>
+</form>
 {% endblock %}

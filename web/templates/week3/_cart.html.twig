@@ -1,0 +1,42 @@
+{% if items is empty %}
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-9 alert alert-info">
+        There are no items in your cart.
+    </div>
+</div>
+{% endif %}
+{% for item in items %}
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-9">
+        {% include "week3/_cart-item.html.twig" with {'controls': controls} %}
+    </div>
+</div>
+{% endfor %}
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-9">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                    <h3>Total:</h3>
+                    </div>
+                    <div class="col-2">
+                        <h3 class="text-danger">${{cartTotal}}
+                       
+                        </h3>
+                    </div>
+                </div>
+                {% if controls %}
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="col-2">
+                        <a href="checkout.php" class="btn btn-success">Checkout</a>
+                    </div>
+                </div>
+                {% endif %}
+                 
+            </div>
+        </div>
+    </div>
+</div>
