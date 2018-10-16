@@ -1,0 +1,26 @@
+<h2>Therapists List</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Name
+      </th>
+    </tr>
+  </thead>
+  <tbody *ngIf="therapists.length == 0">
+    <tr>
+      <td colspan="2">
+        <div class="alert alert-warning">No therapists exist in the system</div>
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr *ngFor="let therapist of therapists">
+      <td>{{therapist.id}}</td>
+      <td>{{therapist.name}}</td>
+    </tr>
+  </tbody>
+</table>
