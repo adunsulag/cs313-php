@@ -9,7 +9,10 @@ function getDBURL() {
 /**
  * @return PDO
  */
-function openDBConnection() {
+function openDBConnection($systemUserId) {
+	if (!is_int($systemUserId)) {
+		throw new InvalidArgumentException('$systemUserId must be a valid integer');
+	}
 
 	try {
 		$dbUrl = getDBURL();
@@ -22,6 +25,8 @@ function openDBConnection() {
 
 		$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$db->exec('SET search_path TO crm');
+		$db->exec("SET \"act_log.user\" = $systemUserId"); // set our session variable so we track what user is doing stuff on the connection
 		return $db;
 	}
 	catch (PDOException $ex)

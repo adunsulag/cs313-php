@@ -12,7 +12,7 @@ header("Access-Control-Allow-Credentials: true");
 error_log(var_export($request, true));
 try {
 	$controller = getController($request['action']);
-	$actionResult = $controller($request['data']);
+	$actionResult = call_user_func($controller, $request['data'], $request);
 	header("Status: 200");
 	header("Content-Type: application/json'");
 	echo json_encode($actionResult);

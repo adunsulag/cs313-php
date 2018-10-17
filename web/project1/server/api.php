@@ -1,5 +1,7 @@
 <?php
 
+require_once './db.php';
+
 // rather than do a REST api we will do just a simple RCP protocol
 // with JSON format of {"action": "", "data": {/** ...payload... **/}}
 class BadActionException extends InvalidArgumentException{}
@@ -19,24 +21,40 @@ function parse_request_from_method($method) {
         $request['action'] = !empty($_GET['action']) ? $_GET['action'] : $request;
     }
 
+    // TODO: stephen when we implement the Amazon cognito piece we will change this hardcoded value
+    $request['systemUserId'] = 1;
+
     return $request;
 
 
 }
-function listClients($request) {
-    return [
-        [
-            'id' => 1
-            ,'name' => 'John'
-        ],
-        [
-            'id' => 1
-            ,'name' => 'Jason'
-        ]
-    ];
+function listClients($data, $request) {
+
+    $db = openDBConnection($request['systemUserId']);
+
+    $results = [];
+    $statement = 'select id,name from Client ORDER BY name';
+    $records = $db->query($statement);
+    while ($row = $records->fetch(PDO::FETCH_ASSOC)) {
+        $results[] = $row;
+    }
+    $db = null; // unset it so we close the connection
+    return $results;
 }
 
-function listActivityLogs($request) {
+function listActivityLogs($data, $request) {
+
+    $db = openDBConnection($request['systemUserId']);
+
+    $results = [];
+    $statement = 'select ActivityLog.id,table_name as "tableName", table_id as "tableID", action,notes,su.email as "systemUserEmail" 
+        from ActivityLog JOIN SystemUser su ON ActivityLog.created_by = su.id ORDER BY ActivityLog.creation_date DESC';
+    $records = $db->query($statement);
+    while ($row = $records->fetch(PDO::FETCH_ASSOC)) {
+        $results[] = $row;
+    }
+    $db = null; // unset it so we close the connection
+    return $results;
     return [
         [
             'id' => 1
@@ -44,45 +62,45 @@ function listActivityLogs($request) {
             ,'tableID' => 1
             ,'action' => 'SELECT'
             ,'notes' => 'Client was viewed'
-            ,'systemUserName' => 'Stephen Nielson'
+            ,'systemUserEmail' => 'Stephen Nielson'
         ]
     ];
 }
 
-function listTherapists($request) {
-    return [
-        [
-            'id' => 1
-            ,'name' => 'John'
-        ],
-        [
-            'id' => 1
-            ,'name' => 'Jason'
-        ]
-    ];
+function listTherapists($data, $request) {
+    $db = openDBConnection($request['systemUserId']);
+
+    $results = [];
+    $statement = 'select id,name from Therapist ORDER BY name';
+    $records = $db->query($statement);
+    while ($row = $records->fetch(PDO::FETCH_ASSOC)) {
+        $results[] = $row;
+    }
+    $db = null; // unset it so we close the connection
+    return $results;
 }
 
-function getClients($request) {
+function getClients($data, $request) {
     return [];
 }
 
-function postClients($request) {
+function postClients($data, $request) {
     return [];
 }
 
-function noop($request) {
+function noop($data, $request) {
     return [];
 }
     
 function getActionMap() {
     $validActions = [
-        "clients.list" => listClients
-        ,"clients.get" => getClients
-        ,"clients.post"=> postClients
-        ,"therapists.list"=> listTherapists
-        ,"therapists.get"=> noop
-        ,"therapists.post"=> noop
-        ,"activitylog.list"=> listActivityLogs
+        "clients.list" => 'listClients'
+        ,"clients.get" => 'getClients'
+        ,"clients.post"=> 'postClients'
+        ,"therapists.list"=> 'listTherapists'
+        ,"therapists.get"=> 'noop'
+        ,"therapists.post"=> 'noop'
+        ,"activitylog.list"=> 'listActivityLogs'
     ];
     return $validActions;
 }
