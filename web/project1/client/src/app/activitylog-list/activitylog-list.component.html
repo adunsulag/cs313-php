@@ -1,9 +1,19 @@
 <h2>Activity Log</h2>
+<form>
+  <label>
+    Entity
+    <select name="filter" [(ngModel)]="searchFilter.filter" class="browser-default">
+      <option [value]="entity" *ngFor="let entity of entities">{{entity}}</option>
+    </select>
+  </label>
+  <input type="button" (click)="filter()" value="Filter" class="btn btn-primary" />
+  <input type="button" (click)="reset()" value="Reset" class="btn btn-secondary" />
+</form>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>
-        ID
+        Date
       </th>
       <th>
         Entity
@@ -31,7 +41,7 @@
   </tbody>
   <tbody>
     <tr *ngFor="let log of logs">
-      <td>{{log.id}}</td>
+      <td>{{log.date | date:'medium' }}</td>
       <td>{{log.tableName}}</td>
       <td>{{log.tableID}}</td>
       <td>{{log.action}}</td>

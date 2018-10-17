@@ -20,6 +20,15 @@ function parse_request_from_method($method) {
         $request['data'] = !empty($_GET['data']) ? $_GET['data'] : $request;
         $request['action'] = !empty($_GET['action']) ? $_GET['action'] : $request;
     }
+    if (!empty($request['data'])) {
+        try {
+            $request['data'] = json_decode($request['data'], true);
+        }
+        catch (Exception $error) {
+            error_log($error);
+            $request['data'] = [];
+        }
+    }
 
     // TODO: stephen when we implement the Amazon cognito piece we will change this hardcoded value
     $request['systemUserId'] = 1;
@@ -45,11 +54,29 @@ function listClients($data, $request) {
 function listActivityLogs($data, $request) {
 
     $db = openDBConnection($request['systemUserId']);
+    
 
     $results = [];
-    $statement = 'select ActivityLog.id,table_name as "tableName", table_id as "tableID", action,notes,su.email as "systemUserEmail" 
-        from ActivityLog JOIN SystemUser su ON ActivityLog.created_by = su.id ORDER BY ActivityLog.creation_date DESC';
-    $records = $db->query($statement);
+    $statement = 'select ActivityLog.creation_date as "date",table_name as "tableName", table_id as "tableID", action,notes,su.email as "systemUserEmail" 
+        from ActivityLog JOIN SystemUser su ON ActivityLog.created_by = su.id ';
+
+    if (!empty($data['entity'])) {
+        $entity = filter_var($data['entity'], FILTER_SANITIZE_STRING);
+        $statement .= 'WHERE table_name = :entity';
+        $statement .= ' ORDER BY ActivityLog.creation_date DESC';
+        error_log("Running $statement");
+        $preparedStatement = $db->prepare($statement);
+        $preparedStatement->execute([":entity" => $entity]);
+        // so we can use the same code to fetch the rows.
+        $records = $preparedStatement;
+    }
+    else {
+        $statement .= ' ORDER BY ActivityLog.creation_date DESC';
+        error_log("Running $statement");
+        $records = $db->query($statement);
+    }
+        
+   
     while ($row = $records->fetch(PDO::FETCH_ASSOC)) {
         $results[] = $row;
     }

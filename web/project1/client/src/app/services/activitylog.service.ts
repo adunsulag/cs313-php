@@ -12,5 +12,11 @@ export class ActivitylogService {
       return data;
     });
   }
+  search(entity:string) {
+    return this.httpService.get("activitylog.list", {entity:entity}).then((resp) => {
+      let data = resp.json() as any[];
+      return data;
+    });
+  }
 
 }

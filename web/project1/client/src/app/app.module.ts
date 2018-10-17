@@ -11,6 +11,7 @@ import { ClientService } from './services/client.service';
 import { TherapistService } from './services/therapist.service';
 import { HttpService } from './services/http.service';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule
     ,HttpModule
+    ,FormsModule
     ,MDBBootstrapModules.forRoot()
   ],
   providers: [ActivitylogService, ClientService, TherapistService, HttpService],

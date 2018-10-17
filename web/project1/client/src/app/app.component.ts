@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  selectedTab = '';
-
-  setSelectedTab(tab) {
-    this.selectedTab = tab;
-  }
+  title = 'Therapist Admin History Tracker';
 }
