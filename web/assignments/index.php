@@ -29,6 +29,11 @@
 		,'assignment' => 'Week 3 - Shopping Cart'
 		,'link' => '/week3/browse.php'
 		]
+		,['due' => '10/06/2018'
+		,'completed' => '10/17/2018'
+		,'assignment' => 'Week 4 - Project 1'
+		,'link' => '/project1/client/dist/'
+		]
 	];
 	echo $twig->render('assignments.html.twig', ['assignments' => $assignments]);
 ?>
