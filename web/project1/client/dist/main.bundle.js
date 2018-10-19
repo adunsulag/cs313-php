@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/activitylog-list/activitylog-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Activity Log</h2>\n<table class=\"table table-striped\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Entity\n      </th>\n      <th>\n        Entity ID\n      </th>\n      <th>\n        Action\n      </th>\n      <th>\n          Notes\n        </th>\n        <th>\n          System User\n        </th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"logs.length == 0\">\n    <tr>\n      <td colspan=\"6\">\n        <div class=\"alert alert-warning\">No logs exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let log of logs\">\n      <td>{{log.id}}</td>\n      <td>{{log.tableName}}</td>\n      <td>{{log.tableID}}</td>\n      <td>{{log.action}}</td>\n      <td>{{log.notes}}</td>\n      <td>{{log.systemUserEmail}}</td>\n    </tr>\n  </tbody>\n</table>"
+module.exports = "<h2>Activity Log</h2>\n<form>\n  <label>\n    Entity\n    <select name=\"filter\" [(ngModel)]=\"searchFilter.filter\" class=\"browser-default\">\n      <option [value]=\"entity\" *ngFor=\"let entity of entities\">{{entity}}</option>\n    </select>\n  </label>\n  <input type=\"button\" (click)=\"filter()\" value=\"Filter\" class=\"btn btn-primary\" />\n  <input type=\"button\" (click)=\"reset()\" value=\"Reset\" class=\"btn btn-secondary\" />\n</form>\n<table class=\"table table-striped\">\n  <thead>\n    <tr>\n      <th>\n        Date\n      </th>\n      <th>\n        Entity\n      </th>\n      <th>\n        Entity ID\n      </th>\n      <th>\n        Action\n      </th>\n      <th>\n          Notes\n        </th>\n        <th>\n          System User\n        </th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"logs.length == 0\">\n    <tr>\n      <td colspan=\"6\">\n        <div class=\"alert alert-warning\">No logs exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let log of logs\">\n      <td>{{log.date | date:'medium' }}</td>\n      <td>{{log.tableName}}</td>\n      <td>{{log.tableID}}</td>\n      <td>{{log.action}}</td>\n      <td>{{log.notes}}</td>\n      <td>{{log.systemUserEmail}}</td>\n    </tr>\n  </tbody>\n</table>"
 
 /***/ }),
 
@@ -52,17 +52,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ActivitylogListComponent = /** @class */ (function () {
     function ActivitylogListComponent(activityLogService) {
         this.activityLogService = activityLogService;
+        this.entities = [
+            "",
+            "SystemUser",
+            "Client",
+            "Therapist",
+            "Appointment"
+        ];
         this.logs = [];
+        this._searchFilter = {
+            searchEntity: ""
+        };
     }
+    Object.defineProperty(ActivitylogListComponent.prototype, "searchFilter", {
+        get: function () {
+            return this._searchFilter;
+        },
+        set: function (v) {
+            this._searchFilter = v;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ActivitylogListComponent.prototype.filter = function () {
+        var _this = this;
+        if (!this.searchFilter || this.searchFilter == "") {
+            return this.reset();
+        }
+        this.activityLogService.search(this.searchFilter.filter).then(function (logs) { return _this.setLogs(logs); });
+    };
+    ActivitylogListComponent.prototype.reset = function () {
+        var _this = this;
+        this.activityLogService.list().then(function (logs) { return _this.setLogs(logs); });
+    };
+    ActivitylogListComponent.prototype.setLogs = function (logs) {
+        console.log("Logs are now: ", logs);
+        this.logs = logs;
+    };
     ActivitylogListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.activityLogService.list().then(function (logs) {
-            console.log(logs);
-            _this.logs = logs;
-        });
+        this.activityLogService.list().then(function (logs) { return _this.setLogs(logs); });
     };
     ActivitylogListComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'dac-activitylog-list',
             template: __webpack_require__("./src/app/activitylog-list/activitylog-list.component.html"),
             styles: [__webpack_require__("./src/app/activitylog-list/activitylog-list.component.css")]
@@ -86,7 +118,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n  <img width=\"300\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n</div>\n<mdb-tabset #staticTabs [buttonClass]=\"'nav-tabs tabs-3 primary-color'\" [contentClass]=\"'card'\" class=\"col-12\">\n    <mdb-tab heading=\"Clients\">\n        <dac-client-list></dac-client-list>\n    </mdb-tab>\n    <mdb-tab heading=\"Therapists\">\n        <dac-therapist-list></dac-therapist-list>\n    </mdb-tab>\n    <mdb-tab heading=\"Activity Log\">\n        <dac-activitylog-list></dac-activitylog-list>\n      </mdb-tab>\n</mdb-tabset>\n\n\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n  <img width=\"150\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n</div>\n<mdb-tabset #staticTabs [buttonClass]=\"'nav-tabs tabs-3 primary-color'\" [contentClass]=\"'card'\" class=\"col-12\">\n    <mdb-tab heading=\"Clients\">\n        <dac-client-list></dac-client-list>\n    </mdb-tab>\n    <mdb-tab heading=\"Therapists\">\n        <dac-therapist-list></dac-therapist-list>\n    </mdb-tab>\n    <mdb-tab heading=\"Activity Log\">\n        <dac-activitylog-list></dac-activitylog-list>\n      </mdb-tab>\n</mdb-tabset>\n<amplify-authenticator></amplify-authenticator>\n\n\n\n"
 
 /***/ }),
 
@@ -96,27 +128,45 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__ = __webpack_require__("./node_modules/aws-amplify-angular/dist/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
-        this.title = 'app';
-        this.selectedTab = '';
+    function AppComponent(amplifyService) {
+        this.amplifyService = amplifyService;
+        this.title = 'Therapist Admin History Tracker';
+        this.amplifyService.auth().configure({
+            // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
+            identityPoolId: 'us-east-1:0c4629df-3bcc-49b5-be6e-5861d5283b56',
+            // REQUIRED - Amazon Cognito Region
+            region: 'us-east-1',
+            // OPTIONAL - Amazon Cognito Federated Identity Pool Region 
+            // Required only if it's different from Amazon Cognito Region
+            // identityPoolRegion: 'XX-XXXX-X',
+            // OPTIONAL - Amazon Cognito User Pool ID
+            userPoolId: 'us-east-1_s9iDqPquj',
+            // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
+            userPoolWebClientId: '1271f4r7a3f24kk53j6emll9nb',
+            // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
+            mandatorySignIn: false,
+        });
     }
-    AppComponent.prototype.setSelectedTab = function (tab) {
-        this.selectedTab = tab;
-    };
     AppComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -142,6 +192,8 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_http_service__ = __webpack_require__("./src/app/services/http.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__ = __webpack_require__("./node_modules/aws-amplify-angular/dist/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -160,11 +212,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["K" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__client_list_client_list_component__["a" /* ClientListComponent */],
@@ -174,9 +228,11 @@ var AppModule = /** @class */ (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_11__angular_http__["c" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_12__angular_forms__["b" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["a" /* AmplifyAngularModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ng_mdb_pro__["a" /* MDBBootstrapModules */].forRoot()
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["b" /* AmplifyService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -232,7 +288,7 @@ var ClientListComponent = /** @class */ (function () {
         });
     };
     ClientListComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'dac-client-list',
             template: __webpack_require__("./src/app/client-list/client-list.component.html"),
             styles: [__webpack_require__("./src/app/client-list/client-list.component.css")]
@@ -274,8 +330,14 @@ var ActivitylogService = /** @class */ (function () {
             return data;
         });
     };
+    ActivitylogService.prototype.search = function (entity) {
+        return this.httpService.get("activitylog.list", { entity: entity }).then(function (resp) {
+            var data = resp.json();
+            return data;
+        });
+    };
     ActivitylogService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__http_service__["a" /* HttpService */]])
     ], ActivitylogService);
     return ActivitylogService;
@@ -314,7 +376,7 @@ var ClientService = /** @class */ (function () {
         });
     };
     ClientService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__http_service__["a" /* HttpService */]])
     ], ClientService);
     return ClientService;
@@ -366,7 +428,7 @@ var HttpService = /** @class */ (function () {
         return this._$http.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl, options).toPromise();
     };
     HttpService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
     ], HttpService);
     return HttpService;
@@ -405,7 +467,7 @@ var TherapistService = /** @class */ (function () {
         });
     };
     TherapistService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__http_service__["a" /* HttpService */]])
     ], TherapistService);
     return TherapistService;
@@ -460,7 +522,7 @@ var TherapistListComponent = /** @class */ (function () {
         });
     };
     TherapistListComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'dac-therapist-list',
             template: __webpack_require__("./src/app/therapist-list/therapist-list.component.html"),
             styles: [__webpack_require__("./src/app/therapist-list/therapist-list.component.css")]
@@ -505,7 +567,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
@@ -514,6 +576,13 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 /***/ }),
 
 /***/ 0:
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./src/main.ts");
@@ -521,5 +590,5 @@ module.exports = __webpack_require__("./src/main.ts");
 
 /***/ })
 
-},[0]);
+},[1]);
 //# sourceMappingURL=main.bundle.js.map

@@ -12,6 +12,7 @@ import { TherapistService } from './services/therapist.service';
 import { HttpService } from './services/http.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 
 
 @NgModule({
@@ -25,9 +26,10 @@ import { FormsModule } from '@angular/forms';
     BrowserModule
     ,HttpModule
     ,FormsModule
+    ,AmplifyAngularModule
     ,MDBBootstrapModules.forRoot()
   ],
-  providers: [ActivitylogService, ClientService, TherapistService, HttpService],
+  providers: [ActivitylogService, ClientService, TherapistService, HttpService, AmplifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
