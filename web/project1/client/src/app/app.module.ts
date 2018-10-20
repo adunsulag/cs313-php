@@ -28,6 +28,7 @@ import { TherapistNewComponent } from './therapist-new/therapist-new.component';
 import { AppointmentEditComponent } from './appointment-edit/appointment-edit.component';
 import { AppointmentNewComponent } from './appointment-new/appointment-new.component';
 import { AuthService } from './services/auth.service';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { AuthService } from './services/auth.service';
     TherapistEditComponent,
     TherapistNewComponent,
     AppointmentEditComponent,
-    AppointmentNewComponent
+    AppointmentNewComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule

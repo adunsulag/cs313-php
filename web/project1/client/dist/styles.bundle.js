@@ -120,7 +120,7 @@ module.exports = "/*!\n * Material Design for Bootstrap 4\n * Version: MDB PRO 4
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./node_modules/sass-loader/lib/loader.js??ref--8-3!./src/assets/styles/styles.scss":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".amplify-container .amplify-form-header {\n  font-size: 1.5em;\n  text-align: center;\n  display: block;\n  font-weight: 600; }\n\n.amplify-container .amplify-form-button {\n  background-color: #4285F4;\n  font-size: 0.8rem;\n  padding: 0.85rem 2.13rem;\n  margin: 6px;\n  border-radius: 2px;\n  border: 0;\n  -webkit-transition: .2s ease-out;\n  transition: .2s ease-out;\n  text-transform: uppercase;\n  white-space: normal !important;\n  word-wrap: break-word;\n  cursor: pointer;\n  --webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);\n  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);\n          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);\n  color: #FFFFFF !important;\n  display: inline-block;\n  font-weight: 400;\n  text-align: center;\n  vertical-align: middle;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1.5;\n  overflow: visible; }\n\n.amplify-container a.amplify-form-link, .amplify-container a.amplify-form-link:visited {\n  color: #0275d8;\n  text-decoration: none;\n  cursor: pointer;\n  -webkit-tap-highlight-color: transparent; }\n\n.amplify-container a.amplify-form-link:hover {\n  color: #0056b3; }\n"
 
 /***/ }),
 

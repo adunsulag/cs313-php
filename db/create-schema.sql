@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS SystemUser (
 select 'populating first SystemUser';
 INSERT INTO SystemUser
 	(id, identity_id,email,active,created_by,creation_date,last_updated_by,last_updated_date) 
-	VALUES (1, '', 'stephen@nielson.org', 'Y', 1, NOW(), 1, NOW());
+	VALUES (1, '', 'stephen@example.com', 'Y', 1, NOW(), 1, NOW());
 ALTER SEQUENCE systemuser_id_seq RESTART WITH 2;
 
 
@@ -160,12 +160,12 @@ select 'Running SystemUser ActivityLog tests';
 
 -- Insert some SystemUsers
 INSERT INTO SystemUser(identity_id,email,active,created_by,creation_date,last_updated_by,last_updated_date) 
-	VALUES ('something', 'stephen+test1@nielson.org', 'Y', 1, NOW(), 1, NOW());
+	VALUES ('something', 'stephen+test1@example.org', 'Y', 1, NOW(), 1, NOW());
 
 set session "act_log.user" = 2;
 
 INSERT INTO SystemUser(identity_id,email,active,created_by,creation_date,last_updated_by,last_updated_date) 
-	VALUES ('something-2', 'stephen+test2@nielson.org', 'Y', 1, NOW(), 1, NOW() );
+	VALUES ('something-2', 'stephen+test2@example.org', 'Y', 1, NOW(), 1, NOW() );
 -- Run some tests
 select * from ActivityLog;
 
@@ -174,10 +174,10 @@ select * from SystemUser;
 
 -- Now do some updates here
 set session "act_log.user" = 1;
-Update SystemUser SET identity_id = 'something-2-update' WHERE email = 'stephen+test2@nielson.org';
+Update SystemUser SET identity_id = 'something-2-update' WHERE email = 'stephen+test2@example.org';
 
 -- now do a delete
-DELETE FROM SystemUser WHERE email = 'stephen+test2@nielson.org';
+DELETE FROM SystemUser WHERE email = 'stephen+test2@example.org';
 
 -- Run some tests
 select * from ActivityLog;

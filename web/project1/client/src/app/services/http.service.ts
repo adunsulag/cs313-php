@@ -23,8 +23,21 @@ export class HttpService {
       ,data: data
     };
     
-    let options = new RequestOptions({params: payload});
+    let options = new RequestOptions({params: payload, withCredentials: true});
     return this._$http.get(environment.apiUrl, options).toPromise();
+  }
+
+  public post(action:string, data?:any) : Promise<any> {
+    if (!data) {
+        data = {};
+    }
+    let payload = {
+      action: action
+      ,data: data
+    };
+    let options = new RequestOptions({withCredentials:true});
+    
+    return this._$http.post(environment.apiUrl, payload, options).toPromise();
   }
 
 }

@@ -64,6 +64,10 @@ export class AppComponent {
       console.log(data)
       this.router.navigate(["/login"]);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      // we still want to send people to login if we fail to logout for some reason.
+      this.router.navigate(["/login"]);
+    });
   }
 }

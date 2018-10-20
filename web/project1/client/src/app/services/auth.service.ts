@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AmplifyService } from 'aws-amplify-angular';
 import {awsmobile} from "../../aws-exports";
+import { AuthState } from 'aws-amplify-angular/dist/src/providers/auth.state';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class AuthService {
+  public changeSubject:Subject<{state: string, user:any}>;
+  private _inAuthentication:boolean;
 
-  public 
-
-  constructor(private amplifyService: AmplifyService) { 
+  constructor(private amplifyService: AmplifyService, private http:HttpService) { 
+    this.changeSubject = new Subject<{state: string, user:any}>();
     // TODO: stephen look at pulling all of the amplify stuff into this file.
     this.amplifyService.auth().configure({
 
@@ -48,21 +52,41 @@ export class AuthService {
         // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
         // authenticationFlowType: 'USER_PASSWORD_AUTH'
     });
+    this.amplifyService.authStateChange$.subscribe(authState => {
+      if (authState.state == 'signedIn') {
+        let syncUserData = authState.user.signInUserSession.idToken;
+        if (!this._inAuthentication) {
+          this._inAuthentication = true;
+          this.http.post('users.login', syncUserData)
+          .then((result) => {
+            this._inAuthentication = false;
+            this.changeSubject.next({state: authState.state, user: authState.user});
+          })
+          .catch((error) => {
+            console.error(error);
+            this.changeSubject.next({state: 'error', user: null});
+          });
+        }
+      }
+     
+    });
   }
 
   public signOut() {
-
-    // @see https://aws-amplify.github.io/docs/js/authentication
-    return this.amplifyService.auth().signOut({ global: true });
+    let systemSignout = this.http.post('users.logout');
+     // @see https://aws-amplify.github.io/docs/js/authentication
+    let amplifySignout = this.amplifyService.auth().signOut({ global: true });
+    return Promise.all([systemSignout, amplifySignout]);
   }
 
-  public authStateChange() {
-    return this.amplifyService.authStateChange$;
+  public authStateChange() : Subject<{state: string, user:any}>{
+    return this.changeSubject;
   }
 
   public currentAuthenticatedUser() {
     return this.amplifyService.auth().currentAuthenticatedUser();
   }
 
+  private setup
 
 }

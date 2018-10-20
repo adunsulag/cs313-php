@@ -14,10 +14,12 @@ import { TherapistEditComponent } from './therapist-edit/therapist-edit.componen
 import { TherapistNewComponent } from './therapist-new/therapist-new.component';
 import { AppointmentEditComponent } from './appointment-edit/appointment-edit.component';
 import { AppointmentNewComponent } from './appointment-new/appointment-new.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [ 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'home', component: HomeComponent },
   { path: 'therapists', component: TherapistListComponent},
   { path: 'therapists/edit/:id', component: TherapistEditComponent},

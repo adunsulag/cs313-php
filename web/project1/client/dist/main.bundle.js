@@ -224,6 +224,7 @@ var ActivitylogTableComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__therapist_new_therapist_new_component__ = __webpack_require__("./src/app/therapist-new/therapist-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__appointment_edit_appointment_edit_component__ = __webpack_require__("./src/app/appointment-edit/appointment-edit.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__appointment_new_appointment_new_component__ = __webpack_require__("./src/app/appointment-new/appointment-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__logout_logout_component__ = __webpack_require__("./src/app/logout/logout.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -246,9 +247,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */] },
+    { path: 'logout', component: __WEBPACK_IMPORTED_MODULE_16__logout_logout_component__["a" /* LogoutComponent */] },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_3__home_home_component__["a" /* HomeComponent */] },
     { path: 'therapists', component: __WEBPACK_IMPORTED_MODULE_6__therapist_list_therapist_list_component__["a" /* TherapistListComponent */] },
     { path: 'therapists/edit/:id', component: __WEBPACK_IMPORTED_MODULE_12__therapist_edit_therapist_edit_component__["a" /* TherapistEditComponent */] },
@@ -302,9 +305,8 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__ = __webpack_require__("./node_modules/aws-amplify-angular/dist/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aws_exports__ = __webpack_require__("./src/aws-exports.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -317,30 +319,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var AppComponent = /** @class */ (function () {
-    function AppComponent(amplifyService, router) {
+    function AppComponent(authService, router) {
         var _this = this;
-        this.amplifyService = amplifyService;
+        this.authService = authService;
         this.router = router;
         this.title = 'Therapist Admin History Tracker';
-        this.amplifyService.auth().configure({
-            // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
-            identityPoolId: __WEBPACK_IMPORTED_MODULE_2__aws_exports__["a" /* awsmobile */].aws_cognito_identity_pool_id,
-            // REQUIRED - Amazon Cognito Region
-            region: __WEBPACK_IMPORTED_MODULE_2__aws_exports__["a" /* awsmobile */].aws_cognito_region,
-            // OPTIONAL - Amazon Cognito Federated Identity Pool Region 
-            // Required only if it's different from Amazon Cognito Region
-            // identityPoolRegion: 'XX-XXXX-X',
-            // OPTIONAL - Amazon Cognito User Pool ID
-            userPoolId: __WEBPACK_IMPORTED_MODULE_2__aws_exports__["a" /* awsmobile */].aws_user_pools_id,
-            // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
-            userPoolWebClientId: __WEBPACK_IMPORTED_MODULE_2__aws_exports__["a" /* awsmobile */].aws_user_pools_web_client_id,
-            // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
-            mandatorySignIn: false,
-        });
         this._isNotLoggedIn = true;
-        this.amplifyService.authStateChange$
+        this.authService.authStateChange()
             .subscribe(function (authState) {
             _this._isNotLoggedIn = !(authState.state === 'signedIn');
             if (!authState.user) {
@@ -353,7 +339,7 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.amplifyService.auth().currentAuthenticatedUser().then(function (user) {
+        this.authService.currentAuthenticatedUser().then(function (user) {
             _this._isNotLoggedIn = false;
             _this._user = user;
         })
@@ -388,13 +374,16 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this._isNotLoggedIn = true;
         this._user = null;
-        // @see https://aws-amplify.github.io/docs/js/authentication
-        this.amplifyService.auth().signOut({ global: true })
+        this.authService.signOut()
             .then(function (data) {
             console.log(data);
             _this.router.navigate(["/login"]);
         })
-            .catch(function (err) { return console.log(err); });
+            .catch(function (err) {
+            console.log(err);
+            // we still want to send people to login if we fail to logout for some reason.
+            _this.router.navigate(["/login"]);
+        });
     };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -402,7 +391,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["e" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* Router */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -444,12 +433,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__therapist_new_therapist_new_component__ = __webpack_require__("./src/app/therapist-new/therapist-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__appointment_edit_appointment_edit_component__ = __webpack_require__("./src/app/appointment-edit/appointment-edit.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__appointment_new_appointment_new_component__ = __webpack_require__("./src/app/appointment-new/appointment-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__logout_logout_component__ = __webpack_require__("./src/app/logout/logout.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -499,7 +492,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_24__therapist_edit_therapist_edit_component__["a" /* TherapistEditComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__therapist_new_therapist_new_component__["a" /* TherapistNewComponent */],
                 __WEBPACK_IMPORTED_MODULE_26__appointment_edit_appointment_edit_component__["a" /* AppointmentEditComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__appointment_new_appointment_new_component__["a" /* AppointmentNewComponent */]
+                __WEBPACK_IMPORTED_MODULE_27__appointment_new_appointment_new_component__["a" /* AppointmentNewComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__logout_logout_component__["a" /* LogoutComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -509,7 +503,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ng_mdb_pro__["a" /* MDBBootstrapModules */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_18__app_routing_module__["a" /* AppRoutingModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_19__services_appointment_service__["a" /* AppointmentService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_19__services_appointment_service__["a" /* AppointmentService */], __WEBPACK_IMPORTED_MODULE_28__services_auth_service__["a" /* AuthService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -1123,7 +1117,7 @@ var HomeComponent = /** @class */ (function () {
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<amplify-authenticator></amplify-authenticator>"
+module.exports = "<div class=\"row justify-content-center\">\n    <div class=\"col-6 col-md-4\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h1 class=\"h1-responsive text-center\">Login</h1>\n            </div>\n            <div class=\"card-body\">\n                    <amplify-authenticator></amplify-authenticator>\n            </div>\n        </div>\n        \n    </div>\n</div>"
 
 /***/ }),
 
@@ -1142,6 +1136,7 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__ = __webpack_require__("./node_modules/aws-amplify-angular/dist/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1154,28 +1149,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(amplifyService, router) {
-        var _this = this;
+    function LoginComponent(amplifyService, authService, router) {
         this.amplifyService = amplifyService;
+        this.authService = authService;
         this.router = router;
-        this.amplifyService.authStateChange$
-            .subscribe(function (authState) {
-            if (authState.state == 'signedIn') {
-                // TODO: stephen need to sync the state with the server here... creating the user or updating any information about them
-                // that we have.
-                _this.router.navigate(['/home']);
-            }
-        });
     }
+    LoginComponent.prototype.ngOnDestroy = function () {
+        this.authSubscription.unsubscribe();
+    };
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
         // @see https://aws-amplify.github.io/docs/js/authentication
-        var session = this.amplifyService.auth().currentAuthenticatedUser().then(function (user) {
+        var session = this.authService.currentAuthenticatedUser().then(function (user) {
             _this.router.navigate(['home']);
         })
             .catch(function (error) {
-            // not logged in so we can just ignore this error.
+            // for some reason if you have logged in, then logged out again, the authStateChange subscriptions still send an initial signedIn event
+            // TODO: stephen see if there is a way to fix this logic, for now we will just check the authenticated user and subscription 
+            // if we are not authenticated
+            _this.authSubscription = _this.authService.authStateChange()
+                .subscribe(function (authState) {
+                if (authState.state == 'signedIn') {
+                    // TODO: stephen need to sync the state with the server here... creating the user or updating any information about them
+                    // that we have.
+                    _this.router.navigate(['/home']);
+                }
+            });
         });
     };
     LoginComponent = __decorate([
@@ -1184,9 +1185,59 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["e" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["e" /* Router */]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/logout/logout.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h1>Thank you for visiting!</h1>\n<p>You've been logged out.  If you'd like to login again click the button below</p>\n<a [routerLink]=\"['/login']\" class=\"btn btn-primary\">Login</a>"
+
+/***/ }),
+
+/***/ "./src/app/logout/logout.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/logout/logout.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogoutComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LogoutComponent = /** @class */ (function () {
+    function LogoutComponent() {
+    }
+    LogoutComponent.prototype.ngOnInit = function () {
+    };
+    LogoutComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-logout',
+            template: __webpack_require__("./src/app/logout/logout.component.html"),
+            styles: [__webpack_require__("./src/app/logout/logout.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], LogoutComponent);
+    return LogoutComponent;
 }());
 
 
@@ -1333,6 +1384,94 @@ var AppointmentService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/auth.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__ = __webpack_require__("./node_modules/aws-amplify-angular/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aws_exports__ = __webpack_require__("./src/aws-exports.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs__ = __webpack_require__("./node_modules/rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__http_service__ = __webpack_require__("./src/app/services/http.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var AuthService = /** @class */ (function () {
+    function AuthService(amplifyService, http) {
+        var _this = this;
+        this.amplifyService = amplifyService;
+        this.http = http;
+        this.changeSubject = new __WEBPACK_IMPORTED_MODULE_3_rxjs__["Subject"]();
+        // TODO: stephen look at pulling all of the amplify stuff into this file.
+        this.amplifyService.auth().configure({
+            // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
+            identityPoolId: __WEBPACK_IMPORTED_MODULE_2__aws_exports__["a" /* awsmobile */].aws_cognito_identity_pool_id,
+            // REQUIRED - Amazon Cognito Region
+            region: __WEBPACK_IMPORTED_MODULE_2__aws_exports__["a" /* awsmobile */].aws_cognito_region,
+            // OPTIONAL - Amazon Cognito Federated Identity Pool Region 
+            // Required only if it's different from Amazon Cognito Region
+            // identityPoolRegion: 'XX-XXXX-X',
+            // OPTIONAL - Amazon Cognito User Pool ID
+            userPoolId: __WEBPACK_IMPORTED_MODULE_2__aws_exports__["a" /* awsmobile */].aws_user_pools_id,
+            // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
+            userPoolWebClientId: __WEBPACK_IMPORTED_MODULE_2__aws_exports__["a" /* awsmobile */].aws_user_pools_web_client_id,
+            // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
+            mandatorySignIn: false,
+        });
+        this.amplifyService.authStateChange$.subscribe(function (authState) {
+            if (authState.state == 'signedIn') {
+                var syncUserData = authState.user.signInUserSession.idToken;
+                if (!_this._inAuthentication) {
+                    _this._inAuthentication = true;
+                    _this.http.post('users.login', syncUserData)
+                        .then(function (result) {
+                        _this._inAuthentication = false;
+                        _this.changeSubject.next({ state: authState.state, user: authState.user });
+                    })
+                        .catch(function (error) {
+                        console.error(error);
+                        _this.changeSubject.next({ state: 'error', user: null });
+                    });
+                }
+            }
+        });
+    }
+    AuthService.prototype.signOut = function () {
+        var systemSignout = this.http.post('users.logout');
+        // @see https://aws-amplify.github.io/docs/js/authentication
+        var amplifySignout = this.amplifyService.auth().signOut({ global: true });
+        return Promise.all([systemSignout, amplifySignout]);
+    };
+    AuthService.prototype.authStateChange = function () {
+        return this.changeSubject;
+    };
+    AuthService.prototype.currentAuthenticatedUser = function () {
+        return this.amplifyService.auth().currentAuthenticatedUser();
+    };
+    AuthService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_4__http_service__["a" /* HttpService */]])
+    ], AuthService);
+    return AuthService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/client.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1416,8 +1555,19 @@ var HttpService = /** @class */ (function () {
             action: action,
             data: data
         };
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ params: payload });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ params: payload, withCredentials: true });
         return this._$http.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl, options).toPromise();
+    };
+    HttpService.prototype.post = function (action, data) {
+        if (!data) {
+            data = {};
+        }
+        var payload = {
+            action: action,
+            data: data
+        };
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ withCredentials: true });
+        return this._$http.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl, payload, options).toPromise();
     };
     HttpService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
