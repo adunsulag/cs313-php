@@ -8,15 +8,22 @@ import { TherapistService } from '../services/therapist.service';
 })
 export class TherapistListComponent implements OnInit {
   public therapists:any;
+  private hasLoaded:boolean;
 
   constructor(private therapistService:TherapistService) { 
     this.therapists = [];
   }
 
   ngOnInit() {
+    this.hasLoaded = false;
     this.therapistService.list().then((therapists) => {
       console.log(therapists);
       this.therapists = therapists;
+      this.hasLoaded = true;
     })
+    .catch((error) => {
+      console.log(error);
+      this.hasLoaded = true;
+    });
   }
 }

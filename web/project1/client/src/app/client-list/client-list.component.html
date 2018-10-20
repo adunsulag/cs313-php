@@ -1,5 +1,6 @@
 <h2>Clients List</h2>
-<table class="table table-striped">
+<p *ngIf="!hasLoaded" class="alert alert-info">Loading client data...</p>
+<table class="table table-striped" *ngIf="hasLoaded">
   <thead>
     <tr>
       <th>

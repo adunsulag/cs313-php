@@ -13,6 +13,11 @@ import { HttpService } from './services/http.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -20,7 +25,11 @@ import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
     AppComponent,
     ClientListComponent,
     TherapistListComponent,
-    ActivitylogListComponent
+    ActivitylogListComponent,
+    PageNotFoundComponent,
+    HomeComponent,
+    LoginComponent,
+    AppointmentListComponent
   ],
   imports: [
     BrowserModule
@@ -28,6 +37,7 @@ import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
     ,FormsModule
     ,AmplifyAngularModule
     ,MDBBootstrapModules.forRoot()
+    ,AppRoutingModule
   ],
   providers: [ActivitylogService, ClientService, TherapistService, HttpService, AmplifyService],
   bootstrap: [AppComponent]

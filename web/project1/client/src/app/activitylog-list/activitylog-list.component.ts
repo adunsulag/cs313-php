@@ -16,6 +16,7 @@ export class ActivitylogListComponent implements OnInit {
     ,"Appointment"
   ];
   private _searchFilter:any;
+  public hasLoaded:boolean;
 
   constructor(private activityLogService:ActivitylogService) { 
     this.logs = [];
@@ -37,10 +38,26 @@ export class ActivitylogListComponent implements OnInit {
       return this.reset();
     }
     
-    this.activityLogService.search(this.searchFilter.filter).then(logs => this.setLogs(logs));
+    this.hasLoaded = false;
+    this.activityLogService.search(this.searchFilter.filter).then(logs => {
+      this.setLogs(logs);
+      this.hasLoaded = true;
+    })
+    .catch((error) => {
+      console.log(error);
+      this.hasLoaded = true;
+    })
   }
   public reset() {
-    this.activityLogService.list().then(logs => this.setLogs(logs));
+    this.hasLoaded = false;
+    this.activityLogService.list().then(logs => {
+      this.setLogs(logs)
+      this.hasLoaded = true;
+    })
+    .catch((error) => {
+      console.log(error);
+      this.hasLoaded = true;
+    })
   }
 
   private setLogs(logs) {
@@ -49,7 +66,7 @@ export class ActivitylogListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activityLogService.list().then(logs => this.setLogs(logs));
+    this.reset();
   }
 
 }
