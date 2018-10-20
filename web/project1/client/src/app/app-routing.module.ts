@@ -8,13 +8,18 @@ import { TherapistListComponent } from './therapist-list/therapist-list.componen
 import { ClientListComponent } from './client-list/client-list.component';
 import { ActivitylogListComponent } from './activitylog-list/activitylog-list.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { ClientEditComponent } from './client-edit/client-edit.component';
+import { ClientNewComponent } from './client-new/client-new.component';
 
 const routes: Routes = [ 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'therapists', component: TherapistListComponent},
+//   { path: 'therapists/edit/:id', component: TherapistEditComponent}
   { path: 'clients', component: ClientListComponent},
+  { path: 'clients/edit/:id', component: ClientEditComponent},
+  { path: 'clients/new', component: ClientNewComponent},
   { path: 'activitylog', component: ActivitylogListComponent},
   { path: 'appointments', component: AppointmentListComponent},
   { path: '**', component: PageNotFoundComponent }

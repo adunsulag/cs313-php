@@ -55,7 +55,9 @@ function listAppointments($data, $request) {
     $db = openDBConnection($request['systemUserId']);
 
     $results = [];
-    $statement = 'select a.id,c.name as "clientName", t.name as "therapistName", 
+    $statement = 'select a.id,
+    c.name as "clientName", c.id as "clientID",
+    t.name as "therapistName", t.id as "therapistID",
     a.start_date as "startDate", a.end_date as "endDate", a.status
     from Appointment a 
     JOIN Client c ON a.client_id = c.id 

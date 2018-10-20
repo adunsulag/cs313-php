@@ -19,6 +19,10 @@ import { LoginComponent } from './login/login.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppointmentService } from './services/appointment.service';
+import { ClientEditComponent } from './client-edit/client-edit.component';
+import { AppointmentListTableComponent } from './appointment-list-table/appointment-list-table.component';
+import { ActivitylogTableComponent } from './activitylog-table/activitylog-table.component';
+import { ClientNewComponent } from './client-new/client-new.component';
 
 
 @NgModule({
@@ -30,7 +34,11 @@ import { AppointmentService } from './services/appointment.service';
     PageNotFoundComponent,
     HomeComponent,
     LoginComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    ClientEditComponent,
+    AppointmentListTableComponent,
+    ActivitylogTableComponent,
+    ClientNewComponent
   ],
   imports: [
     BrowserModule
