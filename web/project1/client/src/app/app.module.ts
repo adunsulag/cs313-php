@@ -23,6 +23,8 @@ import { ClientEditComponent } from './client-edit/client-edit.component';
 import { AppointmentListTableComponent } from './appointment-list-table/appointment-list-table.component';
 import { ActivitylogTableComponent } from './activitylog-table/activitylog-table.component';
 import { ClientNewComponent } from './client-new/client-new.component';
+import { TherapistEditComponent } from './therapist-edit/therapist-edit.component';
+import { TherapistNewComponent } from './therapist-new/therapist-new.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { ClientNewComponent } from './client-new/client-new.component';
     ClientEditComponent,
     AppointmentListTableComponent,
     ActivitylogTableComponent,
-    ClientNewComponent
+    ClientNewComponent,
+    TherapistEditComponent,
+    TherapistNewComponent
   ],
   imports: [
     BrowserModule
