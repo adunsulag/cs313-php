@@ -9,21 +9,31 @@ header("Access-Control-Allow-Headers: accept, content-type, content-encoding, au
 header("Access-Control-Allow-Methods: POST,GET,DELETE,OPTIONS");
 header("Access-Control-Allow-Credentials: true");
 
+error_log("*****REQUEST******");
 error_log(var_export($request, true));
+
 try {
 	$controller = getController($request['action']);
 	$actionResult = call_user_func($controller, $request['data'], $request);
+	error_log("*****RESPONSE******");
+	error_log("200 OK: " . var_export($actionResult, true));
+	
 	header("Status: 200");
 	header("Content-Type: application/json'");
 	echo json_encode($actionResult);
 }
 catch (BadActionException $ex) {
+	error_log($ex);
+	error_log("*****RESPONSE******");
+	error_log("400: {'error': Bad Request'}");
 	header("Status: 400");
 	header("Content-Type: application/json");
 	echo json_encode(["error" => "Bad Request"]);
 }
 catch (Exception $error) {
 	error_log($error);
+	error_log("*****RESPONSE******");
+	error_log("500: {'error': Server Error. Check logs'}");
 	header("Status: 500");
 	header("Content-Type: application/json");
 	echo json_encode(["error" => "Server Error.  Check logs"]);

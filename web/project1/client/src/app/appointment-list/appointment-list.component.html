@@ -1,3 +1,39 @@
-<p>
-  appointment-list works!
-</p>
+<h2>Appointments List</h2>
+<p *ngIf="!hasLoaded" class="alert alert-info">Loading data...</p>
+<table class="table table-striped" *ngIf="hasLoaded">
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Start Date
+      </th>
+      <th>
+          End Date
+        </th>
+        <th>
+            Status
+          </th>
+          <th>Client</th>
+          <th>Therapist</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="appointments.length == 0">
+    <tr>
+      <td colspan="2">
+        <div class="alert alert-warning">No appointments exist in the system</div>
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr *ngFor="let appt of appointments">
+      <td>{{appt.id}}</td>
+      <td>{{appt.startDate | date: 'medium'}}</td>
+      <td>{{appt.endDate | date: 'medium'}}</td>
+      <td>{{appt.status}}</td>
+      <td>{{appt.clientName}}</td>
+      <td>{{appt.therapistName}}</td>
+    </tr>
+  </tbody>
+</table>

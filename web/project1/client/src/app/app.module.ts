@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppointmentService } from './services/appointment.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
     ,MDBBootstrapModules.forRoot()
     ,AppRoutingModule
   ],
-  providers: [ActivitylogService, ClientService, TherapistService, HttpService, AmplifyService],
+  providers: [ActivitylogService, ClientService, TherapistService, HttpService, AmplifyService, AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

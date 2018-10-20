@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppointmentService } from '../services/appointment.service';
 
 @Component({
   selector: 'dac-appointment-list',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppointmentListComponent implements OnInit {
 
-  constructor() { }
+  public appointments:any;
+  public hasLoaded:boolean;
+
+  constructor(private apptService:AppointmentService) { 
+    this.appointments = [];
+  }
 
   ngOnInit() {
+    this.hasLoaded = false;
+    this.apptService.list().then((appointments) => {
+      console.log(appointments);
+      this.appointments = appointments;
+      this.hasLoaded = true;
+    })
+    .catch((error) => {
+      console.error(error);
+      this.hasLoaded = true;
+    });
   }
 
 }

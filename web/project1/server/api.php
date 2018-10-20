@@ -51,6 +51,24 @@ function listClients($data, $request) {
     return $results;
 }
 
+function listAppointments($data, $request) {
+    $db = openDBConnection($request['systemUserId']);
+
+    $results = [];
+    $statement = 'select a.id,c.name as "clientName", t.name as "therapistName", 
+    a.start_date as "startDate", a.end_date as "endDate", a.status
+    from Appointment a 
+    JOIN Client c ON a.client_id = c.id 
+    JOIN Therapist t ON a.therapist_id = t.id
+    ORDER BY a.start_date';
+    $records = $db->query($statement);
+    while ($row = $records->fetch(PDO::FETCH_ASSOC)) {
+        $results[] = $row;
+    }
+    $db = null; // unset it so we close the connection
+    return $results;
+}
+
 function listActivityLogs($data, $request) {
 
     $db = openDBConnection($request['systemUserId']);
@@ -128,6 +146,7 @@ function getActionMap() {
         ,"therapists.get"=> 'noop'
         ,"therapists.post"=> 'noop'
         ,"activitylog.list"=> 'listActivityLogs'
+        ,"appointments.list"=> 'listAppointments'
     ];
     return $validActions;
 }
