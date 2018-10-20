@@ -27,6 +27,7 @@ import { TherapistEditComponent } from './therapist-edit/therapist-edit.componen
 import { TherapistNewComponent } from './therapist-new/therapist-new.component';
 import { AppointmentEditComponent } from './appointment-edit/appointment-edit.component';
 import { AppointmentNewComponent } from './appointment-new/appointment-new.component';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -56,7 +57,7 @@ import { AppointmentNewComponent } from './appointment-new/appointment-new.compo
     ,MDBBootstrapModules.forRoot()
     ,AppRoutingModule
   ],
-  providers: [ActivitylogService, ClientService, TherapistService, HttpService, AmplifyService, AppointmentService],
+  providers: [ActivitylogService, ClientService, TherapistService, HttpService, AmplifyService, AppointmentService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
