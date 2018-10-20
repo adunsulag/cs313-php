@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientNewComponent implements OnInit {
   public editItem:any;
-  
-  constructor() { }
+
+  constructor() { 
+    this.editItem = {};
+  }
 
   ngOnInit() {
   }
