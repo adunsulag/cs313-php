@@ -12,6 +12,8 @@ import { ClientEditComponent } from './client-edit/client-edit.component';
 import { ClientNewComponent } from './client-new/client-new.component';
 import { TherapistEditComponent } from './therapist-edit/therapist-edit.component';
 import { TherapistNewComponent } from './therapist-new/therapist-new.component';
+import { AppointmentEditComponent } from './appointment-edit/appointment-edit.component';
+import { AppointmentNewComponent } from './appointment-new/appointment-new.component';
 
 const routes: Routes = [ 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'clients/new', component: ClientNewComponent},
   { path: 'activitylog', component: ActivitylogListComponent},
   { path: 'appointments', component: AppointmentListComponent},
+  { path: 'appointments/edit/:id', component: AppointmentEditComponent},
+  { path: 'appointments/new', component: AppointmentNewComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 

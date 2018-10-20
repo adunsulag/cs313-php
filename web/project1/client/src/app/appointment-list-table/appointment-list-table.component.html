@@ -15,6 +15,7 @@
             </th>
             <th>Client</th>
             <th>Therapist</th>
+            <th>Edit</th>
       </tr>
     </thead>
     <tbody *ngIf="Appointments.length == 0">
@@ -32,6 +33,11 @@
         <td>{{appt.status}}</td>
         <td><h5><a class="badge badge-info" [routerLink]="['/clients', 'edit', appt.clientID]">{{appt.clientName}}</a></h5></td>
         <td><h5><a class="badge badge-info" [routerLink]="['/therapists', 'edit', appt.therapistID]">{{appt.therapistName}}</a></h5></td>
+        <td>
+            <button class="btn btn-sm btn-primary" [routerLink]="['/appointments', 'edit', appt.id]">
+              <i class="fa fa-edit" aria-hidden="true" aria-label="View"></i>
+            </button>
+          </td>
       </tr>
     </tbody>
   </table>

@@ -2,7 +2,7 @@
 <form>
   <label>
     Entity
-    <select name="filter" [(ngModel)]="searchFilter.filter" class="browser-default">
+    <select name="filter" [(ngModel)]="searchFilter.filter" class="browser-default custom-select">
       <option [value]="entity" *ngFor="let entity of entities">{{entity}}</option>
     </select>
   </label>

@@ -25,6 +25,8 @@ import { ActivitylogTableComponent } from './activitylog-table/activitylog-table
 import { ClientNewComponent } from './client-new/client-new.component';
 import { TherapistEditComponent } from './therapist-edit/therapist-edit.component';
 import { TherapistNewComponent } from './therapist-new/therapist-new.component';
+import { AppointmentEditComponent } from './appointment-edit/appointment-edit.component';
+import { AppointmentNewComponent } from './appointment-new/appointment-new.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { TherapistNewComponent } from './therapist-new/therapist-new.component';
     ActivitylogTableComponent,
     ClientNewComponent,
     TherapistEditComponent,
-    TherapistNewComponent
+    TherapistNewComponent,
+    AppointmentEditComponent,
+    AppointmentNewComponent
   ],
   imports: [
     BrowserModule

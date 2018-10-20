@@ -1,3 +1,4 @@
 <h2>Appointments List</h2>
 <p *ngIf="!hasLoaded" class="alert alert-info">Loading data...</p>
+<a [routerLink]="['/appointments', 'new']" class="btn btn-secondary">Schedule Appointment</a>
 <dac-appointment-list-table [appointments]="appointments" *ngIf="hasLoaded"></dac-appointment-list-table>
