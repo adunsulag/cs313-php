@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/activitylog-list/activitylog-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Activity Log</h2>\n<form>\n  <label>\n    Entity\n    <select name=\"filter\" [(ngModel)]=\"searchFilter.filter\" class=\"browser-default\">\n      <option [value]=\"entity\" *ngFor=\"let entity of entities\">{{entity}}</option>\n    </select>\n  </label>\n  <input type=\"button\" (click)=\"filter()\" value=\"Filter\" class=\"btn btn-primary\" />\n  <input type=\"button\" (click)=\"reset()\" value=\"Reset\" class=\"btn btn-secondary\" />\n</form>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        Date\n      </th>\n      <th>\n        Entity\n      </th>\n      <th>\n        Entity ID\n      </th>\n      <th>\n        Action\n      </th>\n      <th>\n          Notes\n        </th>\n        <th>\n          System User\n        </th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"logs.length == 0\">\n    <tr>\n      <td colspan=\"6\">\n        <div class=\"alert alert-warning\">No logs exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let log of logs\">\n      <td>{{log.date | date:'medium' }}</td>\n      <td>{{log.tableName}}</td>\n      <td>{{log.tableID}}</td>\n      <td>{{log.action}}</td>\n      <td>{{log.notes}}</td>\n      <td>{{log.systemUserEmail}}</td>\n    </tr>\n  </tbody>\n</table>"
+module.exports = "<h2>Activity Log</h2>\n<form>\n  <label>\n    Entity\n    <select name=\"filter\" [(ngModel)]=\"searchFilter.filter\" class=\"browser-default custom-select\">\n      <option [value]=\"entity\" *ngFor=\"let entity of entities\">{{entity}}</option>\n    </select>\n  </label>\n  <input type=\"button\" (click)=\"filter()\" value=\"Filter\" class=\"btn btn-primary\" />\n  <input type=\"button\" (click)=\"reset()\" value=\"Reset\" class=\"btn btn-secondary\" />\n</form>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<dac-activitylog-table [logs]=\"logs\" *ngIf=\"hasLoaded\"></dac-activitylog-table>"
 
 /***/ }),
 
@@ -123,6 +123,71 @@ var ActivitylogListComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/activitylog-table/activitylog-table.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>\n          Date\n        </th>\n        <th>\n          Entity\n        </th>\n        <th>\n          Entity ID\n        </th>\n        <th>\n          Action\n        </th>\n        <th>\n            Notes\n          </th>\n          <th>\n            System User\n          </th>\n      </tr>\n    </thead>\n    <tbody *ngIf=\"Logs.length == 0\">\n      <tr>\n        <td colspan=\"6\">\n          <div class=\"alert alert-warning\">No logs exist in the system</div>\n        </td>\n      </tr>\n    </tbody>\n    <tbody>\n      <tr *ngFor=\"let log of Logs\">\n        <td>{{log.date | date:'medium' }}</td>\n        <td>{{log.tableName}}</td>\n        <td>{{log.tableID}}</td>\n        <td>{{log.action}}</td>\n        <td>{{log.notes}}</td>\n        <td>{{log.systemUserEmail}}</td>\n      </tr>\n    </tbody>\n  </table>"
+
+/***/ }),
+
+/***/ "./src/app/activitylog-table/activitylog-table.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/activitylog-table/activitylog-table.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivitylogTableComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ActivitylogTableComponent = /** @class */ (function () {
+    function ActivitylogTableComponent() {
+        this.logs = [];
+    }
+    ActivitylogTableComponent.prototype.ngOnInit = function () {
+    };
+    Object.defineProperty(ActivitylogTableComponent.prototype, "Logs", {
+        get: function () {
+            if (this.logs && this.logs.length > 0) {
+                return this.logs;
+            }
+            return [];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", Array)
+    ], ActivitylogTableComponent.prototype, "logs", void 0);
+    ActivitylogTableComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-activitylog-table',
+            template: __webpack_require__("./src/app/activitylog-table/activitylog-table.component.html"),
+            styles: [__webpack_require__("./src/app/activitylog-table/activitylog-table.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ActivitylogTableComponent);
+    return ActivitylogTableComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -138,6 +203,12 @@ var ActivitylogListComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__client_list_client_list_component__ = __webpack_require__("./src/app/client-list/client-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__activitylog_list_activitylog_list_component__ = __webpack_require__("./src/app/activitylog-list/activitylog-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__appointment_list_appointment_list_component__ = __webpack_require__("./src/app/appointment-list/appointment-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__client_edit_client_edit_component__ = __webpack_require__("./src/app/client-edit/client-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__client_new_client_new_component__ = __webpack_require__("./src/app/client-new/client-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__therapist_edit_therapist_edit_component__ = __webpack_require__("./src/app/therapist-edit/therapist-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__therapist_new_therapist_new_component__ = __webpack_require__("./src/app/therapist-new/therapist-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__appointment_edit_appointment_edit_component__ = __webpack_require__("./src/app/appointment-edit/appointment-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__appointment_new_appointment_new_component__ = __webpack_require__("./src/app/appointment-new/appointment-new.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -154,14 +225,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
+
+
 var routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */] },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_3__home_home_component__["a" /* HomeComponent */] },
     { path: 'therapists', component: __WEBPACK_IMPORTED_MODULE_6__therapist_list_therapist_list_component__["a" /* TherapistListComponent */] },
+    { path: 'therapists/edit/:id', component: __WEBPACK_IMPORTED_MODULE_12__therapist_edit_therapist_edit_component__["a" /* TherapistEditComponent */] },
+    { path: 'therapists/new', component: __WEBPACK_IMPORTED_MODULE_13__therapist_new_therapist_new_component__["a" /* TherapistNewComponent */] },
     { path: 'clients', component: __WEBPACK_IMPORTED_MODULE_7__client_list_client_list_component__["a" /* ClientListComponent */] },
+    { path: 'clients/edit/:id', component: __WEBPACK_IMPORTED_MODULE_10__client_edit_client_edit_component__["a" /* ClientEditComponent */] },
+    { path: 'clients/new', component: __WEBPACK_IMPORTED_MODULE_11__client_new_client_new_component__["a" /* ClientNewComponent */] },
     { path: 'activitylog', component: __WEBPACK_IMPORTED_MODULE_8__activitylog_list_activitylog_list_component__["a" /* ActivitylogListComponent */] },
     { path: 'appointments', component: __WEBPACK_IMPORTED_MODULE_9__appointment_list_appointment_list_component__["a" /* AppointmentListComponent */] },
+    { path: 'appointments/edit/:id', component: __WEBPACK_IMPORTED_MODULE_14__appointment_edit_appointment_edit_component__["a" /* AppointmentEditComponent */] },
+    { path: 'appointments/new', component: __WEBPACK_IMPORTED_MODULE_15__appointment_new_appointment_new_component__["a" /* AppointmentNewComponent */] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_4__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -171,9 +254,9 @@ var AppRoutingModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_router__["f" /* RouterModule */].forRoot(routes, { enableTracing: false })
+                __WEBPACK_IMPORTED_MODULE_2__angular_router__["g" /* RouterModule */].forRoot(routes, { enableTracing: false })
             ],
-            exports: [__WEBPACK_IMPORTED_MODULE_2__angular_router__["f" /* RouterModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_2__angular_router__["g" /* RouterModule */]],
             declarations: []
         })
     ], AppRoutingModule);
@@ -194,7 +277,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<mdb-navbar SideClass=\"navbar navbar-expand-md\" [containerInside]=\"false\">\n    <logo>\n        <a class=\"navbar-brand mr-0\" [routerLink]=\"['/']\">\n            <img width=\"50\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n        </a>\n    </logo>   \n    <links>\n      <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"goHome()\">Home</a>\n            </li>\n            <li *ngIf=\"isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/login']\">Login</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/therapists']\">Therapists</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/clients']\">Clients</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/appointments']\">Appointments</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/activitylog']\">Activity Log</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"logout nav-item\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"logout()\"><span>Hello {{Username}}</span> - Logout</a></li>\n        </ul>\n    </links>\n</mdb-navbar>\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n</div>\n<main>\n    <div class=\"container-fluid\">\n        <router-outlet></router-outlet>\n    </div>\n  </main>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<mdb-navbar SideClass=\"navbar navbar-expand-md mb-3\" [containerInside]=\"false\">\n    <logo>\n        <a class=\"navbar-brand mr-0\" [routerLink]=\"['/']\">\n            <img width=\"50\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n            <span>{{ title }}</span>\n        </a>\n        \n    </logo>   \n    <links>\n      <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"goHome()\">Home</a>\n            </li>\n            <li *ngIf=\"isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/login']\">Login</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/therapists']\">Therapists</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/clients']\">Clients</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/appointments']\">Appointments</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/activitylog']\">Activity Log</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"logout nav-item\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"logout()\"><span>Hello {{Username}}</span> - Logout</a></li>\n        </ul>\n    </links>\n</mdb-navbar>\n<main>\n    <div class=\"container-fluid\">\n        <router-outlet></router-outlet>\n    </div>\n  </main>"
 
 /***/ }),
 
@@ -304,7 +387,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["e" /* Router */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -337,12 +420,30 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__appointment_list_appointment_list_component__ = __webpack_require__("./src/app/appointment-list/appointment-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_appointment_service__ = __webpack_require__("./src/app/services/appointment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__client_edit_client_edit_component__ = __webpack_require__("./src/app/client-edit/client-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__appointment_list_table_appointment_list_table_component__ = __webpack_require__("./src/app/appointment-list-table/appointment-list-table.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__activitylog_table_activitylog_table_component__ = __webpack_require__("./src/app/activitylog-table/activitylog-table.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__client_new_client_new_component__ = __webpack_require__("./src/app/client-new/client-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__therapist_edit_therapist_edit_component__ = __webpack_require__("./src/app/therapist-edit/therapist-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__therapist_new_therapist_new_component__ = __webpack_require__("./src/app/therapist-new/therapist-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__appointment_edit_appointment_edit_component__ = __webpack_require__("./src/app/appointment-edit/appointment-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__appointment_new_appointment_new_component__ = __webpack_require__("./src/app/appointment-new/appointment-new.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
+
+
+
 
 
 
@@ -375,7 +476,15 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_14__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
                 __WEBPACK_IMPORTED_MODULE_15__home_home_component__["a" /* HomeComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__appointment_list_appointment_list_component__["a" /* AppointmentListComponent */]
+                __WEBPACK_IMPORTED_MODULE_17__appointment_list_appointment_list_component__["a" /* AppointmentListComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__client_edit_client_edit_component__["a" /* ClientEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__appointment_list_table_appointment_list_table_component__["a" /* AppointmentListTableComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__activitylog_table_activitylog_table_component__["a" /* ActivitylogTableComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__client_new_client_new_component__["a" /* ClientNewComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__therapist_edit_therapist_edit_component__["a" /* TherapistEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__therapist_new_therapist_new_component__["a" /* TherapistNewComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__appointment_edit_appointment_edit_component__["a" /* AppointmentEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__appointment_new_appointment_new_component__["a" /* AppointmentNewComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -385,7 +494,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ng_mdb_pro__["a" /* MDBBootstrapModules */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_18__app_routing_module__["a" /* AppRoutingModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["b" /* AmplifyService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_19__services_appointment_service__["a" /* AppointmentService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -396,10 +505,197 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/appointment-edit/appointment-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Appointment {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Appointments Profile</h3>\n      <label>\n        Start Date:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.startDate\" />\n      </label>\n      <label>\n          End Date:\n          <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.endDate\" />\n        </label>\n        <label>\n            Status:\n            <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n              <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n            </select>   \n          </label>\n          <label>\n              Therapist:\n              <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n                <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n              </select>\n            </label>\n            <label>\n                Client:\n                <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n                  <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n                </select>\n              </label>\n      <a  [routerLink]=\"['/appointments']\" class=\"btn btn-primary\">Save</a>\n    </form>\n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/appointment-edit/appointment-edit.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/appointment-edit/appointment-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_appointment_service__ = __webpack_require__("./src/app/services/appointment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var AppointmentEditComponent = /** @class */ (function () {
+    function AppointmentEditComponent(route, router, apptService, therapistService, clientService) {
+        this.route = route;
+        this.router = router;
+        this.apptService = apptService;
+        this.therapistService = therapistService;
+        this.clientService = clientService;
+        this._appointment = {};
+        this._therapists = [];
+        this._clients = [];
+    }
+    AppointmentEditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.hasLoaded = false;
+        this.route.params.subscribe(function (params) {
+            if (!params['id'] || isNaN(+params['id'])) {
+                _this.router.navigate(['/page-not-found']);
+                return;
+            }
+            var therapistsPromise = _this.therapistService.list().then(function (therapists) {
+                _this._therapists = therapists;
+            });
+            var clientsPromise = _this.clientService.list().then(function (clients) {
+                _this._clients = clients;
+            });
+            var id = +params['id'];
+            var apptProfilePromise = _this.apptService.get(id).then(function (appointment) {
+                _this._appointment = appointment;
+            });
+            Promise.all([therapistsPromise, clientsPromise, apptProfilePromise]).then(function (results) {
+                _this.hasLoaded = true;
+            })
+                .catch(function (error) {
+                _this.hasLoaded = true;
+                console.error(error);
+            });
+        });
+    };
+    Object.defineProperty(AppointmentEditComponent.prototype, "statii", {
+        get: function () {
+            return ['pending', 'canceled', 'noshow', 'completed'];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppointmentEditComponent.prototype, "therapists", {
+        get: function () {
+            return this._therapists;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppointmentEditComponent.prototype, "clients", {
+        get: function () {
+            return this._clients;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppointmentEditComponent.prototype, "editItem", {
+        get: function () {
+            return this._appointment || {};
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AppointmentEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-appointment-edit',
+            template: __webpack_require__("./src/app/appointment-edit/appointment-edit.component.html"),
+            styles: [__webpack_require__("./src/app/appointment-edit/appointment-edit.component.scss")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["e" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_1__services_appointment_service__["a" /* AppointmentService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_therapist_service__["a" /* TherapistService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_client_service__["a" /* ClientService */]])
+    ], AppointmentEditComponent);
+    return AppointmentEditComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/appointment-list-table/appointment-list-table.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>\n          ID\n        </th>\n        <th>\n          Start Date\n        </th>\n        <th>\n            End Date\n          </th>\n          <th>\n              Status\n            </th>\n            <th>Client</th>\n            <th>Therapist</th>\n            <th>Edit</th>\n      </tr>\n    </thead>\n    <tbody *ngIf=\"Appointments.length == 0\">\n      <tr>\n        <td colspan=\"6\">\n          <div class=\"alert alert-warning\">No appointments exist</div>\n        </td>\n      </tr>\n    </tbody>\n    <tbody>\n      <tr *ngFor=\"let appt of Appointments\">\n        <td>{{appt.id}}</td>\n        <td>{{appt.startDate | date: 'medium'}}</td>\n        <td>{{appt.endDate | date: 'medium'}}</td>\n        <td>{{appt.status}}</td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/clients', 'edit', appt.clientID]\">{{appt.clientName}}</a></h5></td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/therapists', 'edit', appt.therapistID]\">{{appt.therapistName}}</a></h5></td>\n        <td>\n            <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/appointments', 'edit', appt.id]\">\n              <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n            </button>\n          </td>\n      </tr>\n    </tbody>\n  </table>"
+
+/***/ }),
+
+/***/ "./src/app/appointment-list-table/appointment-list-table.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/appointment-list-table/appointment-list-table.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentListTableComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AppointmentListTableComponent = /** @class */ (function () {
+    function AppointmentListTableComponent() {
+        this.appointments = [];
+    }
+    AppointmentListTableComponent.prototype.ngOnInit = function () {
+    };
+    Object.defineProperty(AppointmentListTableComponent.prototype, "Appointments", {
+        get: function () {
+            if (this.appointments && this.appointments.length > 0) {
+                return this.appointments;
+            }
+            return [];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", Array)
+    ], AppointmentListTableComponent.prototype, "appointments", void 0);
+    AppointmentListTableComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-appointment-list-table',
+            template: __webpack_require__("./src/app/appointment-list-table/appointment-list-table.component.html"),
+            styles: [__webpack_require__("./src/app/appointment-list-table/appointment-list-table.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AppointmentListTableComponent);
+    return AppointmentListTableComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/appointment-list/appointment-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  appointment-list works!\n</p>\n"
+module.exports = "<h2>Appointments List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<a [routerLink]=\"['/appointments', 'new']\" class=\"btn btn-secondary\">Schedule Appointment</a>\n<dac-appointment-list-table [appointments]=\"appointments\" *ngIf=\"hasLoaded\"></dac-appointment-list-table>"
 
 /***/ }),
 
@@ -416,6 +712,7 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_appointment_service__ = __webpack_require__("./src/app/services/appointment.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -426,10 +723,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var AppointmentListComponent = /** @class */ (function () {
-    function AppointmentListComponent() {
+    function AppointmentListComponent(apptService) {
+        this.apptService = apptService;
+        this.appointments = [];
     }
     AppointmentListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.hasLoaded = false;
+        this.apptService.list().then(function (appointments) {
+            console.log(appointments);
+            _this.appointments = appointments;
+            _this.hasLoaded = true;
+        })
+            .catch(function (error) {
+            console.error(error);
+            _this.hasLoaded = true;
+        });
     };
     AppointmentListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -437,9 +748,191 @@ var AppointmentListComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/appointment-list/appointment-list.component.html"),
             styles: [__webpack_require__("./src/app/appointment-list/appointment-list.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_appointment_service__["a" /* AppointmentService */]])
     ], AppointmentListComponent);
     return AppointmentListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/appointment-new/appointment-new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Schedule New Appointment</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3 mt-3\">\n      <h3>Appointments Profile</h3>\n      <label>\n        Start Date:\n        <input type=\"text\" class=\"form-control\" name=\"name\" placeholder=\"YYYY-MM-DD HH:ii\" [(ngModel)]=\"editItem.startDate\" />\n      </label>\n      <label>\n          End Date:\n          <input type=\"text\" class=\"form-control\" name=\"name\" placeholder=\"YYYY-MM-DD HH:ii\" [(ngModel)]=\"editItem.endDate\" />\n        </label>\n        <label>\n            Status:\n            <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n              <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n            </select>   \n          </label>\n          <label>\n              Therapist:\n              <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n                <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n              </select>\n            </label>\n            <label>\n                Client:\n                <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n                  <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n                </select>\n              </label>\n      <a  [routerLink]=\"['/appointments']\" class=\"btn btn-primary\">Save</a>\n    </form>\n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/appointment-new/appointment-new.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/appointment-new/appointment-new.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentNewComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AppointmentNewComponent = /** @class */ (function () {
+    function AppointmentNewComponent(therapistService, clientService) {
+        this.therapistService = therapistService;
+        this.clientService = clientService;
+        this._appointment = {};
+        this._therapists = [];
+        this._clients = [];
+        this.editItem = {};
+    }
+    AppointmentNewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.hasLoaded = false;
+        var therapistsPromise = this.therapistService.list().then(function (therapists) {
+            _this._therapists = therapists;
+        });
+        var clientsPromise = this.clientService.list().then(function (clients) {
+            _this._clients = clients;
+        });
+        Promise.all([therapistsPromise, clientsPromise]).then(function (results) {
+            _this.hasLoaded = true;
+        })
+            .catch(function (error) {
+            _this.hasLoaded = true;
+            console.error(error);
+        });
+    };
+    Object.defineProperty(AppointmentNewComponent.prototype, "statii", {
+        get: function () {
+            return ['pending', 'canceled', 'noshow', 'completed'];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppointmentNewComponent.prototype, "therapists", {
+        get: function () {
+            return this._therapists;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppointmentNewComponent.prototype, "clients", {
+        get: function () {
+            return this._clients;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AppointmentNewComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-appointment-new',
+            template: __webpack_require__("./src/app/appointment-new/appointment-new.component.html"),
+            styles: [__webpack_require__("./src/app/appointment-new/appointment-new.component.scss")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_therapist_service__["a" /* TherapistService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_client_service__["a" /* ClientService */]])
+    ], AppointmentNewComponent);
+    return AppointmentNewComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/client-edit/client-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\"><h2>Editing Client {{editItem.id}}</h2></div>\n  <div class=\"col-2\"><a [routerLink]=\"['/clients']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3\">\n    <h3>Client Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    </label>\n    <a  [routerLink]=\"['/clients']\" class=\"btn btn-primary\">Save</a>\n  </form>\n  <div class=\"card card-body mb-3\">\n    <h3>Appointments</h3>\n    <dac-appointment-list-table [appointments]=\"editItem.appointments\"></dac-appointment-list-table>\n  </div>\n  <div class=\"card card-body mb-3\">\n    <h3>Activity Log</h3>\n    <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/client-edit/client-edit.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/client-edit/client-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ClientEditComponent = /** @class */ (function () {
+    function ClientEditComponent(route, router, clientsService) {
+        this.route = route;
+        this.router = router;
+        this.clientsService = clientsService;
+        this._client = {
+            logs: [],
+            appointments: []
+        };
+    }
+    ClientEditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.hasLoaded = false;
+        this.route.params.subscribe(function (params) {
+            if (!params['id'] || isNaN(+params['id'])) {
+                _this.router.navigate(['/page-not-found']);
+                return;
+            }
+            var clientId = +params['id'];
+            _this.clientsService.get(clientId).then(function (client) {
+                _this._client = client;
+                _this.hasLoaded = true;
+            })
+                .catch(function (error) {
+                console.error(error);
+                _this.hasLoaded = true;
+            });
+        });
+    };
+    Object.defineProperty(ClientEditComponent.prototype, "editItem", {
+        get: function () {
+            return this._client || { logs: [], appointments: [] };
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ClientEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-client-edit',
+            template: __webpack_require__("./src/app/client-edit/client-edit.component.html"),
+            styles: [__webpack_require__("./src/app/client-edit/client-edit.component.scss")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_client_service__["a" /* ClientService */]])
+    ], ClientEditComponent);
+    return ClientEditComponent;
 }());
 
 
@@ -456,7 +949,7 @@ module.exports = ""
 /***/ "./src/app/client-list/client-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Clients List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading client data...</p>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Name\n      </th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"clients.length == 0\">\n    <tr>\n      <td colspan=\"2\">\n        <div class=\"alert alert-warning\">No clients exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let client of clients\">\n      <td>{{client.id}}</td>\n      <td>{{client.name}}</td>\n    </tr>\n  </tbody>\n</table>"
+module.exports = "<h2>Clients List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading client data...</p>\n<a [routerLink]=\"['/clients', 'new']\" class=\"btn btn-secondary\">Add Client</a>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Name\n      </th>\n      <th>Edit</th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"clients.length == 0\">\n    <tr>\n      <td colspan=\"2\">\n        <div class=\"alert alert-warning\">No clients exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let client of clients\">\n      <td>{{client.id}}</td>\n      <td>{{client.name}}</td>\n      <td><button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/clients', 'edit', client.id]\"><i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\" ></i></button></td>\n    </tr>\n  </tbody>\n</table>"
 
 /***/ }),
 
@@ -505,6 +998,57 @@ var ClientListComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_client_service__["a" /* ClientService */]])
     ], ClientListComponent);
     return ClientListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/client-new/client-new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>New Client</h2>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['/clients']\">Back to list</a>\n  </div>\n</div>\n\n<form class=\"card card-body mb-3\">\n  <h3>Client Profile</h3>\n  <label>\n    Name:\n    <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n  </label>\n  <a  [routerLink]=\"['/clients']\" class=\"btn btn-primary\">Save</a>\n</form>"
+
+/***/ }),
+
+/***/ "./src/app/client-new/client-new.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/client-new/client-new.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientNewComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ClientNewComponent = /** @class */ (function () {
+    function ClientNewComponent() {
+        this.editItem = {};
+    }
+    ClientNewComponent.prototype.ngOnInit = function () {
+    };
+    ClientNewComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-client-new',
+            template: __webpack_require__("./src/app/client-new/client-new.component.html"),
+            styles: [__webpack_require__("./src/app/client-new/client-new.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ClientNewComponent);
+    return ClientNewComponent;
 }());
 
 
@@ -625,7 +1169,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["e" /* Router */]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -729,6 +1273,57 @@ var ActivitylogService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/appointment.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__http_service__ = __webpack_require__("./src/app/services/http.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AppointmentService = /** @class */ (function () {
+    function AppointmentService(httpService) {
+        this.httpService = httpService;
+    }
+    AppointmentService.prototype.list = function () {
+        return this.httpService.get("appointments.list").then(function (resp) {
+            var data = resp.json();
+            return data;
+        });
+    };
+    AppointmentService.prototype.get = function (appointmentId) {
+        return Promise.resolve({
+            'id': 2,
+            'clientName': 'Jeremiah',
+            'clientID': 1,
+            'therapistID': 1,
+            'therapistName': 'Sam',
+            'startDate': '2018-10-17 14:28:42.987779',
+            'endDate': '2018-10-17 15:28:42.987779',
+            'status': 'pending',
+        });
+    };
+    AppointmentService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__http_service__["a" /* HttpService */]])
+    ], AppointmentService);
+    return AppointmentService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/client.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -755,6 +1350,32 @@ var ClientService = /** @class */ (function () {
         return this.httpService.get("clients.list").then(function (resp) {
             var data = resp.json();
             return data;
+        });
+    };
+    ClientService.prototype.get = function (clientId) {
+        return Promise.resolve({
+            id: 1,
+            name: "Bob",
+            logs: [{
+                    'date': '2018-10-17 12:28:41.760026',
+                    'tableName': 'Client',
+                    'tableID': 1,
+                    'action': 'INSERT',
+                    'notes': 'Jason was created.',
+                    'systemUserEmail': 'stephen+test1@nielson.org',
+                }],
+            appointments: [
+                {
+                    'id': 2,
+                    'clientName': 'Jeremiah',
+                    'clientID': 1,
+                    'therapistID': 1,
+                    'therapistName': 'Sam',
+                    'startDate': '2018-10-17 14:28:42.987779',
+                    'endDate': '2018-10-17 15:28:42.987779',
+                    'status': 'pending',
+                }
+            ]
         });
     };
     ClientService = __decorate([
@@ -848,11 +1469,122 @@ var TherapistService = /** @class */ (function () {
             return data;
         });
     };
+    TherapistService.prototype.get = function (therpaistId) {
+        return Promise.resolve({
+            id: 1,
+            name: "Bob",
+            logs: [{
+                    'date': '2018-10-17 12:28:41.760026',
+                    'tableName': 'Therapist',
+                    'tableID': 1,
+                    'action': 'INSERT',
+                    'notes': 'Jason was created.',
+                    'systemUserEmail': 'stephen+test1@nielson.org',
+                }],
+            appointments: [
+                {
+                    'id': 2,
+                    'clientName': 'Jeremiah',
+                    'clientID': 1,
+                    'therapistID': 1,
+                    'therapistName': 'Sam',
+                    'startDate': '2018-10-17 14:28:42.987779',
+                    'endDate': '2018-10-17 15:28:42.987779',
+                    'status': 'pending',
+                }
+            ]
+        });
+    };
     TherapistService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__http_service__["a" /* HttpService */]])
     ], TherapistService);
     return TherapistService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/therapist-edit/therapist-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Therapist {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/therapists']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Therapist Profile</h3>\n      <label>\n        Name:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      </label>\n      <a  [routerLink]=\"['/therapists']\" class=\"btn btn-primary\">Save</a>\n    </form>\n    <div class=\"card card-body mb-3\">\n      <h3>Appointments</h3>\n      <dac-appointment-list-table [appointments]=\"editItem.appointments\"></dac-appointment-list-table>\n    </div>\n    <div class=\"card card-body mb-3\">\n      <h3>Activity Log</h3>\n      <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n    </div>\n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/therapist-edit/therapist-edit.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/therapist-edit/therapist-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TherapistEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TherapistEditComponent = /** @class */ (function () {
+    function TherapistEditComponent(route, router, therapistService) {
+        this.route = route;
+        this.router = router;
+        this.therapistService = therapistService;
+        this._therapist = {
+            logs: [],
+            appointments: []
+        };
+    }
+    TherapistEditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.hasLoaded = false;
+        this.route.params.subscribe(function (params) {
+            if (!params['id'] || isNaN(+params['id'])) {
+                _this.router.navigate(['/page-not-found']);
+                return;
+            }
+            var id = +params['id'];
+            _this.therapistService.get(id).then(function (therapist) {
+                _this._therapist = therapist;
+                _this.hasLoaded = true;
+            })
+                .catch(function (error) {
+                console.error(error);
+                _this.hasLoaded = true;
+            });
+        });
+    };
+    Object.defineProperty(TherapistEditComponent.prototype, "editItem", {
+        get: function () {
+            return this._therapist || { logs: [], appointments: [] };
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TherapistEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-therapist-edit',
+            template: __webpack_require__("./src/app/therapist-edit/therapist-edit.component.html"),
+            styles: [__webpack_require__("./src/app/therapist-edit/therapist-edit.component.scss")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_therapist_service__["a" /* TherapistService */]])
+    ], TherapistEditComponent);
+    return TherapistEditComponent;
 }());
 
 
@@ -869,7 +1601,7 @@ module.exports = ""
 /***/ "./src/app/therapist-list/therapist-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Therapists List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Name\n      </th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"therapists.length == 0\">\n    <tr>\n      <td colspan=\"2\">\n        <div class=\"alert alert-warning\">No therapists exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let therapist of therapists\">\n      <td>{{therapist.id}}</td>\n      <td>{{therapist.name}}</td>\n    </tr>\n  </tbody>\n</table>"
+module.exports = "<h2>Therapists List</h2>\n<a [routerLink]=\"['/therapists', 'new']\" class=\"btn btn-secondary\">Add Therapist</a>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Name\n      </th>\n      <th>Edit</th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"therapists.length == 0\">\n    <tr>\n      <td colspan=\"2\">\n        <div class=\"alert alert-warning\">No therapists exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let therapist of therapists\">\n      <td>{{therapist.id}}</td>\n      <td>{{therapist.name}}</td>\n      <td>\n        <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/therapists', 'edit', therapist.id]\">\n          <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>"
 
 /***/ }),
 
@@ -918,6 +1650,57 @@ var TherapistListComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_therapist_service__["a" /* TherapistService */]])
     ], TherapistListComponent);
     return TherapistListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/therapist-new/therapist-new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\">\n      <h2>New Therapist</h2>\n    </div>\n    <div class=\"col-2\">\n      <a [routerLink]=\"['/therapists']\">Back to list</a>\n    </div>\n  </div>\n  \n  <form class=\"card card-body mb-3\">\n    <h3>Therapist Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    </label>\n    <a  [routerLink]=\"['/therapists']\" class=\"btn btn-primary\">Save</a>\n  </form>"
+
+/***/ }),
+
+/***/ "./src/app/therapist-new/therapist-new.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/therapist-new/therapist-new.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TherapistNewComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TherapistNewComponent = /** @class */ (function () {
+    function TherapistNewComponent() {
+        this.editItem = {};
+    }
+    TherapistNewComponent.prototype.ngOnInit = function () {
+    };
+    TherapistNewComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+            selector: 'dac-therapist-new',
+            template: __webpack_require__("./src/app/therapist-new/therapist-new.component.html"),
+            styles: [__webpack_require__("./src/app/therapist-new/therapist-new.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], TherapistNewComponent);
+    return TherapistNewComponent;
 }());
 
 
