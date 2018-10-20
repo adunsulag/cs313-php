@@ -12,8 +12,8 @@ export class ActivitylogService {
       return data;
     });
   }
-  search(entity:string) {
-    return this.httpService.get("activitylog.list", {entity:entity}).then((resp) => {
+  search(filter:{entity?:string, entityID?:number, action?:string}) {
+    return this.httpService.get("activitylog.list", {entity:filter.entity, entityID: filter.entityID, action: filter.action}).then((resp) => {
       let data = resp.json() as any[];
       return data;
     });

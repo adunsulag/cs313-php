@@ -56,6 +56,36 @@ CREATE TABLE IF NOT EXISTS ActivityLog (
   creation_date timestamp NOT NULL
 );
 
+select 'Creating ActivityLog Select Log function';
+-- this is used at the api layer.
+CREATE  OR REPLACE FUNCTION activity_log_select(t_name VARCHAR(100), t_id integer) RETURNS void AS $BODY$
+DECLARE
+	entity varchar := 'NotFound';
+BEGIN
+
+	CASE t_name
+		WHEN 'SystemUser' THEN
+			select t.email into entity from SystemUser t where t.id = t_id;
+		WHEN 'Client' THEN
+			select t.name into entity from Client t where t.id = t_id;
+		WHEN 'Therapist' THEN
+			select t.name into entity from Therapist t where t.id = t_id;
+		WHEN 'Appointment' THEN
+			select t.name into entity from Appointment t where t.id = t_id;
+		ELSE
+			RAISE EXCEPTION 'Unsupported table for logging';
+	END CASE;
+	IF not found THEN
+		RAISE EXCEPTION 'Entity id not found';
+	END IF;
+
+	INSERT INTO ActivityLog(table_name, table_id, action, notes, created_by, creation_date)
+	VALUES(t_name, t_id, 'SELECT', CONCAT(t_name, ' was viewed.'), current_setting('act_log.user')::integer, NOW());
+END
+$BODY$
+
+LANGUAGE plpgsql;
+
 select 'Creating ActivityLog Insert trigger';
 CREATE  OR REPLACE FUNCTION activity_log_su_insert() RETURNS trigger AS $BODY$
 BEGIN

@@ -6,6 +6,36 @@ function getDBURL() {
 	return $dbUrl;
 }
 
+function resultToArray($result) {
+	$arr = [];
+	while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $arr[] = $row;
+	}
+	return $arr;
+}
+
+function getSingleArrayFromQuery($query, $preparedValues, $db) {
+	$result = getArrayFromQuery($query, $preparedValues, $db);
+	if (!empty($result)) {
+		return $result[0];
+	}
+	return null;
+}
+
+function getArrayFromQuery($query, $preparedValues, $db) {
+	$preparedStatement = $db->prepare($query);
+	$preparedStatement->execute($preparedValues);
+	return resultToArray($preparedStatement);
+}
+
+function logSelectActivity(array $viewedRecords, $entityTable, $db) {
+	$statement = 'select activity_log_select(:table_name, :table_id)';
+	$preparedStatement = $db->prepare($statement);
+	foreach ($viewedRecords as $id) {
+		$preparedStatement->execute(['table_name' => $entityTable, 'table_id' => $id]);
+	}
+}
+
 /**
  * @return PDO
  */

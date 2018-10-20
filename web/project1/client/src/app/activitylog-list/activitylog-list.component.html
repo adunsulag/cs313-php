@@ -2,10 +2,20 @@
 <form>
   <label>
     Entity
-    <select name="filter" [(ngModel)]="searchFilter.filter" class="browser-default custom-select">
+    <select name="filter" [(ngModel)]="searchFilter.entity" class="browser-default custom-select">
       <option [value]="entity" *ngFor="let entity of entities">{{entity}}</option>
     </select>
   </label>
+  <label>
+      Action
+      <select name="filter" [(ngModel)]="searchFilter.action" class="browser-default custom-select">
+        <option [value]="action" *ngFor="let action of actions">{{action}}</option>
+      </select>
+    </label>
+    <label>
+      ID
+      <input type="number" name="entityID" [(ngModel)]="searchFilter.entityID" />
+    </label>
   <input type="button" (click)="filter()" value="Filter" class="btn btn-primary" />
   <input type="button" (click)="reset()" value="Reset" class="btn btn-secondary" />
 </form>

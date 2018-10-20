@@ -16,7 +16,7 @@ try {
 	$controller = getController($request['action']);
 	$actionResult = call_user_func($controller, $request['data'], $request);
 	error_log("*****RESPONSE******");
-	error_log("200 OK: " . var_export($actionResult, true));
+	// error_log("200 OK: " . var_export($actionResult, true));
 	
 	header("Status: 200");
 	header("Content-Type: application/json'");

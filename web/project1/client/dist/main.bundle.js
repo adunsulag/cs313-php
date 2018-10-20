@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/activitylog-list/activitylog-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Activity Log</h2>\n<form>\n  <label>\n    Entity\n    <select name=\"filter\" [(ngModel)]=\"searchFilter.filter\" class=\"browser-default custom-select\">\n      <option [value]=\"entity\" *ngFor=\"let entity of entities\">{{entity}}</option>\n    </select>\n  </label>\n  <input type=\"button\" (click)=\"filter()\" value=\"Filter\" class=\"btn btn-primary\" />\n  <input type=\"button\" (click)=\"reset()\" value=\"Reset\" class=\"btn btn-secondary\" />\n</form>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<dac-activitylog-table [logs]=\"logs\" *ngIf=\"hasLoaded\"></dac-activitylog-table>"
+module.exports = "<h2>Activity Log</h2>\n<form>\n  <label>\n    Entity\n    <select name=\"filter\" [(ngModel)]=\"searchFilter.entity\" class=\"browser-default custom-select\">\n      <option [value]=\"entity\" *ngFor=\"let entity of entities\">{{entity}}</option>\n    </select>\n  </label>\n  <label>\n      Action\n      <select name=\"filter\" [(ngModel)]=\"searchFilter.action\" class=\"browser-default custom-select\">\n        <option [value]=\"action\" *ngFor=\"let action of actions\">{{action}}</option>\n      </select>\n    </label>\n    <label>\n      ID\n      <input type=\"number\" name=\"entityID\" [(ngModel)]=\"searchFilter.entityID\" />\n    </label>\n  <input type=\"button\" (click)=\"filter()\" value=\"Filter\" class=\"btn btn-primary\" />\n  <input type=\"button\" (click)=\"reset()\" value=\"Reset\" class=\"btn btn-secondary\" />\n</form>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<dac-activitylog-table [logs]=\"logs\" *ngIf=\"hasLoaded\"></dac-activitylog-table>"
 
 /***/ }),
 
@@ -59,9 +59,18 @@ var ActivitylogListComponent = /** @class */ (function () {
             "Therapist",
             "Appointment"
         ];
+        this.actions = [
+            "",
+            "SELECT",
+            "INSERT",
+            "DELETE",
+            "UPDATE"
+        ];
         this.logs = [];
         this._searchFilter = {
-            searchEntity: ""
+            entity: "",
+            action: "",
+            entityID: ""
         };
     }
     Object.defineProperty(ActivitylogListComponent.prototype, "searchFilter", {
@@ -80,7 +89,7 @@ var ActivitylogListComponent = /** @class */ (function () {
             return this.reset();
         }
         this.hasLoaded = false;
-        this.activityLogService.search(this.searchFilter.filter).then(function (logs) {
+        this.activityLogService.search(this.searchFilter).then(function (logs) {
             _this.setLogs(logs);
             _this.hasLoaded = true;
         })
@@ -91,6 +100,12 @@ var ActivitylogListComponent = /** @class */ (function () {
     };
     ActivitylogListComponent.prototype.reset = function () {
         var _this = this;
+        this.logs = [];
+        this._searchFilter = {
+            entity: "",
+            action: "",
+            entityID: ""
+        };
         this.hasLoaded = false;
         this.activityLogService.list().then(function (logs) {
             _this.setLogs(logs);
@@ -630,7 +645,7 @@ var AppointmentEditComponent = /** @class */ (function () {
 /***/ "./src/app/appointment-list-table/appointment-list-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>\n          ID\n        </th>\n        <th>\n          Start Date\n        </th>\n        <th>\n            End Date\n          </th>\n          <th>\n              Status\n            </th>\n            <th>Client</th>\n            <th>Therapist</th>\n            <th>Edit</th>\n      </tr>\n    </thead>\n    <tbody *ngIf=\"Appointments.length == 0\">\n      <tr>\n        <td colspan=\"6\">\n          <div class=\"alert alert-warning\">No appointments exist</div>\n        </td>\n      </tr>\n    </tbody>\n    <tbody>\n      <tr *ngFor=\"let appt of Appointments\">\n        <td>{{appt.id}}</td>\n        <td>{{appt.startDate | date: 'medium'}}</td>\n        <td>{{appt.endDate | date: 'medium'}}</td>\n        <td>{{appt.status}}</td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/clients', 'edit', appt.clientID]\">{{appt.clientName}}</a></h5></td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/therapists', 'edit', appt.therapistID]\">{{appt.therapistName}}</a></h5></td>\n        <td>\n            <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/appointments', 'edit', appt.id]\">\n              <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n            </button>\n          </td>\n      </tr>\n    </tbody>\n  </table>"
+module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>\n          ID\n        </th>\n        <th>\n          Start Date\n        </th>\n        <th>\n            End Date\n          </th>\n          <th>\n              Status\n            </th>\n            <th>Client</th>\n            <th>Therapist</th>\n            <th>Edit</th>\n      </tr>\n    </thead>\n    <tbody *ngIf=\"Appointments.length == 0\">\n      <tr>\n        <td colspan=\"7\">\n          <div class=\"alert alert-warning\">No appointments exist</div>\n        </td>\n      </tr>\n    </tbody>\n    <tbody>\n      <tr *ngFor=\"let appt of Appointments\">\n        <td>{{appt.id}}</td>\n        <td>{{appt.startDate | date: 'medium'}}</td>\n        <td>{{appt.endDate | date: 'medium'}}</td>\n        <td>{{appt.status}}</td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/clients', 'edit', appt.clientID]\">{{appt.clientName}}</a></h5></td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/therapists', 'edit', appt.therapistID]\">{{appt.therapistName}}</a></h5></td>\n        <td>\n            <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/appointments', 'edit', appt.id]\">\n              <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n            </button>\n          </td>\n      </tr>\n    </tbody>\n  </table>"
 
 /***/ }),
 
@@ -949,7 +964,7 @@ module.exports = ""
 /***/ "./src/app/client-list/client-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Clients List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading client data...</p>\n<a [routerLink]=\"['/clients', 'new']\" class=\"btn btn-secondary\">Add Client</a>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Name\n      </th>\n      <th>Edit</th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"clients.length == 0\">\n    <tr>\n      <td colspan=\"2\">\n        <div class=\"alert alert-warning\">No clients exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let client of clients\">\n      <td>{{client.id}}</td>\n      <td>{{client.name}}</td>\n      <td><button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/clients', 'edit', client.id]\"><i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\" ></i></button></td>\n    </tr>\n  </tbody>\n</table>"
+module.exports = "<h2>Clients List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading client data...</p>\n<a [routerLink]=\"['/clients', 'new']\" class=\"btn btn-secondary\">Add Client</a>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Name\n      </th>\n      <th>Edit</th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"clients.length == 0\">\n    <tr>\n      <td colspan=\"3\">\n        <div class=\"alert alert-warning\">No clients exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let client of clients\">\n      <td>{{client.id}}</td>\n      <td>{{client.name}}</td>\n      <td><button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/clients', 'edit', client.id]\"><i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\" ></i></button></td>\n    </tr>\n  </tbody>\n</table>"
 
 /***/ }),
 
@@ -1256,8 +1271,8 @@ var ActivitylogService = /** @class */ (function () {
             return data;
         });
     };
-    ActivitylogService.prototype.search = function (entity) {
-        return this.httpService.get("activitylog.list", { entity: entity }).then(function (resp) {
+    ActivitylogService.prototype.search = function (filter) {
+        return this.httpService.get("activitylog.list", { entity: filter.entity, entityID: filter.entityID, action: filter.action }).then(function (resp) {
             var data = resp.json();
             return data;
         });
@@ -1302,15 +1317,9 @@ var AppointmentService = /** @class */ (function () {
         });
     };
     AppointmentService.prototype.get = function (appointmentId) {
-        return Promise.resolve({
-            'id': 2,
-            'clientName': 'Jeremiah',
-            'clientID': 1,
-            'therapistID': 1,
-            'therapistName': 'Sam',
-            'startDate': '2018-10-17 14:28:42.987779',
-            'endDate': '2018-10-17 15:28:42.987779',
-            'status': 'pending',
+        return this.httpService.get("appointments.get", { id: appointmentId }).then(function (resp) {
+            var data = resp.json();
+            return data;
         });
     };
     AppointmentService = __decorate([
@@ -1353,29 +1362,9 @@ var ClientService = /** @class */ (function () {
         });
     };
     ClientService.prototype.get = function (clientId) {
-        return Promise.resolve({
-            id: 1,
-            name: "Bob",
-            logs: [{
-                    'date': '2018-10-17 12:28:41.760026',
-                    'tableName': 'Client',
-                    'tableID': 1,
-                    'action': 'INSERT',
-                    'notes': 'Jason was created.',
-                    'systemUserEmail': 'stephen+test1@nielson.org',
-                }],
-            appointments: [
-                {
-                    'id': 2,
-                    'clientName': 'Jeremiah',
-                    'clientID': 1,
-                    'therapistID': 1,
-                    'therapistName': 'Sam',
-                    'startDate': '2018-10-17 14:28:42.987779',
-                    'endDate': '2018-10-17 15:28:42.987779',
-                    'status': 'pending',
-                }
-            ]
+        return this.httpService.get("clients.get", { id: clientId }).then(function (resp) {
+            var data = resp.json();
+            return data;
         });
     };
     ClientService = __decorate([
@@ -1469,30 +1458,10 @@ var TherapistService = /** @class */ (function () {
             return data;
         });
     };
-    TherapistService.prototype.get = function (therpaistId) {
-        return Promise.resolve({
-            id: 1,
-            name: "Bob",
-            logs: [{
-                    'date': '2018-10-17 12:28:41.760026',
-                    'tableName': 'Therapist',
-                    'tableID': 1,
-                    'action': 'INSERT',
-                    'notes': 'Jason was created.',
-                    'systemUserEmail': 'stephen+test1@nielson.org',
-                }],
-            appointments: [
-                {
-                    'id': 2,
-                    'clientName': 'Jeremiah',
-                    'clientID': 1,
-                    'therapistID': 1,
-                    'therapistName': 'Sam',
-                    'startDate': '2018-10-17 14:28:42.987779',
-                    'endDate': '2018-10-17 15:28:42.987779',
-                    'status': 'pending',
-                }
-            ]
+    TherapistService.prototype.get = function (therapistId) {
+        return this.httpService.get("therapists.get", { id: therapistId }).then(function (resp) {
+            var data = resp.json();
+            return data;
         });
     };
     TherapistService = __decorate([
@@ -1601,7 +1570,7 @@ module.exports = ""
 /***/ "./src/app/therapist-list/therapist-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Therapists List</h2>\n<a [routerLink]=\"['/therapists', 'new']\" class=\"btn btn-secondary\">Add Therapist</a>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Name\n      </th>\n      <th>Edit</th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"therapists.length == 0\">\n    <tr>\n      <td colspan=\"2\">\n        <div class=\"alert alert-warning\">No therapists exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let therapist of therapists\">\n      <td>{{therapist.id}}</td>\n      <td>{{therapist.name}}</td>\n      <td>\n        <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/therapists', 'edit', therapist.id]\">\n          <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>"
+module.exports = "<h2>Therapists List</h2>\n<a [routerLink]=\"['/therapists', 'new']\" class=\"btn btn-secondary\">Add Therapist</a>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<table class=\"table table-striped\" *ngIf=\"hasLoaded\">\n  <thead>\n    <tr>\n      <th>\n        ID\n      </th>\n      <th>\n        Name\n      </th>\n      <th>Edit</th>\n    </tr>\n  </thead>\n  <tbody *ngIf=\"therapists.length == 0\">\n    <tr>\n      <td colspan=\"3\">\n        <div class=\"alert alert-warning\">No therapists exist in the system</div>\n      </td>\n    </tr>\n  </tbody>\n  <tbody>\n    <tr *ngFor=\"let therapist of therapists\">\n      <td>{{therapist.id}}</td>\n      <td>{{therapist.name}}</td>\n      <td>\n        <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/therapists', 'edit', therapist.id]\">\n          <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>"
 
 /***/ }),
 

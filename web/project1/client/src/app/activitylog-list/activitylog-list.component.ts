@@ -15,13 +15,22 @@ export class ActivitylogListComponent implements OnInit {
     ,"Therapist"
     ,"Appointment"
   ];
+  public actions:string[] = [
+    ""
+    ,"SELECT"
+    ,"INSERT"
+    ,"DELETE"
+    ,"UPDATE"
+  ];
   private _searchFilter:any;
   public hasLoaded:boolean;
 
   constructor(private activityLogService:ActivitylogService) { 
     this.logs = [];
     this._searchFilter = {
-      searchEntity: ""
+      entity: ""
+      ,action: ""
+      ,entityID: ""
     };
   }
 
@@ -39,7 +48,7 @@ export class ActivitylogListComponent implements OnInit {
     }
     
     this.hasLoaded = false;
-    this.activityLogService.search(this.searchFilter.filter).then(logs => {
+    this.activityLogService.search(this.searchFilter).then(logs => {
       this.setLogs(logs);
       this.hasLoaded = true;
     })
@@ -49,6 +58,12 @@ export class ActivitylogListComponent implements OnInit {
     })
   }
   public reset() {
+    this.logs = [];
+    this._searchFilter = {
+      entity: ""
+      ,action: ""
+      ,entityID: ""
+    };
     this.hasLoaded = false;
     this.activityLogService.list().then(logs => {
       this.setLogs(logs)
