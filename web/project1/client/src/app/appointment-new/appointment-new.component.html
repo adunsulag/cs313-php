@@ -32,6 +32,6 @@
                   <option [value]="client.id" *ngFor="let client of clients">{{client.name}}</option>
                 </select>
               </label>
-      <a  [routerLink]="['/appointments']" class="btn btn-primary">Save</a>
+      <a  (click)="save()" class="btn btn-primary">Save</a>
     </form>
   </div>

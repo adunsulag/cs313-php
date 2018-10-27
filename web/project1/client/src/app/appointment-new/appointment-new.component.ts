@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TherapistService } from '../services/therapist.service';
 import { ClientService } from '../services/client.service';
+import { AlertService } from '../services/alert.service';
+import { Router } from '@angular/router';
+import { AppointmentService } from '../services/appointment.service';
 
 @Component({
   selector: 'dac-appointment-new',
@@ -16,7 +19,10 @@ export class AppointmentNewComponent implements OnInit {
   private _clients:any[];
 
   constructor(private therapistService:TherapistService
-    , private clientService:ClientService) { 
+    , private clientService:ClientService
+    , private alertService:AlertService
+    , private appointmentService:AppointmentService
+    , private router:Router) { 
     this._appointment = {};
     this._therapists = [];
     this._clients = [];
@@ -40,6 +46,27 @@ export class AppointmentNewComponent implements OnInit {
       console.error(error);
     });
 
+  }
+  private validateItems() {
+    return true;
+  }
+
+  public save() {
+    if (!this.validateItems()) {
+      return;
+    }
+
+    let alert = this.alertService.info("Saving...");
+    this.appointmentService.save(this.editItem).then((result:any) => {
+      this.alertService.clearAlert(alert);
+      this.alertService.success("Appointment saved");
+      this.router.navigate(["/", "appointments", "edit", result.id]);
+    })
+    .catch((error) => {
+      console.log(error);
+      this.alertService.clearAlert(alert);
+      this.alertService.error("There was an error in saving the appointment");
+    });
   }
 
   public get statii() {

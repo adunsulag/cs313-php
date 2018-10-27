@@ -20,4 +20,11 @@ export class AppointmentService {
     });
   }
 
+  save(appointment:any) {
+    return this.httpService.get("appointments.save", appointment).then((resp) => {
+      let data = resp.json() as any[];
+      return data;
+    });
+  }
+
 }
