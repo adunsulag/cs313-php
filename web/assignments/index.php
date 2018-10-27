@@ -39,6 +39,12 @@
 		,'assignment' => 'Week 5 - Project 1'
 		,'link' => '/project1/client/dist/'
 		]
+		,[
+			'due' => '10/27/2018'
+			,'completed' => '10/27/2018'
+			,'assignment' => 'Week 6 - Project 1'
+			,'link' => '/project1/client/dist/'
+		]
 	];
 	echo $twig->render('assignments.html.twig', ['assignments' => $assignments]);
 ?>
