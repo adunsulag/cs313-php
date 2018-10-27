@@ -28,12 +28,24 @@ function getArrayFromQuery($query, $preparedValues, $db) {
 	return resultToArray($preparedStatement);
 }
 
+function executeQuery($query, $preparedValues, $db) {
+	$preparedStatement = $db->prepare($query);
+	$preparedStatement->execute($preparedValues);
+}
+
 function logSelectActivity(array $viewedRecords, $entityTable, $db) {
 	$statement = 'select activity_log_select(:table_name, :table_id)';
 	$preparedStatement = $db->prepare($statement);
 	foreach ($viewedRecords as $id) {
 		$preparedStatement->execute(['table_name' => $entityTable, 'table_id' => $id]);
 	}
+}
+
+function getLastInsertId($tableName, $db) {
+	// since we use the PDO driver we need to grab the sequence here
+	// normally it'd just be $db->lastInsertId(), but in psql we have to give the sequence
+	$seqName = strtolower($tableName) . "_id_seq";
+	return $db->lastInsertId($seqName);
 }
 
 /**

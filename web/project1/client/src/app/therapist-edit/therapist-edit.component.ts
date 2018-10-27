@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TherapistService } from '../services/therapist.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'dac-therapist-edit',
@@ -11,7 +12,8 @@ export class TherapistEditComponent implements OnInit {
 
   public hasLoaded:boolean;
   public _therapist:any;
-  constructor(private route:ActivatedRoute, private router:Router, private therapistService:TherapistService) { 
+  constructor(private route:ActivatedRoute, private router:Router, private therapistService:TherapistService
+  , private alertService:AlertService) { 
     this._therapist = {
       logs: [],
       appointments: []
@@ -39,6 +41,20 @@ export class TherapistEditComponent implements OnInit {
 
   public get editItem() {
     return this._therapist || { logs: [], appointments: []};
+  }
+
+  public save() {
+    let alert = this.alertService.info("Saving...");
+    this.therapistService.save(this.editItem).then((result:any) => {
+      this.alertService.clearAlert(alert);
+      this.alertService.success("Therapist saved");
+      this._therapist = result;
+    })
+    .catch((error) => {
+      console.log(error);
+      this.alertService.clearAlert(alert);
+      this.alertService.error("There was an error in saving the therapist");
+    });
   }
 
 }

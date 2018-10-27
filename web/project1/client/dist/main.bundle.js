@@ -435,12 +435,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__appointment_new_appointment_new_component__ = __webpack_require__("./src/app/appointment-new/appointment-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__logout_logout_component__ = __webpack_require__("./src/app/logout/logout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31_ng_mdb_pro_pro_alerts__ = __webpack_require__("./node_modules/ng-mdb-pro/pro/alerts/index.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -497,13 +501,14 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_31_ng_mdb_pro_pro_alerts__["a" /* ToastModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_11__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_12__angular_forms__["b" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["a" /* AmplifyAngularModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ng_mdb_pro__["a" /* MDBBootstrapModules */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_18__app_routing_module__["a" /* AppRoutingModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_19__services_appointment_service__["a" /* AppointmentService */], __WEBPACK_IMPORTED_MODULE_28__services_auth_service__["a" /* AuthService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_19__services_appointment_service__["a" /* AppointmentService */], __WEBPACK_IMPORTED_MODULE_28__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_30__services_alert_service__["a" /* AlertService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -866,7 +871,7 @@ var AppointmentNewComponent = /** @class */ (function () {
 /***/ "./src/app/client-edit/client-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-10\"><h2>Editing Client {{editItem.id}}</h2></div>\n  <div class=\"col-2\"><a [routerLink]=\"['/clients']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3\">\n    <h3>Client Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    </label>\n    <a  [routerLink]=\"['/clients']\" class=\"btn btn-primary\">Save</a>\n  </form>\n  <div class=\"card card-body mb-3\">\n    <h3>Appointments</h3>\n    <dac-appointment-list-table [appointments]=\"editItem.appointments\"></dac-appointment-list-table>\n  </div>\n  <div class=\"card card-body mb-3\">\n    <h3>Activity Log</h3>\n    <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\"><h2>Editing Client {{editItem.id}}</h2></div>\n  <div class=\"col-2\"><a [routerLink]=\"['/clients']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3\">\n    <h3>Client Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    </label>\n    <a   class=\"btn btn-primary\" (click)=\"save()\">Save</a>\n  </form>\n  <div class=\"card card-body mb-3\">\n    <h3>Appointments</h3>\n    <dac-appointment-list-table [appointments]=\"editItem.appointments\"></dac-appointment-list-table>\n  </div>\n  <div class=\"card card-body mb-3\">\n    <h3>Activity Log</h3>\n    <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -885,6 +890,7 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -897,11 +903,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ClientEditComponent = /** @class */ (function () {
-    function ClientEditComponent(route, router, clientsService) {
+    function ClientEditComponent(route, router, clientService, alertService) {
         this.route = route;
         this.router = router;
-        this.clientsService = clientsService;
+        this.clientService = clientService;
+        this.alertService = alertService;
         this._client = {
             logs: [],
             appointments: []
@@ -916,7 +924,7 @@ var ClientEditComponent = /** @class */ (function () {
                 return;
             }
             var clientId = +params['id'];
-            _this.clientsService.get(clientId).then(function (client) {
+            _this.clientService.get(clientId).then(function (client) {
                 _this._client = client;
                 _this.hasLoaded = true;
             })
@@ -924,6 +932,20 @@ var ClientEditComponent = /** @class */ (function () {
                 console.error(error);
                 _this.hasLoaded = true;
             });
+        });
+    };
+    ClientEditComponent.prototype.save = function () {
+        var _this = this;
+        var alert = this.alertService.info("Saving...");
+        this.clientService.save(this.editItem).then(function (result) {
+            _this.alertService.clearAlert(alert);
+            _this.alertService.success("Client saved");
+            _this._client = result;
+        })
+            .catch(function (error) {
+            console.log(error);
+            _this.alertService.clearAlert(alert);
+            _this.alertService.error("There was an error in saving the client");
         });
     };
     Object.defineProperty(ClientEditComponent.prototype, "editItem", {
@@ -939,7 +961,8 @@ var ClientEditComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/client-edit/client-edit.component.html"),
             styles: [__webpack_require__("./src/app/client-edit/client-edit.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_client_service__["a" /* ClientService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_client_service__["a" /* ClientService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */]])
     ], ClientEditComponent);
     return ClientEditComponent;
 }());
@@ -1016,7 +1039,7 @@ var ClientListComponent = /** @class */ (function () {
 /***/ "./src/app/client-new/client-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>New Client</h2>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['/clients']\">Back to list</a>\n  </div>\n</div>\n\n<form class=\"card card-body mb-3\">\n  <h3>Client Profile</h3>\n  <label>\n    Name:\n    <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n  </label>\n  <a  [routerLink]=\"['/clients']\" class=\"btn btn-primary\">Save</a>\n</form>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>New Client</h2>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['/clients']\">Back to list</a>\n  </div>\n</div>\n\n<form class=\"card card-body mb-3\">\n  <h3>Client Profile</h3>\n  <label>\n    Name:\n    <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n  </label>\n  <a  class=\"btn btn-primary\" (click)=\"save()\">Save</a>\n</form>"
 
 /***/ }),
 
@@ -1033,6 +1056,9 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientNewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1043,11 +1069,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var ClientNewComponent = /** @class */ (function () {
-    function ClientNewComponent() {
+    function ClientNewComponent(clientService, alertService, router) {
+        this.clientService = clientService;
+        this.alertService = alertService;
+        this.router = router;
         this.editItem = {};
     }
     ClientNewComponent.prototype.ngOnInit = function () {
+    };
+    ClientNewComponent.prototype.save = function () {
+        var _this = this;
+        var alert = this.alertService.info("Saving...");
+        this.clientService.save(this.editItem).then(function (result) {
+            _this.alertService.clearAlert(alert);
+            _this.alertService.success("Client saved");
+            _this.router.navigate(["/", "clients", "edit", result.id]);
+        })
+            .catch(function (error) {
+            console.log(error);
+            _this.alertService.clearAlert(alert);
+            _this.alertService.error("There was an error in saving the client");
+        });
     };
     ClientNewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -1055,7 +1101,9 @@ var ClientNewComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/client-new/client-new.component.html"),
             styles: [__webpack_require__("./src/app/client-new/client-new.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_client_service__["a" /* ClientService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_alert_service__["a" /* AlertService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* Router */]])
     ], ClientNewComponent);
     return ClientNewComponent;
 }());
@@ -1339,6 +1387,81 @@ var ActivitylogService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/alert.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ng_mdb_pro_pro_alerts__ = __webpack_require__("./node_modules/ng-mdb-pro/pro/alerts/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AlertService = /** @class */ (function () {
+    function AlertService(toastService) {
+        this.toastService = toastService;
+    }
+    AlertService.prototype.error = function (message, timeToDisplay) {
+        var options = {
+            positionClass: 'toast-bottom-right'
+        };
+        if (timeToDisplay) {
+            options.timeOut = timeToDisplay;
+        }
+        var title = '';
+        var toast = this.toastService.error(message, title, options);
+        return toast.toastId;
+    };
+    AlertService.prototype.info = function (message, timeToDisplay) {
+        var options = {
+            positionClass: 'toast-bottom-right'
+            // commenting these lines out for debugging purposes
+            // ,extendedTimeOut: 60000
+        };
+        // timeToDisplay = 30000;
+        if (timeToDisplay) {
+            options.timeOut = timeToDisplay;
+        }
+        var title = '';
+        var toast = this.toastService.info(message, title, options);
+        return toast.toastId;
+    };
+    AlertService.prototype.clearAlert = function (alertId) {
+        this.toastService.clear(alertId);
+    };
+    AlertService.prototype.success = function (message, timeToDisplay) {
+        var options = {
+            positionClass: 'toast-bottom-right'
+            // commenting these lines out for debugging purposes
+            // ,extendedTimeOut: 60000
+        };
+        // timeToDisplay = 30000;
+        if (timeToDisplay) {
+            options.timeOut = timeToDisplay;
+        }
+        var title = '';
+        var toast = this.toastService.success(message, title, options);
+        return toast.toastId;
+    };
+    AlertService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ng_mdb_pro_pro_alerts__["b" /* ToastService */]])
+    ], AlertService);
+    return AlertService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/appointment.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1506,6 +1629,14 @@ var ClientService = /** @class */ (function () {
             return data;
         });
     };
+    ClientService.prototype.save = function (client) {
+        return this.httpService.post("clients.save", { id: client.id, name: client.name })
+            .then(function (resp) {
+            // return the most up to date client here.
+            var data = resp.json();
+            return data;
+        });
+    };
     ClientService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__http_service__["a" /* HttpService */]])
@@ -1614,6 +1745,14 @@ var TherapistService = /** @class */ (function () {
             return data;
         });
     };
+    TherapistService.prototype.save = function (therapist) {
+        return this.httpService.post("therapists.save", { id: therapist.id, name: therapist.name })
+            .then(function (resp) {
+            // return the most up to date client here.
+            var data = resp.json();
+            return data;
+        });
+    };
     TherapistService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__http_service__["a" /* HttpService */]])
@@ -1628,7 +1767,7 @@ var TherapistService = /** @class */ (function () {
 /***/ "./src/app/therapist-edit/therapist-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Therapist {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/therapists']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Therapist Profile</h3>\n      <label>\n        Name:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      </label>\n      <a  [routerLink]=\"['/therapists']\" class=\"btn btn-primary\">Save</a>\n    </form>\n    <div class=\"card card-body mb-3\">\n      <h3>Appointments</h3>\n      <dac-appointment-list-table [appointments]=\"editItem.appointments\"></dac-appointment-list-table>\n    </div>\n    <div class=\"card card-body mb-3\">\n      <h3>Activity Log</h3>\n      <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n    </div>\n  </div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Therapist {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/therapists']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Therapist Profile</h3>\n      <label>\n        Name:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      </label>\n      <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n    </form>\n    <div class=\"card card-body mb-3\">\n      <h3>Appointments</h3>\n      <dac-appointment-list-table [appointments]=\"editItem.appointments\"></dac-appointment-list-table>\n    </div>\n    <div class=\"card card-body mb-3\">\n      <h3>Activity Log</h3>\n      <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -1647,6 +1786,7 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1659,11 +1799,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TherapistEditComponent = /** @class */ (function () {
-    function TherapistEditComponent(route, router, therapistService) {
+    function TherapistEditComponent(route, router, therapistService, alertService) {
         this.route = route;
         this.router = router;
         this.therapistService = therapistService;
+        this.alertService = alertService;
         this._therapist = {
             logs: [],
             appointments: []
@@ -1695,13 +1837,28 @@ var TherapistEditComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    TherapistEditComponent.prototype.save = function () {
+        var _this = this;
+        var alert = this.alertService.info("Saving...");
+        this.therapistService.save(this.editItem).then(function (result) {
+            _this.alertService.clearAlert(alert);
+            _this.alertService.success("Therapist saved");
+            _this._therapist = result;
+        })
+            .catch(function (error) {
+            console.log(error);
+            _this.alertService.clearAlert(alert);
+            _this.alertService.error("There was an error in saving the therapist");
+        });
+    };
     TherapistEditComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'dac-therapist-edit',
             template: __webpack_require__("./src/app/therapist-edit/therapist-edit.component.html"),
             styles: [__webpack_require__("./src/app/therapist-edit/therapist-edit.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_therapist_service__["a" /* TherapistService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_therapist_service__["a" /* TherapistService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */]])
     ], TherapistEditComponent);
     return TherapistEditComponent;
 }());
@@ -1778,7 +1935,7 @@ var TherapistListComponent = /** @class */ (function () {
 /***/ "./src/app/therapist-new/therapist-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\">\n      <h2>New Therapist</h2>\n    </div>\n    <div class=\"col-2\">\n      <a [routerLink]=\"['/therapists']\">Back to list</a>\n    </div>\n  </div>\n  \n  <form class=\"card card-body mb-3\">\n    <h3>Therapist Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    </label>\n    <a  [routerLink]=\"['/therapists']\" class=\"btn btn-primary\">Save</a>\n  </form>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\">\n      <h2>New Therapist</h2>\n    </div>\n    <div class=\"col-2\">\n      <a [routerLink]=\"['/therapists']\">Back to list</a>\n    </div>\n  </div>\n  \n  <form class=\"card card-body mb-3\">\n    <h3>Therapist Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    </label>\n    <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n  </form>"
 
 /***/ }),
 
@@ -1795,6 +1952,9 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TherapistNewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1805,11 +1965,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var TherapistNewComponent = /** @class */ (function () {
-    function TherapistNewComponent() {
+    function TherapistNewComponent(alertService, therapistService, router) {
+        this.alertService = alertService;
+        this.therapistService = therapistService;
+        this.router = router;
         this.editItem = {};
     }
     TherapistNewComponent.prototype.ngOnInit = function () {
+    };
+    TherapistNewComponent.prototype.save = function () {
+        var _this = this;
+        var alert = this.alertService.info("Saving...");
+        this.therapistService.save(this.editItem).then(function (result) {
+            _this.alertService.clearAlert(alert);
+            _this.alertService.success("Therapist saved");
+            _this.router.navigate(["/", "therapists", "edit", result.id]);
+        })
+            .catch(function (error) {
+            console.log(error);
+            _this.alertService.clearAlert(alert);
+            _this.alertService.error("There was an error in saving the therapist");
+        });
     };
     TherapistNewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -1817,7 +1997,8 @@ var TherapistNewComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/therapist-new/therapist-new.component.html"),
             styles: [__webpack_require__("./src/app/therapist-new/therapist-new.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_alert_service__["a" /* AlertService */], __WEBPACK_IMPORTED_MODULE_2__services_therapist_service__["a" /* TherapistService */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["e" /* Router */]])
     ], TherapistNewComponent);
     return TherapistNewComponent;
 }());

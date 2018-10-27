@@ -19,4 +19,12 @@ export class ClientService {
       return data;
     });
   }
+  save(client:{id?:number, name:string}) {
+    return this.httpService.post("clients.save", {id: client.id, name: client.name})
+    .then((resp) => {
+      // return the most up to date client here.
+      let data = resp.json() as any;
+      return data;
+    });
+  }
 }

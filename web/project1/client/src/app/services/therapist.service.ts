@@ -19,4 +19,13 @@ export class TherapistService {
       return data;
     });
   }
+
+  save(therapist:{id?:number, name:string}) {
+    return this.httpService.post("therapists.save", {id: therapist.id, name: therapist.name})
+    .then((resp) => {
+      // return the most up to date client here.
+      let data = resp.json() as any;
+      return data;
+    });
+  }
 }

@@ -12,9 +12,12 @@ require_once './endpoints/systemuser.php';
 // with JSON format of {"action": "", "data": {/** ...payload... **/}}
 class BadActionException extends InvalidArgumentException{}
 
-function parse_request_from_method($method, $session) {
+function shouldProcessRequest($request) {
+    return $request['method'] != 'OPTIONS';
+}
+function parseRequestFromMethod($method, $session) {
     $method = strtoupper($method);
-    $request = ['action'=> 'none', 'data'=> []];
+    $request = ['action'=> 'none', 'data'=> [], 'method' => $method];
 
     // currently we only support post and get
     // sanitization of the individual data properties are handled in the various controller functions.

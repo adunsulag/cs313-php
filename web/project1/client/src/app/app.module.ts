@@ -29,6 +29,8 @@ import { AppointmentEditComponent } from './appointment-edit/appointment-edit.co
 import { AppointmentNewComponent } from './appointment-new/appointment-new.component';
 import { AuthService } from './services/auth.service';
 import { LogoutComponent } from './logout/logout.component';
+import { AlertService } from './services/alert.service';
+import { ToastModule } from 'ng-mdb-pro/pro/alerts';
 
 
 @NgModule({
@@ -53,13 +55,14 @@ import { LogoutComponent } from './logout/logout.component';
   ],
   imports: [
     BrowserModule
+    ,ToastModule.forRoot()
     ,HttpModule
     ,FormsModule
     ,AmplifyAngularModule
     ,MDBBootstrapModules.forRoot()
     ,AppRoutingModule
   ],
-  providers: [ActivitylogService, ClientService, TherapistService, HttpService, AmplifyService, AppointmentService, AuthService],
+  providers: [ActivitylogService, ClientService, TherapistService, HttpService, AmplifyService, AppointmentService, AuthService, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

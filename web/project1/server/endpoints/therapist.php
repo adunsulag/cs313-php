@@ -2,6 +2,7 @@
 function therapistAddEndpoints(array &$validActions) {
     $validActions['therapists.list'] = 'listTherapists';
     $validActions['therapists.get'] = 'getTherapist';
+    $validActions['therapists.save'] = 'saveTherapist';
 }
 
 function listTherapists($data, $request) {
@@ -48,7 +49,34 @@ function getTherapist($data, $request) {
     
     $logStatement = 'select ActivityLog.creation_date as "date",table_name as "tableName", table_id as "tableID", action,notes,su.email as "systemUserEmail" 
     from ActivityLog JOIN SystemUser su ON ActivityLog.created_by = su.id 
-    WHERE table_id = :id AND table_name = \'Therapist\'';
+    WHERE table_id = :id AND table_name = \'Therapist\' ORDER BY ActivityLog.creation_date DESC';
     $therapist['logs'] = getArrayFromQuery($logStatement, ['id' => $id], $db);
     return $therapist;
+}
+
+function saveTherapist($data, $request) {
+    $db = openDBConnection($request['systemUserId']);
+    if (empty($data['name'])) {
+        throw new InvalidArgumentException("Therapist name is missing");
+    }
+    else {
+        $name = filter_var($data['name'], FILTER_SANITIZE_STRING);
+        if (empty($name)) {
+            throw new InvalidArgumentException("Therapist name is missing");
+        }
+    }
+    $params = [":name" => $name];
+
+    if (!empty($data['id'])) {
+        $id = (int)$data['id'];
+        $params[':id'] = $id;
+        $sql = "UPDATE Therapist SET NAME=:name WHERE id=:id";
+        executeQuery($sql, $params, $db);
+    }
+    else {
+        $sql = "INSERT INTO Therapist(name) VALUES(:name)";
+        executeQuery($sql, $params, $db);
+        $id = getLastInsertId("Therapist", $db);
+    }
+    return getTherapist(["id" => $id], $request);
 }

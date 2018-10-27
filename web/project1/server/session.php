@@ -25,18 +25,18 @@ class SessionStorage {
         $this->_data = [];
     }
 }
-function server_load_session() {
+function serverLoadSession() {
     session_start(); // we could load the session from the database here... but this is fine for now.
-    return server_get_session_data();
+    return serverGetSessionData();
 }
 
-function server_get_session_data() {
+function serverGetSessionData() {
     $storage = new SessionStorage();
     $storage->setValuesToStore($_SESSION);
     return $storage;
 }
 
-function server_save_session($session) {
+function serverSaveSession($session) {
     // TODO: there's likely old session data here that can be cleaned out
     // but at this stage let's just leave those for now.
     if (!empty($session)) {
