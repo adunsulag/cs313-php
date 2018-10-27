@@ -31,6 +31,7 @@ import { AuthService } from './services/auth.service';
 import { LogoutComponent } from './logout/logout.component';
 import { AlertService } from './services/alert.service';
 import { ToastModule } from 'ng-mdb-pro/pro/alerts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import { ToastModule } from 'ng-mdb-pro/pro/alerts';
     LogoutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserAnimationsModule
     ,ToastModule.forRoot()
     ,HttpModule
     ,FormsModule

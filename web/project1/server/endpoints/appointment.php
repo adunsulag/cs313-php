@@ -4,6 +4,7 @@ function appointmentAddEndpoints(array &$validActions) {
     $validActions['appointments.list'] = 'listAppointments';
     $validActions['appointments.get'] = 'getAppointment';
     $validActions['appointments.save'] = 'saveAppointment';
+    $validActions['appointments.delete'] = 'deleteAppointment';
 }
 function listAppointments($data, $request) {
     $db = openDBConnection($request['systemUserId']);
@@ -12,7 +13,9 @@ function listAppointments($data, $request) {
     $statement = 'select a.id,
     c.name as "clientName", c.id as "clientID",
     t.name as "therapistName", t.id as "therapistID",
-    a.start_date as "startDate", a.end_date as "endDate", a.status
+    to_char(a.start_date, \'YYYY-MM-DD HH24:MI\') as "startDate",
+    to_char(a.end_date, \'YYYY-MM-DD HH24:MI\') as "endDate", 
+    a.status
     from Appointment a 
     JOIN Client c ON a.client_id = c.id 
     JOIN Therapist t ON a.therapist_id = t.id
@@ -35,7 +38,9 @@ function getAppointment($data, $request) {
     $apptStatement =  $statement = 'select a.id,
     c.name as "clientName", c.id as "clientID",
     t.name as "therapistName", t.id as "therapistID",
-    a.start_date as "startDate", a.end_date as "endDate", a.status
+    to_char(a.start_date, \'YYYY-MM-DD HH24:MI\') as "startDate",
+    to_char(a.end_date, \'YYYY-MM-DD HH24:MI\') as "endDate", 
+    a.status
     from Appointment a 
     JOIN Client c ON a.client_id = c.id 
     JOIN Therapist t ON a.therapist_id = t.id
@@ -57,6 +62,21 @@ function getAppointmentProperty($data, $propName, $filter) {
     return $property;
 }
 
+function deleteAppointment($data, $request) {
+    $db = openDBConnection($request['systemUserId']);
+
+    if (empty($data['id']) || !is_int($data['id'])) {
+        throw new InvalidArgumentException("Appointment id is missing");
+    }
+    $id = (int)$data['id'];
+    
+    error_log("id is $id");
+
+    $sql = "DELETE FROM Appointment WHERE id = :id";
+    executeQuery($sql, [":id" => $id], $db);
+    return [];
+}
+
 function saveAppointment($data, $request) {
     $db = openDBConnection($request['systemUserId']);
 
@@ -69,28 +89,33 @@ function saveAppointment($data, $request) {
 
     // convert startDate & endDate to a proper date
     $startDateTime = strtotime($startDate);
-    $endDateTime = strtotime($startDate);
+    $endDateTime = strtotime($endDate);
     if ($startDateTime === false) {
         throw new InvalidArgumentException("Appointment startDate must be a valid date and time");
     }
     if ($endDateTime === false) {
         throw new InvalidArgumentException("Appointment endDate must be a valid date and time");
     }
+    if ($endDateTime < $startDateTime) {
+        throw new InvalidArgumentException("Appointment endDate must be a timestamp greater than startDate");
+    }
 
     $params = [
         ":status" => $status, ":therapistID" => $therapistID
-        , ":clientID" => $clientID, ':startDate' => $startDate
-        , ":endDate" => $endDate
+        , ":clientID" => $clientID, ':startDate' => $startDateTime
+        , ":endDate" => $endDateTime
     ];
 
 
     if (!empty($data['id'])) {
         $params[':id'] = $id;
-        $sql = "UPDATE Appointment SET status=:status, therapist_id = :therapistID, client_id = :clientID, start_date = :startDate, end_date = :endDate WHERE id=:id";
+        $sql = "UPDATE Appointment SET status=:status, therapist_id = :therapistID, client_id = :clientID
+            , start_date = TO_TIMESTAMP(:startDate), end_date = TO_TIMESTAMP(:endDate) WHERE id=:id";
         executeQuery($sql, $params, $db);
     }
     else {
-        $sql = "INSERT INTO Appointment(status,therapist_id,client_id,start_date,end_date) VALUES(:status, :therapistID, :clientID, :startDate, :endDate)";
+        $sql = "INSERT INTO Appointment(status,therapist_id,client_id,start_date,end_date) VALUES(:status, :therapistID, :clientID, 
+        TO_TIMESTAMP(:startDate), TO_TIMESTAMP(:endDate))";
         executeQuery($sql, $params, $db);
         $id = getLastInsertId("Appointment", $db);
     }

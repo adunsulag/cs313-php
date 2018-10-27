@@ -10,6 +10,7 @@ import { ClientService } from '../services/client.service';
 })
 export class ClientNewComponent implements OnInit {
   public editItem:any;
+  public nameInvalid:boolean = false;
 
   constructor(private clientService:ClientService
     , private alertService:AlertService
@@ -22,6 +23,11 @@ export class ClientNewComponent implements OnInit {
   }
 
   save() {
+    this.nameInvalid = false;
+    if (!this.editItem.name || this.editItem.name.trim() == "") {
+      this.nameInvalid = true;
+      return;
+    }
     let alert = this.alertService.info("Saving...");
     this.clientService.save(this.editItem).then((result:any) => {
       this.alertService.clearAlert(alert);

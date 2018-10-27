@@ -10,6 +10,7 @@ import { AlertService } from '../services/alert.service';
 })
 export class ClientEditComponent implements OnInit {
   public hasLoaded:boolean;
+  public nameInvalid:boolean = false;
   public _client:any;
   constructor(private route:ActivatedRoute, private router:Router, private clientService:ClientService
   ,private alertService:AlertService) { 
@@ -39,6 +40,11 @@ export class ClientEditComponent implements OnInit {
   }
 
   public save() {
+    this.nameInvalid = false;
+    if (!this.editItem.name || this.editItem.name.trim() == "") {
+      this.nameInvalid = true;
+      return;
+    }
     let alert = this.alertService.info("Saving...");
     this.clientService.save(this.editItem).then((result:any) => {
       this.alertService.clearAlert(alert);
@@ -54,6 +60,15 @@ export class ClientEditComponent implements OnInit {
 
   public get editItem() {
     return this._client || { logs: [], appointments: []};
+  }
+
+  public removeAppointment(appt:any) {
+    if (!appt) {
+      console.error("removeAppointment called without an appointment");
+      return;
+    }
+    console.log("got here");
+    this._client.appointments = this._client.appointments.filter(apt => apt.id != appt.id);
   }
 
 }

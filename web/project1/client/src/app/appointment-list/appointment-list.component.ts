@@ -28,4 +28,12 @@ export class AppointmentListComponent implements OnInit {
     });
   }
 
+  removeAppointment(appt:any) {
+    if (!appt) {
+      console.error("removeAppointment called without an appointment");
+      return;
+    }
+    this.appointments = this.appointments.filter(apt => apt.id != appt.id);
+  }
+
 }

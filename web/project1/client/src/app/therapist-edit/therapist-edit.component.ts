@@ -12,6 +12,7 @@ export class TherapistEditComponent implements OnInit {
 
   public hasLoaded:boolean;
   public _therapist:any;
+  public nameInvalid:boolean = false;
   constructor(private route:ActivatedRoute, private router:Router, private therapistService:TherapistService
   , private alertService:AlertService) { 
     this._therapist = {
@@ -43,7 +44,14 @@ export class TherapistEditComponent implements OnInit {
     return this._therapist || { logs: [], appointments: []};
   }
 
+
   public save() {
+    this.nameInvalid = false;
+    if (!this.editItem.name || this.editItem.name.trim() == "") {
+      this.nameInvalid = true;
+      return;
+    }
+
     let alert = this.alertService.info("Saving...");
     this.therapistService.save(this.editItem).then((result:any) => {
       this.alertService.clearAlert(alert);
@@ -55,6 +63,14 @@ export class TherapistEditComponent implements OnInit {
       this.alertService.clearAlert(alert);
       this.alertService.error("There was an error in saving the therapist");
     });
+  }
+
+  public removeAppointment(appt:any) {
+    if (!appt) {
+      console.error("removeAppointment called without an appointment");
+      return;
+    }
+    this._therapist.appointments = this._therapist.appointments.filter(apt => apt.id != appt.id);
   }
 
 }

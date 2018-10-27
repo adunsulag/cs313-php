@@ -1,3 +1,4 @@
+<a [routerLink]="['/appointments', 'new']" class="btn btn-secondary">Schedule Appointment</a>
 <table class="table table-striped">
     <thead>
       <tr>
@@ -15,7 +16,7 @@
             </th>
             <th>Client</th>
             <th>Therapist</th>
-            <th>Edit</th>
+            <th>Actions</th>
       </tr>
     </thead>
     <tbody *ngIf="Appointments.length == 0">
@@ -36,6 +37,9 @@
         <td>
             <button class="btn btn-sm btn-primary" [routerLink]="['/appointments', 'edit', appt.id]">
               <i class="fa fa-edit" aria-hidden="true" aria-label="View"></i>
+            </button>
+            <button class="btn btn-sm btn-secondary" (click)="delete(appt)">
+              <i class="fa fa-trash" aria-hidden="true" aria-label="Delete"></i>
             </button>
           </td>
       </tr>

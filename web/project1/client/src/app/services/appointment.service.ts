@@ -26,5 +26,11 @@ export class AppointmentService {
       return data;
     });
   }
+  delete(appointmentId:number) {
+    // we could use the delete verb... but we'll just use post with a delete action.
+    return this.httpService.post("appointments.delete", {id: appointmentId}).then((resp) => {
+      return {};
+    });
+  }
 
 }

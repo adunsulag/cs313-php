@@ -4,7 +4,7 @@ import { ClientService } from '../services/client.service';
 import { AlertService } from '../services/alert.service';
 import { Router } from '@angular/router';
 import { AppointmentService } from '../services/appointment.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'dac-appointment-new',
   templateUrl: './appointment-new.component.html',
@@ -17,6 +17,12 @@ export class AppointmentNewComponent implements OnInit {
   private _appointment:any;
   private _therapists:any[];
   private _clients:any[];
+
+  public startDateInvalid:boolean = false;
+  public endDateInvalid:boolean = false;
+  public statusInvalid:boolean = false;
+  public therapistInvalid:boolean = false;
+  public clientInvalid:boolean = false;
 
   constructor(private therapistService:TherapistService
     , private clientService:ClientService
@@ -48,7 +54,31 @@ export class AppointmentNewComponent implements OnInit {
 
   }
   private validateItems() {
-    return true;
+    this.endDateInvalid = this.startDateInvalid = this.clientInvalid = this.therapistInvalid = this.statusInvalid = false;
+    let isValid = true;
+    let intStart = moment(this.editItem.startDate).unix();
+    let intEnd = moment(this.editItem.endDate).unix();
+    if (!this.editItem.startDate || isNaN(intStart) || intStart < 0) {
+      this.startDateInvalid = true;
+      isValid = false;
+    }
+    if (!this.editItem.endDate || isNaN(intEnd) || intEnd < 0 || intEnd <= intStart) {
+      this.endDateInvalid = true;
+      isValid = false;
+    }
+    if (!this.editItem.clientID || isNaN(this.editItem.clientID)) {
+      isValid = false;
+      this.clientInvalid = true;
+    }
+    if (!this.editItem.therapistID || isNaN(this.editItem.clientID)) {
+      isValid = false;
+      this.therapistInvalid = true;
+    }
+    if (!this.editItem.status) {
+      isValid = false;
+      this.statusInvalid = true;
+    }
+    return isValid;
   }
 
   public save() {

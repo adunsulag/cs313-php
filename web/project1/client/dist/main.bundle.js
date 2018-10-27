@@ -1,5 +1,274 @@
 webpackJsonp(["main"],{
 
+/***/ "./node_modules/moment/locale recursive ^\\.\\/.*$":
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": "./node_modules/moment/locale/af.js",
+	"./af.js": "./node_modules/moment/locale/af.js",
+	"./ar": "./node_modules/moment/locale/ar.js",
+	"./ar-dz": "./node_modules/moment/locale/ar-dz.js",
+	"./ar-dz.js": "./node_modules/moment/locale/ar-dz.js",
+	"./ar-kw": "./node_modules/moment/locale/ar-kw.js",
+	"./ar-kw.js": "./node_modules/moment/locale/ar-kw.js",
+	"./ar-ly": "./node_modules/moment/locale/ar-ly.js",
+	"./ar-ly.js": "./node_modules/moment/locale/ar-ly.js",
+	"./ar-ma": "./node_modules/moment/locale/ar-ma.js",
+	"./ar-ma.js": "./node_modules/moment/locale/ar-ma.js",
+	"./ar-sa": "./node_modules/moment/locale/ar-sa.js",
+	"./ar-sa.js": "./node_modules/moment/locale/ar-sa.js",
+	"./ar-tn": "./node_modules/moment/locale/ar-tn.js",
+	"./ar-tn.js": "./node_modules/moment/locale/ar-tn.js",
+	"./ar.js": "./node_modules/moment/locale/ar.js",
+	"./az": "./node_modules/moment/locale/az.js",
+	"./az.js": "./node_modules/moment/locale/az.js",
+	"./be": "./node_modules/moment/locale/be.js",
+	"./be.js": "./node_modules/moment/locale/be.js",
+	"./bg": "./node_modules/moment/locale/bg.js",
+	"./bg.js": "./node_modules/moment/locale/bg.js",
+	"./bm": "./node_modules/moment/locale/bm.js",
+	"./bm.js": "./node_modules/moment/locale/bm.js",
+	"./bn": "./node_modules/moment/locale/bn.js",
+	"./bn.js": "./node_modules/moment/locale/bn.js",
+	"./bo": "./node_modules/moment/locale/bo.js",
+	"./bo.js": "./node_modules/moment/locale/bo.js",
+	"./br": "./node_modules/moment/locale/br.js",
+	"./br.js": "./node_modules/moment/locale/br.js",
+	"./bs": "./node_modules/moment/locale/bs.js",
+	"./bs.js": "./node_modules/moment/locale/bs.js",
+	"./ca": "./node_modules/moment/locale/ca.js",
+	"./ca.js": "./node_modules/moment/locale/ca.js",
+	"./cs": "./node_modules/moment/locale/cs.js",
+	"./cs.js": "./node_modules/moment/locale/cs.js",
+	"./cv": "./node_modules/moment/locale/cv.js",
+	"./cv.js": "./node_modules/moment/locale/cv.js",
+	"./cy": "./node_modules/moment/locale/cy.js",
+	"./cy.js": "./node_modules/moment/locale/cy.js",
+	"./da": "./node_modules/moment/locale/da.js",
+	"./da.js": "./node_modules/moment/locale/da.js",
+	"./de": "./node_modules/moment/locale/de.js",
+	"./de-at": "./node_modules/moment/locale/de-at.js",
+	"./de-at.js": "./node_modules/moment/locale/de-at.js",
+	"./de-ch": "./node_modules/moment/locale/de-ch.js",
+	"./de-ch.js": "./node_modules/moment/locale/de-ch.js",
+	"./de.js": "./node_modules/moment/locale/de.js",
+	"./dv": "./node_modules/moment/locale/dv.js",
+	"./dv.js": "./node_modules/moment/locale/dv.js",
+	"./el": "./node_modules/moment/locale/el.js",
+	"./el.js": "./node_modules/moment/locale/el.js",
+	"./en-au": "./node_modules/moment/locale/en-au.js",
+	"./en-au.js": "./node_modules/moment/locale/en-au.js",
+	"./en-ca": "./node_modules/moment/locale/en-ca.js",
+	"./en-ca.js": "./node_modules/moment/locale/en-ca.js",
+	"./en-gb": "./node_modules/moment/locale/en-gb.js",
+	"./en-gb.js": "./node_modules/moment/locale/en-gb.js",
+	"./en-ie": "./node_modules/moment/locale/en-ie.js",
+	"./en-ie.js": "./node_modules/moment/locale/en-ie.js",
+	"./en-il": "./node_modules/moment/locale/en-il.js",
+	"./en-il.js": "./node_modules/moment/locale/en-il.js",
+	"./en-nz": "./node_modules/moment/locale/en-nz.js",
+	"./en-nz.js": "./node_modules/moment/locale/en-nz.js",
+	"./eo": "./node_modules/moment/locale/eo.js",
+	"./eo.js": "./node_modules/moment/locale/eo.js",
+	"./es": "./node_modules/moment/locale/es.js",
+	"./es-do": "./node_modules/moment/locale/es-do.js",
+	"./es-do.js": "./node_modules/moment/locale/es-do.js",
+	"./es-us": "./node_modules/moment/locale/es-us.js",
+	"./es-us.js": "./node_modules/moment/locale/es-us.js",
+	"./es.js": "./node_modules/moment/locale/es.js",
+	"./et": "./node_modules/moment/locale/et.js",
+	"./et.js": "./node_modules/moment/locale/et.js",
+	"./eu": "./node_modules/moment/locale/eu.js",
+	"./eu.js": "./node_modules/moment/locale/eu.js",
+	"./fa": "./node_modules/moment/locale/fa.js",
+	"./fa.js": "./node_modules/moment/locale/fa.js",
+	"./fi": "./node_modules/moment/locale/fi.js",
+	"./fi.js": "./node_modules/moment/locale/fi.js",
+	"./fo": "./node_modules/moment/locale/fo.js",
+	"./fo.js": "./node_modules/moment/locale/fo.js",
+	"./fr": "./node_modules/moment/locale/fr.js",
+	"./fr-ca": "./node_modules/moment/locale/fr-ca.js",
+	"./fr-ca.js": "./node_modules/moment/locale/fr-ca.js",
+	"./fr-ch": "./node_modules/moment/locale/fr-ch.js",
+	"./fr-ch.js": "./node_modules/moment/locale/fr-ch.js",
+	"./fr.js": "./node_modules/moment/locale/fr.js",
+	"./fy": "./node_modules/moment/locale/fy.js",
+	"./fy.js": "./node_modules/moment/locale/fy.js",
+	"./gd": "./node_modules/moment/locale/gd.js",
+	"./gd.js": "./node_modules/moment/locale/gd.js",
+	"./gl": "./node_modules/moment/locale/gl.js",
+	"./gl.js": "./node_modules/moment/locale/gl.js",
+	"./gom-latn": "./node_modules/moment/locale/gom-latn.js",
+	"./gom-latn.js": "./node_modules/moment/locale/gom-latn.js",
+	"./gu": "./node_modules/moment/locale/gu.js",
+	"./gu.js": "./node_modules/moment/locale/gu.js",
+	"./he": "./node_modules/moment/locale/he.js",
+	"./he.js": "./node_modules/moment/locale/he.js",
+	"./hi": "./node_modules/moment/locale/hi.js",
+	"./hi.js": "./node_modules/moment/locale/hi.js",
+	"./hr": "./node_modules/moment/locale/hr.js",
+	"./hr.js": "./node_modules/moment/locale/hr.js",
+	"./hu": "./node_modules/moment/locale/hu.js",
+	"./hu.js": "./node_modules/moment/locale/hu.js",
+	"./hy-am": "./node_modules/moment/locale/hy-am.js",
+	"./hy-am.js": "./node_modules/moment/locale/hy-am.js",
+	"./id": "./node_modules/moment/locale/id.js",
+	"./id.js": "./node_modules/moment/locale/id.js",
+	"./is": "./node_modules/moment/locale/is.js",
+	"./is.js": "./node_modules/moment/locale/is.js",
+	"./it": "./node_modules/moment/locale/it.js",
+	"./it.js": "./node_modules/moment/locale/it.js",
+	"./ja": "./node_modules/moment/locale/ja.js",
+	"./ja.js": "./node_modules/moment/locale/ja.js",
+	"./jv": "./node_modules/moment/locale/jv.js",
+	"./jv.js": "./node_modules/moment/locale/jv.js",
+	"./ka": "./node_modules/moment/locale/ka.js",
+	"./ka.js": "./node_modules/moment/locale/ka.js",
+	"./kk": "./node_modules/moment/locale/kk.js",
+	"./kk.js": "./node_modules/moment/locale/kk.js",
+	"./km": "./node_modules/moment/locale/km.js",
+	"./km.js": "./node_modules/moment/locale/km.js",
+	"./kn": "./node_modules/moment/locale/kn.js",
+	"./kn.js": "./node_modules/moment/locale/kn.js",
+	"./ko": "./node_modules/moment/locale/ko.js",
+	"./ko.js": "./node_modules/moment/locale/ko.js",
+	"./ky": "./node_modules/moment/locale/ky.js",
+	"./ky.js": "./node_modules/moment/locale/ky.js",
+	"./lb": "./node_modules/moment/locale/lb.js",
+	"./lb.js": "./node_modules/moment/locale/lb.js",
+	"./lo": "./node_modules/moment/locale/lo.js",
+	"./lo.js": "./node_modules/moment/locale/lo.js",
+	"./lt": "./node_modules/moment/locale/lt.js",
+	"./lt.js": "./node_modules/moment/locale/lt.js",
+	"./lv": "./node_modules/moment/locale/lv.js",
+	"./lv.js": "./node_modules/moment/locale/lv.js",
+	"./me": "./node_modules/moment/locale/me.js",
+	"./me.js": "./node_modules/moment/locale/me.js",
+	"./mi": "./node_modules/moment/locale/mi.js",
+	"./mi.js": "./node_modules/moment/locale/mi.js",
+	"./mk": "./node_modules/moment/locale/mk.js",
+	"./mk.js": "./node_modules/moment/locale/mk.js",
+	"./ml": "./node_modules/moment/locale/ml.js",
+	"./ml.js": "./node_modules/moment/locale/ml.js",
+	"./mn": "./node_modules/moment/locale/mn.js",
+	"./mn.js": "./node_modules/moment/locale/mn.js",
+	"./mr": "./node_modules/moment/locale/mr.js",
+	"./mr.js": "./node_modules/moment/locale/mr.js",
+	"./ms": "./node_modules/moment/locale/ms.js",
+	"./ms-my": "./node_modules/moment/locale/ms-my.js",
+	"./ms-my.js": "./node_modules/moment/locale/ms-my.js",
+	"./ms.js": "./node_modules/moment/locale/ms.js",
+	"./mt": "./node_modules/moment/locale/mt.js",
+	"./mt.js": "./node_modules/moment/locale/mt.js",
+	"./my": "./node_modules/moment/locale/my.js",
+	"./my.js": "./node_modules/moment/locale/my.js",
+	"./nb": "./node_modules/moment/locale/nb.js",
+	"./nb.js": "./node_modules/moment/locale/nb.js",
+	"./ne": "./node_modules/moment/locale/ne.js",
+	"./ne.js": "./node_modules/moment/locale/ne.js",
+	"./nl": "./node_modules/moment/locale/nl.js",
+	"./nl-be": "./node_modules/moment/locale/nl-be.js",
+	"./nl-be.js": "./node_modules/moment/locale/nl-be.js",
+	"./nl.js": "./node_modules/moment/locale/nl.js",
+	"./nn": "./node_modules/moment/locale/nn.js",
+	"./nn.js": "./node_modules/moment/locale/nn.js",
+	"./pa-in": "./node_modules/moment/locale/pa-in.js",
+	"./pa-in.js": "./node_modules/moment/locale/pa-in.js",
+	"./pl": "./node_modules/moment/locale/pl.js",
+	"./pl.js": "./node_modules/moment/locale/pl.js",
+	"./pt": "./node_modules/moment/locale/pt.js",
+	"./pt-br": "./node_modules/moment/locale/pt-br.js",
+	"./pt-br.js": "./node_modules/moment/locale/pt-br.js",
+	"./pt.js": "./node_modules/moment/locale/pt.js",
+	"./ro": "./node_modules/moment/locale/ro.js",
+	"./ro.js": "./node_modules/moment/locale/ro.js",
+	"./ru": "./node_modules/moment/locale/ru.js",
+	"./ru.js": "./node_modules/moment/locale/ru.js",
+	"./sd": "./node_modules/moment/locale/sd.js",
+	"./sd.js": "./node_modules/moment/locale/sd.js",
+	"./se": "./node_modules/moment/locale/se.js",
+	"./se.js": "./node_modules/moment/locale/se.js",
+	"./si": "./node_modules/moment/locale/si.js",
+	"./si.js": "./node_modules/moment/locale/si.js",
+	"./sk": "./node_modules/moment/locale/sk.js",
+	"./sk.js": "./node_modules/moment/locale/sk.js",
+	"./sl": "./node_modules/moment/locale/sl.js",
+	"./sl.js": "./node_modules/moment/locale/sl.js",
+	"./sq": "./node_modules/moment/locale/sq.js",
+	"./sq.js": "./node_modules/moment/locale/sq.js",
+	"./sr": "./node_modules/moment/locale/sr.js",
+	"./sr-cyrl": "./node_modules/moment/locale/sr-cyrl.js",
+	"./sr-cyrl.js": "./node_modules/moment/locale/sr-cyrl.js",
+	"./sr.js": "./node_modules/moment/locale/sr.js",
+	"./ss": "./node_modules/moment/locale/ss.js",
+	"./ss.js": "./node_modules/moment/locale/ss.js",
+	"./sv": "./node_modules/moment/locale/sv.js",
+	"./sv.js": "./node_modules/moment/locale/sv.js",
+	"./sw": "./node_modules/moment/locale/sw.js",
+	"./sw.js": "./node_modules/moment/locale/sw.js",
+	"./ta": "./node_modules/moment/locale/ta.js",
+	"./ta.js": "./node_modules/moment/locale/ta.js",
+	"./te": "./node_modules/moment/locale/te.js",
+	"./te.js": "./node_modules/moment/locale/te.js",
+	"./tet": "./node_modules/moment/locale/tet.js",
+	"./tet.js": "./node_modules/moment/locale/tet.js",
+	"./tg": "./node_modules/moment/locale/tg.js",
+	"./tg.js": "./node_modules/moment/locale/tg.js",
+	"./th": "./node_modules/moment/locale/th.js",
+	"./th.js": "./node_modules/moment/locale/th.js",
+	"./tl-ph": "./node_modules/moment/locale/tl-ph.js",
+	"./tl-ph.js": "./node_modules/moment/locale/tl-ph.js",
+	"./tlh": "./node_modules/moment/locale/tlh.js",
+	"./tlh.js": "./node_modules/moment/locale/tlh.js",
+	"./tr": "./node_modules/moment/locale/tr.js",
+	"./tr.js": "./node_modules/moment/locale/tr.js",
+	"./tzl": "./node_modules/moment/locale/tzl.js",
+	"./tzl.js": "./node_modules/moment/locale/tzl.js",
+	"./tzm": "./node_modules/moment/locale/tzm.js",
+	"./tzm-latn": "./node_modules/moment/locale/tzm-latn.js",
+	"./tzm-latn.js": "./node_modules/moment/locale/tzm-latn.js",
+	"./tzm.js": "./node_modules/moment/locale/tzm.js",
+	"./ug-cn": "./node_modules/moment/locale/ug-cn.js",
+	"./ug-cn.js": "./node_modules/moment/locale/ug-cn.js",
+	"./uk": "./node_modules/moment/locale/uk.js",
+	"./uk.js": "./node_modules/moment/locale/uk.js",
+	"./ur": "./node_modules/moment/locale/ur.js",
+	"./ur.js": "./node_modules/moment/locale/ur.js",
+	"./uz": "./node_modules/moment/locale/uz.js",
+	"./uz-latn": "./node_modules/moment/locale/uz-latn.js",
+	"./uz-latn.js": "./node_modules/moment/locale/uz-latn.js",
+	"./uz.js": "./node_modules/moment/locale/uz.js",
+	"./vi": "./node_modules/moment/locale/vi.js",
+	"./vi.js": "./node_modules/moment/locale/vi.js",
+	"./x-pseudo": "./node_modules/moment/locale/x-pseudo.js",
+	"./x-pseudo.js": "./node_modules/moment/locale/x-pseudo.js",
+	"./yo": "./node_modules/moment/locale/yo.js",
+	"./yo.js": "./node_modules/moment/locale/yo.js",
+	"./zh-cn": "./node_modules/moment/locale/zh-cn.js",
+	"./zh-cn.js": "./node_modules/moment/locale/zh-cn.js",
+	"./zh-hk": "./node_modules/moment/locale/zh-hk.js",
+	"./zh-hk.js": "./node_modules/moment/locale/zh-hk.js",
+	"./zh-tw": "./node_modules/moment/locale/zh-tw.js",
+	"./zh-tw.js": "./node_modules/moment/locale/zh-tw.js"
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./node_modules/moment/locale recursive ^\\.\\/.*$";
+
+/***/ }),
+
 /***/ "./src/$$_lazy_route_resource lazy recursive":
 /***/ (function(module, exports) {
 
@@ -295,7 +564,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<mdb-navbar SideClass=\"navbar navbar-expand-md mb-3\" [containerInside]=\"false\">\n    <logo>\n        <a class=\"navbar-brand mr-0\" [routerLink]=\"['/']\">\n            <img width=\"50\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n            <span>{{ title }}</span>\n        </a>\n        \n    </logo>   \n    <links>\n      <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"goHome()\">Home</a>\n            </li>\n            <li *ngIf=\"isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/login']\">Login</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/therapists']\">Therapists</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/clients']\">Clients</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/appointments']\">Appointments</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/activitylog']\">Activity Log</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"logout nav-item\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"logout()\"><span>Hello {{Username}}</span> - Logout</a></li>\n        </ul>\n    </links>\n</mdb-navbar>\n<main>\n    <div class=\"container-fluid\">\n        <router-outlet></router-outlet>\n    </div>\n  </main>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<mdb-navbar SideClass=\"navbar navbar-expand-md mb-3\" [containerInside]=\"false\">\n    <logo>\n        <a class=\"navbar-brand mr-0\" [routerLink]=\"['/']\">\n            <img width=\"50\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n            <span>{{ title }}</span>\n        </a>\n        \n    </logo>   \n    <links>\n      <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"goHome()\">Home</a>\n            </li>\n            <li *ngIf=\"isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/login']\">Login</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/therapists']\">Therapists</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/clients']\">Clients</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/appointments']\">Appointments</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/activitylog']\">Activity Log</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"logout nav-item\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"logout()\"><span>Hello {{Username}}</span> - Logout</a></li>\n        </ul>\n    </links>\n</mdb-navbar>\n<main>\n    <div class=\"container\">\n        <router-outlet></router-outlet>\n    </div>\n  </main>"
 
 /***/ }),
 
@@ -405,38 +674,38 @@ var AppComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng_mdb_pro__ = __webpack_require__("./node_modules/ng-mdb-pro/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__client_list_client_list_component__ = __webpack_require__("./src/app/client-list/client-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__therapist_list_therapist_list_component__ = __webpack_require__("./src/app/therapist-list/therapist-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__activitylog_list_activitylog_list_component__ = __webpack_require__("./src/app/activitylog-list/activitylog-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__ = __webpack_require__("./src/app/services/activitylog.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_http_service__ = __webpack_require__("./src/app/services/http.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__ = __webpack_require__("./node_modules/aws-amplify-angular/dist/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__page_not_found_page_not_found_component__ = __webpack_require__("./src/app/page-not-found/page-not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__appointment_list_appointment_list_component__ = __webpack_require__("./src/app/appointment-list/appointment-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_appointment_service__ = __webpack_require__("./src/app/services/appointment.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__client_edit_client_edit_component__ = __webpack_require__("./src/app/client-edit/client-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__appointment_list_table_appointment_list_table_component__ = __webpack_require__("./src/app/appointment-list-table/appointment-list-table.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__activitylog_table_activitylog_table_component__ = __webpack_require__("./src/app/activitylog-table/activitylog-table.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__client_new_client_new_component__ = __webpack_require__("./src/app/client-new/client-new.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__therapist_edit_therapist_edit_component__ = __webpack_require__("./src/app/therapist-edit/therapist-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__therapist_new_therapist_new_component__ = __webpack_require__("./src/app/therapist-new/therapist-new.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__appointment_edit_appointment_edit_component__ = __webpack_require__("./src/app/appointment-edit/appointment-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__appointment_new_appointment_new_component__ = __webpack_require__("./src/app/appointment-new/appointment-new.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__logout_logout_component__ = __webpack_require__("./src/app/logout/logout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31_ng_mdb_pro_pro_alerts__ = __webpack_require__("./node_modules/ng-mdb-pro/pro/alerts/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng_mdb_pro__ = __webpack_require__("./node_modules/ng-mdb-pro/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__client_list_client_list_component__ = __webpack_require__("./src/app/client-list/client-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__therapist_list_therapist_list_component__ = __webpack_require__("./src/app/therapist-list/therapist-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__activitylog_list_activitylog_list_component__ = __webpack_require__("./src/app/activitylog-list/activitylog-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_activitylog_service__ = __webpack_require__("./src/app/services/activitylog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_http_service__ = __webpack_require__("./src/app/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_aws_amplify_angular__ = __webpack_require__("./node_modules/aws-amplify-angular/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__page_not_found_page_not_found_component__ = __webpack_require__("./src/app/page-not-found/page-not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__appointment_list_appointment_list_component__ = __webpack_require__("./src/app/appointment-list/appointment-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_appointment_service__ = __webpack_require__("./src/app/services/appointment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__client_edit_client_edit_component__ = __webpack_require__("./src/app/client-edit/client-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__appointment_list_table_appointment_list_table_component__ = __webpack_require__("./src/app/appointment-list-table/appointment-list-table.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__activitylog_table_activitylog_table_component__ = __webpack_require__("./src/app/activitylog-table/activitylog-table.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__client_new_client_new_component__ = __webpack_require__("./src/app/client-new/client-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__therapist_edit_therapist_edit_component__ = __webpack_require__("./src/app/therapist-edit/therapist-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__therapist_new_therapist_new_component__ = __webpack_require__("./src/app/therapist-new/therapist-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__appointment_edit_appointment_edit_component__ = __webpack_require__("./src/app/appointment-edit/appointment-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__appointment_new_appointment_new_component__ = __webpack_require__("./src/app/appointment-new/appointment-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__logout_logout_component__ = __webpack_require__("./src/app/logout/logout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30_ng_mdb_pro_pro_alerts__ = __webpack_require__("./node_modules/ng-mdb-pro/pro/alerts/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -479,37 +748,37 @@ var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_4__client_list_client_list_component__["a" /* ClientListComponent */],
-                __WEBPACK_IMPORTED_MODULE_5__therapist_list_therapist_list_component__["a" /* TherapistListComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__activitylog_list_activitylog_list_component__["a" /* ActivitylogListComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__appointment_list_appointment_list_component__["a" /* AppointmentListComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__client_edit_client_edit_component__["a" /* ClientEditComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__appointment_list_table_appointment_list_table_component__["a" /* AppointmentListTableComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__activitylog_table_activitylog_table_component__["a" /* ActivitylogTableComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__client_new_client_new_component__["a" /* ClientNewComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__therapist_edit_therapist_edit_component__["a" /* TherapistEditComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__therapist_new_therapist_new_component__["a" /* TherapistNewComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__appointment_edit_appointment_edit_component__["a" /* AppointmentEditComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__appointment_new_appointment_new_component__["a" /* AppointmentNewComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__logout_logout_component__["a" /* LogoutComponent */]
+                __WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_3__client_list_client_list_component__["a" /* ClientListComponent */],
+                __WEBPACK_IMPORTED_MODULE_4__therapist_list_therapist_list_component__["a" /* TherapistListComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__activitylog_list_activitylog_list_component__["a" /* ActivitylogListComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__appointment_list_appointment_list_component__["a" /* AppointmentListComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__client_edit_client_edit_component__["a" /* ClientEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__appointment_list_table_appointment_list_table_component__["a" /* AppointmentListTableComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__activitylog_table_activitylog_table_component__["a" /* ActivitylogTableComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__client_new_client_new_component__["a" /* ClientNewComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__therapist_edit_therapist_edit_component__["a" /* TherapistEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__therapist_new_therapist_new_component__["a" /* TherapistNewComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__appointment_edit_appointment_edit_component__["a" /* AppointmentEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__appointment_new_appointment_new_component__["a" /* AppointmentNewComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__logout_logout_component__["a" /* LogoutComponent */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_31_ng_mdb_pro_pro_alerts__["a" /* ToastModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_11__angular_http__["c" /* HttpModule */],
-                __WEBPACK_IMPORTED_MODULE_12__angular_forms__["b" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["a" /* AmplifyAngularModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ng_mdb_pro__["a" /* MDBBootstrapModules */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_18__app_routing_module__["a" /* AppRoutingModule */]
+                __WEBPACK_IMPORTED_MODULE_31__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_30_ng_mdb_pro_pro_alerts__["a" /* ToastModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_10__angular_http__["c" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_11__angular_forms__["b" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_12_aws_amplify_angular__["a" /* AmplifyAngularModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ng_mdb_pro__["a" /* MDBBootstrapModules */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_17__app_routing_module__["a" /* AppRoutingModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_7__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_8__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_9__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_10__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_13_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_19__services_appointment_service__["a" /* AppointmentService */], __WEBPACK_IMPORTED_MODULE_28__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_30__services_alert_service__["a" /* AlertService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_6__services_activitylog_service__["a" /* ActivitylogService */], __WEBPACK_IMPORTED_MODULE_7__services_client_service__["a" /* ClientService */], __WEBPACK_IMPORTED_MODULE_8__services_therapist_service__["a" /* TherapistService */], __WEBPACK_IMPORTED_MODULE_9__services_http_service__["a" /* HttpService */], __WEBPACK_IMPORTED_MODULE_12_aws_amplify_angular__["b" /* AmplifyService */], __WEBPACK_IMPORTED_MODULE_18__services_appointment_service__["a" /* AppointmentService */], __WEBPACK_IMPORTED_MODULE_27__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_29__services_alert_service__["a" /* AlertService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -522,7 +791,7 @@ var AppModule = /** @class */ (function () {
 /***/ "./src/app/appointment-edit/appointment-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Appointment {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Appointments Profile</h3>\n      <label>\n        Start Date:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.startDate\" />\n      </label>\n      <label>\n          End Date:\n          <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.endDate\" />\n        </label>\n        <label>\n            Status:\n            <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n              <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n            </select>   \n          </label>\n          <label>\n              Therapist:\n              <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n                <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n              </select>\n            </label>\n            <label>\n                Client:\n                <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n                  <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n                </select>\n              </label>\n      <a  [routerLink]=\"['/appointments']\" class=\"btn btn-primary\">Save</a>\n    </form>\n  </div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Appointment {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Appointments Profile</h3>\n      <label>\n        Start Date:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.startDate\" />\n        <p class=\"alert alert-danger\" *ngIf=\"startDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD hh:mm</p>\n      </label>\n      <label>\n          End Date:\n          <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.endDate\" />\n          <p class=\"alert alert-danger\" *ngIf=\"endDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD hh:mm.  End date must be greater than start date.</p>\n        </label>\n        <label>\n            Status:\n            <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n              <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n            </select>\n            <p class=\"alert alert-danger\" *ngIf=\"statusInvalid\">You must select a status to save this appointment.</p>   \n          </label>\n          <label>\n              Therapist:\n              <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n                <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n                <p class=\"alert alert-danger\" *ngIf=\"therapistInvalid\">You must select a therapist to save this appointment.</p>\n              </select>\n            </label>\n            <label>\n                Client:\n                <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n                  <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n                  <p class=\"alert alert-danger\" *ngIf=\"clientInvalid\">You must select a client to save this appointment.</p>\n                </select>\n              </label>\n      <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n    </form>\n  </div>"
 
 /***/ }),
 
@@ -543,6 +812,9 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -557,13 +829,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var AppointmentEditComponent = /** @class */ (function () {
-    function AppointmentEditComponent(route, router, apptService, therapistService, clientService) {
+    function AppointmentEditComponent(route, router, apptService, therapistService, clientService, alertService) {
         this.route = route;
         this.router = router;
         this.apptService = apptService;
         this.therapistService = therapistService;
         this.clientService = clientService;
+        this.alertService = alertService;
+        this.startDateInvalid = false;
+        this.endDateInvalid = false;
+        this.statusInvalid = false;
+        this.therapistInvalid = false;
+        this.clientInvalid = false;
         this._appointment = {};
         this._therapists = [];
         this._clients = [];
@@ -593,6 +873,50 @@ var AppointmentEditComponent = /** @class */ (function () {
                 _this.hasLoaded = true;
                 console.error(error);
             });
+        });
+    };
+    AppointmentEditComponent.prototype.validateItems = function () {
+        this.endDateInvalid = this.startDateInvalid = this.clientInvalid = this.therapistInvalid = this.statusInvalid = false;
+        var isValid = true;
+        var intStart = __WEBPACK_IMPORTED_MODULE_6_moment__(this.editItem.startDate).unix();
+        var intEnd = __WEBPACK_IMPORTED_MODULE_6_moment__(this.editItem.endDate).unix();
+        if (isNaN(intStart) || intStart < 0) {
+            this.startDateInvalid = true;
+            isValid = false;
+        }
+        if (isNaN(intEnd) || intEnd < 0 || intEnd <= intStart) {
+            this.endDateInvalid = true;
+            isValid = false;
+        }
+        if (!this.editItem.clientID || isNaN(this.editItem.clientID)) {
+            isValid = false;
+            this.clientInvalid = true;
+        }
+        if (!this.editItem.therapistID || isNaN(this.editItem.clientID)) {
+            isValid = false;
+            this.therapistInvalid = true;
+        }
+        if (!this.editItem.status) {
+            isValid = false;
+            this.statusInvalid = true;
+        }
+        return isValid;
+    };
+    AppointmentEditComponent.prototype.save = function () {
+        var _this = this;
+        if (!this.validateItems()) {
+            return;
+        }
+        var alert = this.alertService.info("Saving...");
+        this.apptService.save(this.editItem).then(function (result) {
+            _this.alertService.clearAlert(alert);
+            _this.alertService.success("Appointment saved");
+            _this.router.navigate(["/", "appointments", "edit", result.id]);
+        })
+            .catch(function (error) {
+            console.log(error);
+            _this.alertService.clearAlert(alert);
+            _this.alertService.error("There was an error in saving the appointment");
         });
     };
     Object.defineProperty(AppointmentEditComponent.prototype, "statii", {
@@ -632,7 +956,8 @@ var AppointmentEditComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["e" /* Router */],
             __WEBPACK_IMPORTED_MODULE_1__services_appointment_service__["a" /* AppointmentService */],
             __WEBPACK_IMPORTED_MODULE_3__services_therapist_service__["a" /* TherapistService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_client_service__["a" /* ClientService */]])
+            __WEBPACK_IMPORTED_MODULE_4__services_client_service__["a" /* ClientService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_alert_service__["a" /* AlertService */]])
     ], AppointmentEditComponent);
     return AppointmentEditComponent;
 }());
@@ -644,7 +969,7 @@ var AppointmentEditComponent = /** @class */ (function () {
 /***/ "./src/app/appointment-list-table/appointment-list-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>\n          ID\n        </th>\n        <th>\n          Start Date\n        </th>\n        <th>\n            End Date\n          </th>\n          <th>\n              Status\n            </th>\n            <th>Client</th>\n            <th>Therapist</th>\n            <th>Edit</th>\n      </tr>\n    </thead>\n    <tbody *ngIf=\"Appointments.length == 0\">\n      <tr>\n        <td colspan=\"7\">\n          <div class=\"alert alert-warning\">No appointments exist</div>\n        </td>\n      </tr>\n    </tbody>\n    <tbody>\n      <tr *ngFor=\"let appt of Appointments\">\n        <td>{{appt.id}}</td>\n        <td>{{appt.startDate | date: 'medium'}}</td>\n        <td>{{appt.endDate | date: 'medium'}}</td>\n        <td>{{appt.status}}</td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/clients', 'edit', appt.clientID]\">{{appt.clientName}}</a></h5></td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/therapists', 'edit', appt.therapistID]\">{{appt.therapistName}}</a></h5></td>\n        <td>\n            <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/appointments', 'edit', appt.id]\">\n              <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n            </button>\n          </td>\n      </tr>\n    </tbody>\n  </table>"
+module.exports = "<a [routerLink]=\"['/appointments', 'new']\" class=\"btn btn-secondary\">Schedule Appointment</a>\n<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>\n          ID\n        </th>\n        <th>\n          Start Date\n        </th>\n        <th>\n            End Date\n          </th>\n          <th>\n              Status\n            </th>\n            <th>Client</th>\n            <th>Therapist</th>\n            <th>Actions</th>\n      </tr>\n    </thead>\n    <tbody *ngIf=\"Appointments.length == 0\">\n      <tr>\n        <td colspan=\"7\">\n          <div class=\"alert alert-warning\">No appointments exist</div>\n        </td>\n      </tr>\n    </tbody>\n    <tbody>\n      <tr *ngFor=\"let appt of Appointments\">\n        <td>{{appt.id}}</td>\n        <td>{{appt.startDate | date: 'medium'}}</td>\n        <td>{{appt.endDate | date: 'medium'}}</td>\n        <td>{{appt.status}}</td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/clients', 'edit', appt.clientID]\">{{appt.clientName}}</a></h5></td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/therapists', 'edit', appt.therapistID]\">{{appt.therapistName}}</a></h5></td>\n        <td>\n            <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/appointments', 'edit', appt.id]\">\n              <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n            </button>\n            <button class=\"btn btn-sm btn-secondary\" (click)=\"delete(appt)\">\n              <i class=\"fa fa-trash\" aria-hidden=\"true\" aria-label=\"Delete\"></i>\n            </button>\n          </td>\n      </tr>\n    </tbody>\n  </table>"
 
 /***/ }),
 
@@ -661,6 +986,8 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentListTableComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_appointment_service__ = __webpack_require__("./src/app/services/appointment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -671,11 +998,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var AppointmentListTableComponent = /** @class */ (function () {
-    function AppointmentListTableComponent() {
+    function AppointmentListTableComponent(appointmentService, alertService) {
+        this.appointmentService = appointmentService;
+        this.alertService = alertService;
+        this.deleteItem = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.appointments = [];
     }
     AppointmentListTableComponent.prototype.ngOnInit = function () {
+        console.log(this.deleteItem);
     };
     Object.defineProperty(AppointmentListTableComponent.prototype, "Appointments", {
         get: function () {
@@ -687,17 +1020,37 @@ var AppointmentListTableComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    AppointmentListTableComponent.prototype.delete = function (appointment) {
+        var _this = this;
+        if (!appointment || !appointment.id) {
+            console.error("delete called with invalid appointment");
+            return;
+        }
+        this.alertService.info("Deleting appointment..");
+        this.appointmentService.delete(appointment.id).then(function (result) {
+            _this.alertService.success("Appointment deleted");
+            _this.deleteItem.emit(appointment);
+        })
+            .catch(function (error) {
+            _this.alertService.error("Appointment failed to delete");
+            console.log(error);
+        });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
         __metadata("design:type", Array)
     ], AppointmentListTableComponent.prototype, "appointments", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */])
+    ], AppointmentListTableComponent.prototype, "deleteItem", void 0);
     AppointmentListTableComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'dac-appointment-list-table',
             template: __webpack_require__("./src/app/appointment-list-table/appointment-list-table.component.html"),
             styles: [__webpack_require__("./src/app/appointment-list-table/appointment-list-table.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_appointment_service__["a" /* AppointmentService */], __WEBPACK_IMPORTED_MODULE_2__services_alert_service__["a" /* AlertService */]])
     ], AppointmentListTableComponent);
     return AppointmentListTableComponent;
 }());
@@ -709,7 +1062,7 @@ var AppointmentListTableComponent = /** @class */ (function () {
 /***/ "./src/app/appointment-list/appointment-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Appointments List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<a [routerLink]=\"['/appointments', 'new']\" class=\"btn btn-secondary\">Schedule Appointment</a>\n<dac-appointment-list-table [appointments]=\"appointments\" *ngIf=\"hasLoaded\"></dac-appointment-list-table>"
+module.exports = "<h2>Appointments List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<dac-appointment-list-table [appointments]=\"appointments\" (deleteItem)=\"removeAppointment($event)\" *ngIf=\"hasLoaded\"></dac-appointment-list-table>"
 
 /***/ }),
 
@@ -756,6 +1109,13 @@ var AppointmentListComponent = /** @class */ (function () {
             _this.hasLoaded = true;
         });
     };
+    AppointmentListComponent.prototype.removeAppointment = function (appt) {
+        if (!appt) {
+            console.error("removeAppointment called without an appointment");
+            return;
+        }
+        this.appointments = this.appointments.filter(function (apt) { return apt.id != appt.id; });
+    };
     AppointmentListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'dac-appointment-list',
@@ -774,7 +1134,7 @@ var AppointmentListComponent = /** @class */ (function () {
 /***/ "./src/app/appointment-new/appointment-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Schedule New Appointment</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3 mt-3\">\n      <h3>Appointments Profile</h3>\n      <label>\n        Start Date:\n        <input type=\"text\" class=\"form-control\" name=\"name\" placeholder=\"YYYY-MM-DD HH:ii\" [(ngModel)]=\"editItem.startDate\" />\n      </label>\n      <label>\n          End Date:\n          <input type=\"text\" class=\"form-control\" name=\"name\" placeholder=\"YYYY-MM-DD HH:ii\" [(ngModel)]=\"editItem.endDate\" />\n        </label>\n        <label>\n            Status:\n            <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n              <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n            </select>   \n          </label>\n          <label>\n              Therapist:\n              <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n                <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n              </select>\n            </label>\n            <label>\n                Client:\n                <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n                  <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n                </select>\n              </label>\n      <a  [routerLink]=\"['/appointments']\" class=\"btn btn-primary\">Save</a>\n    </form>\n  </div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>Schedule New Appointment</h2>\n  </div>\n  <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3 mt-3\">\n    <h3>Appointments Profile</h3>\n    <label>\n      Start Date:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.startDate\" placeholder=\"YYYY-MM-DD hh:mm\" />\n      <p class=\"alert alert-danger\" *ngIf=\"startDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD\n        hh:mm</p>\n    </label>\n    <label>\n      End Date:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.endDate\" placeholder=\"YYYY-MM-DD hh:mm\"/>\n      <p class=\"alert alert-danger\" *ngIf=\"endDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD\n        hh:mm. End date must be greater than start date.</p>\n    </label>\n    <label>\n      Status:\n      <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n      </select>\n      <p class=\"alert alert-danger\" *ngIf=\"statusInvalid\">You must select a status to save this appointment.</p>\n    </label>\n    <label>\n      Therapist:\n      <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n        \n      </select>\n      <p class=\"alert alert-danger\" *ngIf=\"therapistInvalid\">You must select a therapist to save this appointment.</p>\n    </label>\n    <label>\n      Client:\n      <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n        \n      </select>\n    </label>\n    <p class=\"alert alert-danger\" *ngIf=\"clientInvalid\">You must select a client to save this appointment.</p>\n    <a (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -793,6 +1153,11 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_therapist_service__ = __webpack_require__("./src/app/services/therapist.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_client_service__ = __webpack_require__("./src/app/services/client.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_alert_service__ = __webpack_require__("./src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_appointment_service__ = __webpack_require__("./src/app/services/appointment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -805,10 +1170,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var AppointmentNewComponent = /** @class */ (function () {
-    function AppointmentNewComponent(therapistService, clientService) {
+    function AppointmentNewComponent(therapistService, clientService, alertService, appointmentService, router) {
         this.therapistService = therapistService;
         this.clientService = clientService;
+        this.alertService = alertService;
+        this.appointmentService = appointmentService;
+        this.router = router;
+        this.startDateInvalid = false;
+        this.endDateInvalid = false;
+        this.statusInvalid = false;
+        this.therapistInvalid = false;
+        this.clientInvalid = false;
         this._appointment = {};
         this._therapists = [];
         this._clients = [];
@@ -829,6 +1206,50 @@ var AppointmentNewComponent = /** @class */ (function () {
             .catch(function (error) {
             _this.hasLoaded = true;
             console.error(error);
+        });
+    };
+    AppointmentNewComponent.prototype.validateItems = function () {
+        this.endDateInvalid = this.startDateInvalid = this.clientInvalid = this.therapistInvalid = this.statusInvalid = false;
+        var isValid = true;
+        var intStart = __WEBPACK_IMPORTED_MODULE_6_moment__(this.editItem.startDate).unix();
+        var intEnd = __WEBPACK_IMPORTED_MODULE_6_moment__(this.editItem.endDate).unix();
+        if (!this.editItem.startDate || isNaN(intStart) || intStart < 0) {
+            this.startDateInvalid = true;
+            isValid = false;
+        }
+        if (!this.editItem.endDate || isNaN(intEnd) || intEnd < 0 || intEnd <= intStart) {
+            this.endDateInvalid = true;
+            isValid = false;
+        }
+        if (!this.editItem.clientID || isNaN(this.editItem.clientID)) {
+            isValid = false;
+            this.clientInvalid = true;
+        }
+        if (!this.editItem.therapistID || isNaN(this.editItem.clientID)) {
+            isValid = false;
+            this.therapistInvalid = true;
+        }
+        if (!this.editItem.status) {
+            isValid = false;
+            this.statusInvalid = true;
+        }
+        return isValid;
+    };
+    AppointmentNewComponent.prototype.save = function () {
+        var _this = this;
+        if (!this.validateItems()) {
+            return;
+        }
+        var alert = this.alertService.info("Saving...");
+        this.appointmentService.save(this.editItem).then(function (result) {
+            _this.alertService.clearAlert(alert);
+            _this.alertService.success("Appointment saved");
+            _this.router.navigate(["/", "appointments", "edit", result.id]);
+        })
+            .catch(function (error) {
+            console.log(error);
+            _this.alertService.clearAlert(alert);
+            _this.alertService.error("There was an error in saving the appointment");
         });
     };
     Object.defineProperty(AppointmentNewComponent.prototype, "statii", {
@@ -859,7 +1280,10 @@ var AppointmentNewComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/appointment-new/appointment-new.component.scss")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_therapist_service__["a" /* TherapistService */],
-            __WEBPACK_IMPORTED_MODULE_2__services_client_service__["a" /* ClientService */]])
+            __WEBPACK_IMPORTED_MODULE_2__services_client_service__["a" /* ClientService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_appointment_service__["a" /* AppointmentService */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["e" /* Router */]])
     ], AppointmentNewComponent);
     return AppointmentNewComponent;
 }());
@@ -871,7 +1295,7 @@ var AppointmentNewComponent = /** @class */ (function () {
 /***/ "./src/app/client-edit/client-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-10\"><h2>Editing Client {{editItem.id}}</h2></div>\n  <div class=\"col-2\"><a [routerLink]=\"['/clients']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3\">\n    <h3>Client Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    </label>\n    <a   class=\"btn btn-primary\" (click)=\"save()\">Save</a>\n  </form>\n  <div class=\"card card-body mb-3\">\n    <h3>Appointments</h3>\n    <dac-appointment-list-table [appointments]=\"editItem.appointments\"></dac-appointment-list-table>\n  </div>\n  <div class=\"card card-body mb-3\">\n    <h3>Activity Log</h3>\n    <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\"><h2>Editing Client {{editItem.id}}</h2></div>\n  <div class=\"col-2\"><a [routerLink]=\"['/clients']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3\">\n    <h3>Client Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n    </label>\n    <a   class=\"btn btn-primary\" (click)=\"save()\">Save</a>\n  </form>\n  <div class=\"card card-body mb-3\">\n    <h3>Appointments</h3>\n    <dac-appointment-list-table [appointments]=\"editItem.appointments\" (deleteItem)=\"removeAppointment($event)\"></dac-appointment-list-table>\n  </div>\n  <div class=\"card card-body mb-3\">\n    <h3>Activity Log</h3>\n    <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -910,6 +1334,7 @@ var ClientEditComponent = /** @class */ (function () {
         this.router = router;
         this.clientService = clientService;
         this.alertService = alertService;
+        this.nameInvalid = false;
         this._client = {
             logs: [],
             appointments: []
@@ -936,6 +1361,11 @@ var ClientEditComponent = /** @class */ (function () {
     };
     ClientEditComponent.prototype.save = function () {
         var _this = this;
+        this.nameInvalid = false;
+        if (!this.editItem.name || this.editItem.name.trim() == "") {
+            this.nameInvalid = true;
+            return;
+        }
         var alert = this.alertService.info("Saving...");
         this.clientService.save(this.editItem).then(function (result) {
             _this.alertService.clearAlert(alert);
@@ -955,6 +1385,14 @@ var ClientEditComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    ClientEditComponent.prototype.removeAppointment = function (appt) {
+        if (!appt) {
+            console.error("removeAppointment called without an appointment");
+            return;
+        }
+        console.log("got here");
+        this._client.appointments = this._client.appointments.filter(function (apt) { return apt.id != appt.id; });
+    };
     ClientEditComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
             selector: 'dac-client-edit',
@@ -1039,7 +1477,7 @@ var ClientListComponent = /** @class */ (function () {
 /***/ "./src/app/client-new/client-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>New Client</h2>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['/clients']\">Back to list</a>\n  </div>\n</div>\n\n<form class=\"card card-body mb-3\">\n  <h3>Client Profile</h3>\n  <label>\n    Name:\n    <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n  </label>\n  <a  class=\"btn btn-primary\" (click)=\"save()\">Save</a>\n</form>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>New Client</h2>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['/clients']\">Back to list</a>\n  </div>\n</div>\n\n<form class=\"card card-body mb-3\">\n  <h3>Client Profile</h3>\n  <label>\n    Name:\n    <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n  </label>\n  <a  class=\"btn btn-primary\" (click)=\"save()\">Save</a>\n</form>"
 
 /***/ }),
 
@@ -1077,12 +1515,18 @@ var ClientNewComponent = /** @class */ (function () {
         this.clientService = clientService;
         this.alertService = alertService;
         this.router = router;
+        this.nameInvalid = false;
         this.editItem = {};
     }
     ClientNewComponent.prototype.ngOnInit = function () {
     };
     ClientNewComponent.prototype.save = function () {
         var _this = this;
+        this.nameInvalid = false;
+        if (!this.editItem.name || this.editItem.name.trim() == "") {
+            this.nameInvalid = true;
+            return;
+        }
         var alert = this.alertService.info("Saving...");
         this.clientService.save(this.editItem).then(function (result) {
             _this.alertService.clearAlert(alert);
@@ -1496,6 +1940,18 @@ var AppointmentService = /** @class */ (function () {
             return data;
         });
     };
+    AppointmentService.prototype.save = function (appointment) {
+        return this.httpService.get("appointments.save", appointment).then(function (resp) {
+            var data = resp.json();
+            return data;
+        });
+    };
+    AppointmentService.prototype.delete = function (appointmentId) {
+        // we could use the delete verb... but we'll just use post with a delete action.
+        return this.httpService.post("appointments.delete", { id: appointmentId }).then(function (resp) {
+            return {};
+        });
+    };
     AppointmentService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__http_service__["a" /* HttpService */]])
@@ -1767,7 +2223,7 @@ var TherapistService = /** @class */ (function () {
 /***/ "./src/app/therapist-edit/therapist-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Therapist {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/therapists']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Therapist Profile</h3>\n      <label>\n        Name:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      </label>\n      <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n    </form>\n    <div class=\"card card-body mb-3\">\n      <h3>Appointments</h3>\n      <dac-appointment-list-table [appointments]=\"editItem.appointments\"></dac-appointment-list-table>\n    </div>\n    <div class=\"card card-body mb-3\">\n      <h3>Activity Log</h3>\n      <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n    </div>\n  </div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Therapist {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/therapists']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Therapist Profile</h3>\n      <label>\n        Name:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n        <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n      </label>\n      <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n    </form>\n    <div class=\"card card-body mb-3\">\n      <h3>Appointments</h3>\n      <dac-appointment-list-table [appointments]=\"editItem.appointments\" (deleteItem)=\"removeAppointment($event)\"></dac-appointment-list-table>\n    </div>\n    <div class=\"card card-body mb-3\">\n      <h3>Activity Log</h3>\n      <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -1806,6 +2262,7 @@ var TherapistEditComponent = /** @class */ (function () {
         this.router = router;
         this.therapistService = therapistService;
         this.alertService = alertService;
+        this.nameInvalid = false;
         this._therapist = {
             logs: [],
             appointments: []
@@ -1839,6 +2296,11 @@ var TherapistEditComponent = /** @class */ (function () {
     });
     TherapistEditComponent.prototype.save = function () {
         var _this = this;
+        this.nameInvalid = false;
+        if (!this.editItem.name || this.editItem.name.trim() == "") {
+            this.nameInvalid = true;
+            return;
+        }
         var alert = this.alertService.info("Saving...");
         this.therapistService.save(this.editItem).then(function (result) {
             _this.alertService.clearAlert(alert);
@@ -1850,6 +2312,13 @@ var TherapistEditComponent = /** @class */ (function () {
             _this.alertService.clearAlert(alert);
             _this.alertService.error("There was an error in saving the therapist");
         });
+    };
+    TherapistEditComponent.prototype.removeAppointment = function (appt) {
+        if (!appt) {
+            console.error("removeAppointment called without an appointment");
+            return;
+        }
+        this._therapist.appointments = this._therapist.appointments.filter(function (apt) { return apt.id != appt.id; });
     };
     TherapistEditComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -1935,7 +2404,7 @@ var TherapistListComponent = /** @class */ (function () {
 /***/ "./src/app/therapist-new/therapist-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\">\n      <h2>New Therapist</h2>\n    </div>\n    <div class=\"col-2\">\n      <a [routerLink]=\"['/therapists']\">Back to list</a>\n    </div>\n  </div>\n  \n  <form class=\"card card-body mb-3\">\n    <h3>Therapist Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    </label>\n    <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n  </form>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\">\n      <h2>New Therapist</h2>\n    </div>\n    <div class=\"col-2\">\n      <a [routerLink]=\"['/therapists']\">Back to list</a>\n    </div>\n  </div>\n  \n  <form class=\"card card-body mb-3\">\n    <h3>Therapist Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n    </label>\n    <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n  </form>"
 
 /***/ }),
 
@@ -1973,12 +2442,18 @@ var TherapistNewComponent = /** @class */ (function () {
         this.alertService = alertService;
         this.therapistService = therapistService;
         this.router = router;
+        this.nameInvalid = false;
         this.editItem = {};
     }
     TherapistNewComponent.prototype.ngOnInit = function () {
     };
     TherapistNewComponent.prototype.save = function () {
         var _this = this;
+        this.nameInvalid = false;
+        if (!this.editItem.name || this.editItem.name.trim() == "") {
+            this.nameInvalid = true;
+            return;
+        }
         var alert = this.alertService.info("Saving...");
         this.therapistService.save(this.editItem).then(function (result) {
             _this.alertService.clearAlert(alert);
