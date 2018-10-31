@@ -1,3 +1,4 @@
+LogLevel debug rewrite_module:debug
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
