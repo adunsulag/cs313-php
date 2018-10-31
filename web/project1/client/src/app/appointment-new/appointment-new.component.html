@@ -43,6 +43,10 @@
       </select>
     </label>
     <p class="alert alert-danger" *ngIf="clientInvalid">You must select a client to save this appointment.</p>
-    <a (click)="save()" class="btn btn-primary">Save</a>
+    <div class="row">
+      <div class="col">
+        <a (click)="save()" class="btn btn-primary">Save</a>
+      </div>
+    </div>
   </form>
 </div>

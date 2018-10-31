@@ -564,7 +564,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<mdb-navbar SideClass=\"navbar navbar-expand-md mb-3\" [containerInside]=\"false\">\n    <logo>\n        <a class=\"navbar-brand mr-0\" [routerLink]=\"['/']\">\n            <img width=\"50\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n            <span>{{ title }}</span>\n        </a>\n        \n    </logo>   \n    <links>\n      <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"goHome()\">Home</a>\n            </li>\n            <li *ngIf=\"isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/login']\">Login</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/therapists']\">Therapists</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/clients']\">Clients</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/appointments']\">Appointments</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/activitylog']\">Activity Log</a>\n            </li>\n            <li *ngIf=\"!isNotLoggedIn\" class=\"logout nav-item\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"logout()\"><span>Hello {{Username}}</span> - Logout</a></li>\n        </ul>\n    </links>\n</mdb-navbar>\n<main>\n    <div class=\"container\">\n        <router-outlet></router-outlet>\n    </div>\n  </main>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<mdb-navbar SideClass=\"navbar navbar-expand-md mb-3\" [containerInside]=\"false\">\n    <logo>\n        <a class=\"navbar-brand mr-0\" [routerLink]=\"['/']\">\n            <img width=\"50\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n            <span>{{ title }}</span>\n        </a>\n        \n    </logo>   \n    <links>\n      <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"goHome()\">Home</a>\n            </li>\n            <li *ngIf=\"!isLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/login']\">Login</a>\n            </li>\n            <li *ngIf=\"isLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n                <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/therapists']\">Therapists</a>\n            </li>\n            <li *ngIf=\"isLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/clients']\">Clients</a>\n            </li>\n            <li *ngIf=\"isLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/appointments']\">Appointments</a>\n            </li>\n            <li *ngIf=\"isLoggedIn\" class=\"nav-item\" [routerLinkActive]=\"'active'\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius [routerLink]=\"['/activitylog']\">Activity Log</a>\n            </li>\n            <li *ngIf=\"isLoggedIn\" class=\"logout nav-item\">\n              <a class=\"nav-link waves-light\" mdbRippleRadius (click)=\"logout()\"><span>Hello {{Username}}</span> - Logout</a></li>\n        </ul>\n    </links>\n</mdb-navbar>\n<main>\n    <div class=\"container\">\n        <router-outlet></router-outlet>\n    </div>\n  </main>"
 
 /***/ }),
 
@@ -590,26 +590,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = /** @class */ (function () {
     function AppComponent(authService, router) {
-        var _this = this;
         this.authService = authService;
         this.router = router;
         this.title = 'Therapist Admin History Tracker';
-        this._isNotLoggedIn = true;
-        this.authService.authStateChange()
-            .subscribe(function (authState) {
-            _this._isNotLoggedIn = !(authState.state === 'signedIn');
-            if (!authState.user) {
-                _this._user = null;
-            }
-            else {
-                _this._user = authState.user;
-            }
-        });
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.authService.authStateChange()
+            .subscribe(function (authState) {
+            _this._user = null;
+            if (authState.state == 'signedIn') {
+                _this._user = authState.user;
+            }
+            else if (authState.state == 'signedOut') {
+                _this.router.navigate(["/login"]);
+            }
+        });
         this.authService.currentAuthenticatedUser().then(function (user) {
-            _this._isNotLoggedIn = false;
             _this._user = user;
         })
             .catch(function (error) {
@@ -632,17 +629,15 @@ var AppComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(AppComponent.prototype, "isNotLoggedIn", {
+    Object.defineProperty(AppComponent.prototype, "isLoggedIn", {
         get: function () {
-            return this._isNotLoggedIn;
+            return this.authService.isLoggedIn();
         },
         enumerable: true,
         configurable: true
     });
     AppComponent.prototype.logout = function () {
         var _this = this;
-        this._isNotLoggedIn = true;
-        this._user = null;
         this.authService.signOut()
             .then(function (data) {
             console.log(data);
@@ -791,7 +786,7 @@ var AppModule = /** @class */ (function () {
 /***/ "./src/app/appointment-edit/appointment-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Appointment {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Appointments Profile</h3>\n      <label>\n        Start Date:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.startDate\" />\n        <p class=\"alert alert-danger\" *ngIf=\"startDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD hh:mm</p>\n      </label>\n      <label>\n          End Date:\n          <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.endDate\" />\n          <p class=\"alert alert-danger\" *ngIf=\"endDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD hh:mm.  End date must be greater than start date.</p>\n        </label>\n        <label>\n            Status:\n            <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n              <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n            </select>\n            <p class=\"alert alert-danger\" *ngIf=\"statusInvalid\">You must select a status to save this appointment.</p>   \n          </label>\n          <label>\n              Therapist:\n              <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n                <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n                <p class=\"alert alert-danger\" *ngIf=\"therapistInvalid\">You must select a therapist to save this appointment.</p>\n              </select>\n            </label>\n            <label>\n                Client:\n                <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n                  <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n                  <p class=\"alert alert-danger\" *ngIf=\"clientInvalid\">You must select a client to save this appointment.</p>\n                </select>\n              </label>\n      <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n    </form>\n  </div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Appointment {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Appointments Profile</h3>\n      <label>\n        Start Date:\n        <input type=\"text\" class=\"form-control\" name=\"startDate\" [(ngModel)]=\"editItem.startDate\" />\n        <p class=\"alert alert-danger\" *ngIf=\"startDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD hh:mm</p>\n      </label>\n      <label>\n          End Date:\n          <input type=\"text\" class=\"form-control\" name=\"endDate\" [(ngModel)]=\"editItem.endDate\" />\n          <p class=\"alert alert-danger\" *ngIf=\"endDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD hh:mm.  End date must be greater than start date.</p>\n        </label>\n        <label>\n            Status:\n            <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n              <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n            </select>\n            <p class=\"alert alert-danger\" *ngIf=\"statusInvalid\">You must select a status to save this appointment.</p>   \n          </label>\n          <label>\n              Therapist:\n              <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n                <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n                <p class=\"alert alert-danger\" *ngIf=\"therapistInvalid\">You must select a therapist to save this appointment.</p>\n              </select>\n            </label>\n            <label>\n                Client:\n                <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n                  <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n                  <p class=\"alert alert-danger\" *ngIf=\"clientInvalid\">You must select a client to save this appointment.</p>\n                </select>\n              </label>\n              <div class=\"row\">\n                <div class=\"col\">\n                  <a (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n                </div>\n              </div>\n    </form>\n  </div>"
 
 /***/ }),
 
@@ -969,7 +964,7 @@ var AppointmentEditComponent = /** @class */ (function () {
 /***/ "./src/app/appointment-list-table/appointment-list-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<a [routerLink]=\"['/appointments', 'new']\" class=\"btn btn-secondary\">Schedule Appointment</a>\n<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>\n          ID\n        </th>\n        <th>\n          Start Date\n        </th>\n        <th>\n            End Date\n          </th>\n          <th>\n              Status\n            </th>\n            <th>Client</th>\n            <th>Therapist</th>\n            <th>Actions</th>\n      </tr>\n    </thead>\n    <tbody *ngIf=\"Appointments.length == 0\">\n      <tr>\n        <td colspan=\"7\">\n          <div class=\"alert alert-warning\">No appointments exist</div>\n        </td>\n      </tr>\n    </tbody>\n    <tbody>\n      <tr *ngFor=\"let appt of Appointments\">\n        <td>{{appt.id}}</td>\n        <td>{{appt.startDate | date: 'medium'}}</td>\n        <td>{{appt.endDate | date: 'medium'}}</td>\n        <td>{{appt.status}}</td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/clients', 'edit', appt.clientID]\">{{appt.clientName}}</a></h5></td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/therapists', 'edit', appt.therapistID]\">{{appt.therapistName}}</a></h5></td>\n        <td>\n            <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/appointments', 'edit', appt.id]\">\n              <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n            </button>\n            <button class=\"btn btn-sm btn-secondary\" (click)=\"delete(appt)\">\n              <i class=\"fa fa-trash\" aria-hidden=\"true\" aria-label=\"Delete\"></i>\n            </button>\n          </td>\n      </tr>\n    </tbody>\n  </table>"
+module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>\n          ID\n        </th>\n        <th>\n          Start Date\n        </th>\n        <th>\n            End Date\n          </th>\n          <th>\n              Status\n            </th>\n            <th>Client</th>\n            <th>Therapist</th>\n            <th>Actions</th>\n      </tr>\n    </thead>\n    <tbody *ngIf=\"Appointments.length == 0\">\n      <tr>\n        <td colspan=\"7\">\n          <div class=\"alert alert-warning\">No appointments exist</div>\n        </td>\n      </tr>\n    </tbody>\n    <tbody>\n      <tr *ngFor=\"let appt of Appointments\">\n        <td>{{appt.id}}</td>\n        <td>{{appt.startDate | date: 'medium'}}</td>\n        <td>{{appt.endDate | date: 'medium'}}</td>\n        <td>{{appt.status}}</td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/clients', 'edit', appt.clientID]\">{{appt.clientName}}</a></h5></td>\n        <td><h5><a class=\"badge badge-info\" [routerLink]=\"['/therapists', 'edit', appt.therapistID]\">{{appt.therapistName}}</a></h5></td>\n        <td>\n            <button class=\"btn btn-sm btn-primary\" [routerLink]=\"['/appointments', 'edit', appt.id]\">\n              <i class=\"fa fa-edit\" aria-hidden=\"true\" aria-label=\"View\"></i>\n            </button>\n            <button class=\"btn btn-sm btn-secondary\" (click)=\"delete(appt)\">\n              <i class=\"fa fa-trash\" aria-hidden=\"true\" aria-label=\"Delete\"></i>\n            </button>\n          </td>\n      </tr>\n    </tbody>\n  </table>"
 
 /***/ }),
 
@@ -1062,7 +1057,7 @@ var AppointmentListTableComponent = /** @class */ (function () {
 /***/ "./src/app/appointment-list/appointment-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Appointments List</h2>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<dac-appointment-list-table [appointments]=\"appointments\" (deleteItem)=\"removeAppointment($event)\" *ngIf=\"hasLoaded\"></dac-appointment-list-table>"
+module.exports = "<h2>Appointments List</h2>\n<div class=\"row\">\n    <div class=\"col-12\">\n        <a [routerLink]=\"['/appointments', 'new']\" class=\"btn btn-secondary\">Schedule Appointment</a>\n    </div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<dac-appointment-list-table [appointments]=\"appointments\" (deleteItem)=\"removeAppointment($event)\" *ngIf=\"hasLoaded\"></dac-appointment-list-table>"
 
 /***/ }),
 
@@ -1134,7 +1129,7 @@ var AppointmentListComponent = /** @class */ (function () {
 /***/ "./src/app/appointment-new/appointment-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>Schedule New Appointment</h2>\n  </div>\n  <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3 mt-3\">\n    <h3>Appointments Profile</h3>\n    <label>\n      Start Date:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.startDate\" placeholder=\"YYYY-MM-DD hh:mm\" />\n      <p class=\"alert alert-danger\" *ngIf=\"startDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD\n        hh:mm</p>\n    </label>\n    <label>\n      End Date:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.endDate\" placeholder=\"YYYY-MM-DD hh:mm\"/>\n      <p class=\"alert alert-danger\" *ngIf=\"endDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD\n        hh:mm. End date must be greater than start date.</p>\n    </label>\n    <label>\n      Status:\n      <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n      </select>\n      <p class=\"alert alert-danger\" *ngIf=\"statusInvalid\">You must select a status to save this appointment.</p>\n    </label>\n    <label>\n      Therapist:\n      <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n        \n      </select>\n      <p class=\"alert alert-danger\" *ngIf=\"therapistInvalid\">You must select a therapist to save this appointment.</p>\n    </label>\n    <label>\n      Client:\n      <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n        \n      </select>\n    </label>\n    <p class=\"alert alert-danger\" *ngIf=\"clientInvalid\">You must select a client to save this appointment.</p>\n    <a (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n  </form>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>Schedule New Appointment</h2>\n  </div>\n  <div class=\"col-2\"><a [routerLink]=\"['/appointments']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3 mt-3\">\n    <h3>Appointments Profile</h3>\n    <label>\n      Start Date:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.startDate\" placeholder=\"YYYY-MM-DD hh:mm\" />\n      <p class=\"alert alert-danger\" *ngIf=\"startDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD\n        hh:mm</p>\n    </label>\n    <label>\n      End Date:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.endDate\" placeholder=\"YYYY-MM-DD hh:mm\"/>\n      <p class=\"alert alert-danger\" *ngIf=\"endDateInvalid\">Date must not be empty and be of the format YYYY-MM-DD\n        hh:mm. End date must be greater than start date.</p>\n    </label>\n    <label>\n      Status:\n      <select name=\"status\" [(ngModel)]=\"editItem.status\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"status\" *ngFor=\"let status of statii\">{{status}}</option>\n      </select>\n      <p class=\"alert alert-danger\" *ngIf=\"statusInvalid\">You must select a status to save this appointment.</p>\n    </label>\n    <label>\n      Therapist:\n      <select name=\"therapist\" [(ngModel)]=\"editItem.therapistID\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"therapist.id\" *ngFor=\"let therapist of therapists\">{{therapist.name}}</option>\n        \n      </select>\n      <p class=\"alert alert-danger\" *ngIf=\"therapistInvalid\">You must select a therapist to save this appointment.</p>\n    </label>\n    <label>\n      Client:\n      <select name=\"client\" [(ngModel)]=\"editItem.clientID\" class=\"browser-default custom-select w-100\">\n        <option [value]=\"client.id\" *ngFor=\"let client of clients\">{{client.name}}</option>\n        \n      </select>\n    </label>\n    <p class=\"alert alert-danger\" *ngIf=\"clientInvalid\">You must select a client to save this appointment.</p>\n    <div class=\"row\">\n      <div class=\"col\">\n        <a (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n      </div>\n    </div>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -1175,12 +1170,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AppointmentNewComponent = /** @class */ (function () {
-    function AppointmentNewComponent(therapistService, clientService, alertService, appointmentService, router) {
+    function AppointmentNewComponent(therapistService, clientService, alertService, appointmentService, router, route) {
         this.therapistService = therapistService;
         this.clientService = clientService;
         this.alertService = alertService;
         this.appointmentService = appointmentService;
         this.router = router;
+        this.route = route;
         this.startDateInvalid = false;
         this.endDateInvalid = false;
         this.statusInvalid = false;
@@ -1196,9 +1192,19 @@ var AppointmentNewComponent = /** @class */ (function () {
         this.hasLoaded = false;
         var therapistsPromise = this.therapistService.list().then(function (therapists) {
             _this._therapists = therapists;
+            var therapistID = _this.route.snapshot.queryParams['therapist'];
+            var therapist = therapists.find(function (t) { return t.id == therapistID; });
+            if (therapist) {
+                _this.editItem.therapistID = therapistID;
+            }
         });
         var clientsPromise = this.clientService.list().then(function (clients) {
             _this._clients = clients;
+            var clientID = _this.route.snapshot.queryParams['client'];
+            var client = clients.find(function (t) { return t.id == clientID; });
+            if (client) {
+                _this.editItem.clientID = clientID;
+            }
         });
         Promise.all([therapistsPromise, clientsPromise]).then(function (results) {
             _this.hasLoaded = true;
@@ -1283,7 +1289,8 @@ var AppointmentNewComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2__services_client_service__["a" /* ClientService */],
             __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */],
             __WEBPACK_IMPORTED_MODULE_5__services_appointment_service__["a" /* AppointmentService */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["e" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["e" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]])
     ], AppointmentNewComponent);
     return AppointmentNewComponent;
 }());
@@ -1295,7 +1302,7 @@ var AppointmentNewComponent = /** @class */ (function () {
 /***/ "./src/app/client-edit/client-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-10\"><h2>Editing Client {{editItem.id}}</h2></div>\n  <div class=\"col-2\"><a [routerLink]=\"['/clients']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3\">\n    <h3>Client Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n    </label>\n    <a   class=\"btn btn-primary\" (click)=\"save()\">Save</a>\n  </form>\n  <div class=\"card card-body mb-3\">\n    <h3>Appointments</h3>\n    <dac-appointment-list-table [appointments]=\"editItem.appointments\" (deleteItem)=\"removeAppointment($event)\"></dac-appointment-list-table>\n  </div>\n  <div class=\"card card-body mb-3\">\n    <h3>Activity Log</h3>\n    <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\"><h2>Editing Client {{editItem.id}}</h2></div>\n  <div class=\"col-2\"><a [routerLink]=\"['/clients']\">Back to list</a></div>\n</div>\n<p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n<div *ngIf=\"hasLoaded\">\n  <form class=\"card card-body mb-3\">\n    <h3>Client Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n    </label>\n    <div class=\"row\">\n      <div class=\"col\">\n        <a (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n      </div>\n    </div>\n  </form>\n  <div class=\"card card-body mb-3\">\n    <h3>Appointments</h3>\n    <div class=\"row\">\n      <div class=\"col-12\">\n          <a [routerLink]=\"['/appointments', 'new']\" [queryParams]=\"{ client: editItem.id}\" class=\"btn btn-secondary\">Schedule Appointment</a>\n      </div>\n    </div>\n    <dac-appointment-list-table [appointments]=\"editItem.appointments\" (deleteItem)=\"removeAppointment($event)\"></dac-appointment-list-table>\n  </div>\n  <div class=\"card card-body mb-3\">\n    <h3>Activity Log</h3>\n    <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1477,7 +1484,7 @@ var ClientListComponent = /** @class */ (function () {
 /***/ "./src/app/client-new/client-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>New Client</h2>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['/clients']\">Back to list</a>\n  </div>\n</div>\n\n<form class=\"card card-body mb-3\">\n  <h3>Client Profile</h3>\n  <label>\n    Name:\n    <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n  </label>\n  <a  class=\"btn btn-primary\" (click)=\"save()\">Save</a>\n</form>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-10\">\n    <h2>New Client</h2>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['/clients']\">Back to list</a>\n  </div>\n</div>\n\n<form class=\"card card-body mb-3\">\n  <h3>Client Profile</h3>\n  <label>\n    Name:\n    <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n    <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n  </label>\n  <div class=\"row\">\n    <div class=\"col\">\n      <a (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n    </div>\n  </div>\n</form>"
 
 /***/ }),
 
@@ -1609,7 +1616,7 @@ var HomeComponent = /** @class */ (function () {
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-center\">\n    <div class=\"col-6 col-md-4\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h1 class=\"h1-responsive text-center\">Login</h1>\n            </div>\n            <div class=\"card-body\">\n                    <amplify-authenticator></amplify-authenticator>\n            </div>\n        </div>\n        \n    </div>\n</div>"
+module.exports = "<div class=\"row justify-content-center\">\n    <div class=\"col-8 col-md-6\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h1 class=\"h1-responsive text-center\">Login</h1>\n            </div>\n            <div class=\"card-body\">\n                    <amplify-authenticator></amplify-authenticator>\n            </div>\n        </div>\n        \n    </div>\n</div>"
 
 /***/ }),
 
@@ -1649,7 +1656,9 @@ var LoginComponent = /** @class */ (function () {
         this.router = router;
     }
     LoginComponent.prototype.ngOnDestroy = function () {
-        this.authSubscription.unsubscribe();
+        if (this.authSubscription) {
+            this.authSubscription.unsubscribe();
+        }
     };
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1993,6 +2002,8 @@ var AuthService = /** @class */ (function () {
         var _this = this;
         this.amplifyService = amplifyService;
         this.http = http;
+        this._isLoggedIn = false;
+        this._user = null;
         this.changeSubject = new __WEBPACK_IMPORTED_MODULE_3_rxjs__["Subject"]();
         // TODO: stephen look at pulling all of the amplify stuff into this file.
         this.amplifyService.auth().configure({
@@ -2010,6 +2021,13 @@ var AuthService = /** @class */ (function () {
             // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
             mandatorySignIn: false,
         });
+        this.currentAuthenticatedUser().then(function (user) {
+            _this._isLoggedIn = true;
+            _this._user = user;
+        })
+            .catch(function (error) {
+            console.error(error); // not authenticated.
+        });
         this.amplifyService.authStateChange$.subscribe(function (authState) {
             if (authState.state == 'signedIn') {
                 var syncUserData = authState.user.signInUserSession.idToken;
@@ -2017,8 +2035,9 @@ var AuthService = /** @class */ (function () {
                     _this._inAuthentication = true;
                     _this.http.post('users.login', syncUserData)
                         .then(function (result) {
+                        _this._isLoggedIn = true;
                         _this._inAuthentication = false;
-                        _this.changeSubject.next({ state: authState.state, user: authState.user });
+                        _this.changeSubject.next({ state: 'signedIn', user: authState.user });
                     })
                         .catch(function (error) {
                         console.error(error);
@@ -2026,9 +2045,26 @@ var AuthService = /** @class */ (function () {
                     });
                 }
             }
+            else {
+                _this.changeSubject.next({ state: 'signedOut', user: authState.user });
+                _this._isLoggedIn = false;
+                _this._user = null;
+            }
+        });
+        this.http.currentStatus().subscribe(function (status) {
+            // if we need to authenticate.. 
+            if (status == 401 && _this._isLoggedIn && !_this._inAuthentication) {
+                // server has terminated the session... so we need to log ourselves out as well.
+                _this.amplifyService.auth().signOut({ global: true });
+            }
         });
     }
+    AuthService.prototype.isLoggedIn = function () {
+        return this._isLoggedIn;
+    };
     AuthService.prototype.signOut = function () {
+        this._isLoggedIn = false;
+        this._user = null;
         var systemSignout = this.http.post('users.logout');
         // @see https://aws-amplify.github.io/docs/js/authentication
         var amplifySignout = this.amplifyService.auth().signOut({ global: true });
@@ -2112,6 +2148,8 @@ var ClientService = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs__ = __webpack_require__("./node_modules/rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2124,9 +2162,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HttpService = /** @class */ (function () {
     function HttpService(_$http) {
         this._$http = _$http;
+        this._httpStatusSubject = new __WEBPACK_IMPORTED_MODULE_3_rxjs__["BehaviorSubject"](200);
     }
     HttpService.prototype.generateUrl = function (path) {
         // TODO: stephen I think this will have an error if the path already contained a query parameter... 
@@ -2134,7 +2174,14 @@ var HttpService = /** @class */ (function () {
         var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl + path;
         return url;
     };
+    /**
+       * Returns an observable that sends the most recent http status code
+       */
+    HttpService.prototype.currentStatus = function () {
+        return this._httpStatusSubject.asObservable();
+    };
     HttpService.prototype.get = function (action, data) {
+        var _this = this;
         if (!data) {
             data = {};
         }
@@ -2143,9 +2190,18 @@ var HttpService = /** @class */ (function () {
             data: data
         };
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ params: payload, withCredentials: true });
-        return this._$http.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl, options).toPromise();
+        return this._$http.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl, options).toPromise()
+            .then(function (val) {
+            _this._httpStatusSubject.next(val.status);
+            return val;
+        })
+            .catch(function (err) {
+            _this._httpStatusSubject.next(err.status);
+            throw err;
+        });
     };
     HttpService.prototype.post = function (action, data) {
+        var _this = this;
         if (!data) {
             data = {};
         }
@@ -2154,7 +2210,15 @@ var HttpService = /** @class */ (function () {
             data: data
         };
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ withCredentials: true });
-        return this._$http.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl, payload, options).toPromise();
+        return this._$http.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl, payload, options).toPromise()
+            .then(function (val) {
+            _this._httpStatusSubject.next(val.status);
+            return val;
+        })
+            .catch(function (err) {
+            _this._httpStatusSubject.next(err.status);
+            throw err;
+        });
     };
     HttpService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
@@ -2223,7 +2287,7 @@ var TherapistService = /** @class */ (function () {
 /***/ "./src/app/therapist-edit/therapist-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Therapist {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/therapists']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Therapist Profile</h3>\n      <label>\n        Name:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n        <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n      </label>\n      <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n    </form>\n    <div class=\"card card-body mb-3\">\n      <h3>Appointments</h3>\n      <dac-appointment-list-table [appointments]=\"editItem.appointments\" (deleteItem)=\"removeAppointment($event)\"></dac-appointment-list-table>\n    </div>\n    <div class=\"card card-body mb-3\">\n      <h3>Activity Log</h3>\n      <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n    </div>\n  </div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\"><h2>Editing Therapist {{editItem.id}}</h2></div>\n    <div class=\"col-2\"><a [routerLink]=\"['/therapists']\">Back to list</a></div>\n  </div>\n  <p *ngIf=\"!hasLoaded\" class=\"alert alert-info\">Loading data...</p>\n  <div *ngIf=\"hasLoaded\">\n    <form class=\"card card-body mb-3\">\n      <h3>Therapist Profile</h3>\n      <label>\n        Name:\n        <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n        <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n      </label>\n      <div class=\"row\">\n        <div class=\"col\">\n          <a (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n        </div>\n      </div>\n    </form>\n    <div class=\"card card-body mb-3\">\n      <h3>Appointments</h3>\n      <div class=\"row\">\n        <div class=\"col-12\">\n            <a [routerLink]=\"['/appointments', 'new']\" [queryParams]=\"{ therapist: editItem.id}\" class=\"btn btn-secondary\">Schedule Appointment</a>\n        </div>\n      </div>\n      \n      <dac-appointment-list-table [appointments]=\"editItem.appointments\" (deleteItem)=\"removeAppointment($event)\"></dac-appointment-list-table>\n    </div>\n    <div class=\"card card-body mb-3\">\n      <h3>Activity Log</h3>\n      <dac-activitylog-table [logs]=\"editItem.logs\"></dac-activitylog-table>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -2404,7 +2468,7 @@ var TherapistListComponent = /** @class */ (function () {
 /***/ "./src/app/therapist-new/therapist-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-10\">\n      <h2>New Therapist</h2>\n    </div>\n    <div class=\"col-2\">\n      <a [routerLink]=\"['/therapists']\">Back to list</a>\n    </div>\n  </div>\n  \n  <form class=\"card card-body mb-3\">\n    <h3>Therapist Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n    </label>\n    <a  (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n  </form>"
+module.exports = "<div class=\"row\">\n    <div class=\"col-10\">\n      <h2>New Therapist</h2>\n    </div>\n    <div class=\"col-2\">\n      <a [routerLink]=\"['/therapists']\">Back to list</a>\n    </div>\n  </div>\n  \n  <form class=\"card card-body mb-3\">\n    <h3>Therapist Profile</h3>\n    <label>\n      Name:\n      <input type=\"text\" class=\"form-control\" name=\"name\" [(ngModel)]=\"editItem.name\" />\n      <p class=\"alert alert-danger\" *ngIf=\"nameInvalid\">Name cannot be empty</p>\n    </label>\n    <div class=\"row\">\n      <div class=\"col\">\n        <a (click)=\"save()\" class=\"btn btn-primary\">Save</a>\n      </div>\n    </div>\n  </form>"
 
 /***/ }),
 

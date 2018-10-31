@@ -9,8 +9,13 @@ import { HttpService } from './http.service';
 export class AuthService {
   public changeSubject:Subject<{state: string, user:any}>;
   private _inAuthentication:boolean;
+  private _isLoggedIn:boolean;
+  private _user:any;
+
 
   constructor(private amplifyService: AmplifyService, private http:HttpService) { 
+    this._isLoggedIn = false;
+    this._user = null;
     this.changeSubject = new Subject<{state: string, user:any}>();
     // TODO: stephen look at pulling all of the amplify stuff into this file.
     this.amplifyService.auth().configure({
@@ -52,6 +57,15 @@ export class AuthService {
         // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
         // authenticationFlowType: 'USER_PASSWORD_AUTH'
     });
+
+    this.currentAuthenticatedUser().then((user) => {
+      this._isLoggedIn = true;
+      this._user = user;
+    })
+    .catch((error) => {
+      console.error(error); // not authenticated.
+    })
+
     this.amplifyService.authStateChange$.subscribe(authState => {
       if (authState.state == 'signedIn') {
         let syncUserData = authState.user.signInUserSession.idToken;
@@ -59,20 +73,38 @@ export class AuthService {
           this._inAuthentication = true;
           this.http.post('users.login', syncUserData)
           .then((result) => {
+            this._isLoggedIn = true;
             this._inAuthentication = false;
-            this.changeSubject.next({state: authState.state, user: authState.user});
+            this.changeSubject.next({state: 'signedIn', user: authState.user});
           })
           .catch((error) => {
             console.error(error);
             this.changeSubject.next({state: 'error', user: null});
           });
         }
+      } else {
+        this.changeSubject.next({state: 'signedOut', user: authState.user});
+        this._isLoggedIn = false;
+        this._user = null;
       }
-     
+    });
+
+    this.http.currentStatus().subscribe((status) => {
+      // if we need to authenticate.. 
+      if (status == 401 && this._isLoggedIn && !this._inAuthentication) {
+        // server has terminated the session... so we need to log ourselves out as well.
+        this.amplifyService.auth().signOut({ global: true });
+      }
     });
   }
 
+  public isLoggedIn() {
+    return this._isLoggedIn;
+  }
+
   public signOut() {
+    this._isLoggedIn = false;
+    this._user = null;
     let systemSignout = this.http.post('users.logout');
      // @see https://aws-amplify.github.io/docs/js/authentication
     let amplifySignout = this.amplifyService.auth().signOut({ global: true });

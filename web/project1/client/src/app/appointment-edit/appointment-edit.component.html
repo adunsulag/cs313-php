@@ -8,12 +8,12 @@
       <h3>Appointments Profile</h3>
       <label>
         Start Date:
-        <input type="text" class="form-control" name="name" [(ngModel)]="editItem.startDate" />
+        <input type="text" class="form-control" name="startDate" [(ngModel)]="editItem.startDate" />
         <p class="alert alert-danger" *ngIf="startDateInvalid">Date must not be empty and be of the format YYYY-MM-DD hh:mm</p>
       </label>
       <label>
           End Date:
-          <input type="text" class="form-control" name="name" [(ngModel)]="editItem.endDate" />
+          <input type="text" class="form-control" name="endDate" [(ngModel)]="editItem.endDate" />
           <p class="alert alert-danger" *ngIf="endDateInvalid">Date must not be empty and be of the format YYYY-MM-DD hh:mm.  End date must be greater than start date.</p>
         </label>
         <label>
@@ -37,6 +37,10 @@
                   <p class="alert alert-danger" *ngIf="clientInvalid">You must select a client to save this appointment.</p>
                 </select>
               </label>
-      <a  (click)="save()" class="btn btn-primary">Save</a>
+              <div class="row">
+                <div class="col">
+                  <a (click)="save()" class="btn btn-primary">Save</a>
+                </div>
+              </div>
     </form>
   </div>

@@ -12,22 +12,22 @@
             <li class="nav-item" [routerLinkActive]="'active'">
                 <a class="nav-link waves-light" mdbRippleRadius (click)="goHome()">Home</a>
             </li>
-            <li *ngIf="isNotLoggedIn" class="nav-item" [routerLinkActive]="'active'">
+            <li *ngIf="!isLoggedIn" class="nav-item" [routerLinkActive]="'active'">
               <a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/login']">Login</a>
             </li>
-            <li *ngIf="!isNotLoggedIn" class="nav-item" [routerLinkActive]="'active'">
+            <li *ngIf="isLoggedIn" class="nav-item" [routerLinkActive]="'active'">
                 <a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/therapists']">Therapists</a>
             </li>
-            <li *ngIf="!isNotLoggedIn" class="nav-item" [routerLinkActive]="'active'">
+            <li *ngIf="isLoggedIn" class="nav-item" [routerLinkActive]="'active'">
               <a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/clients']">Clients</a>
             </li>
-            <li *ngIf="!isNotLoggedIn" class="nav-item" [routerLinkActive]="'active'">
+            <li *ngIf="isLoggedIn" class="nav-item" [routerLinkActive]="'active'">
               <a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/appointments']">Appointments</a>
             </li>
-            <li *ngIf="!isNotLoggedIn" class="nav-item" [routerLinkActive]="'active'">
+            <li *ngIf="isLoggedIn" class="nav-item" [routerLinkActive]="'active'">
               <a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/activitylog']">Activity Log</a>
             </li>
-            <li *ngIf="!isNotLoggedIn" class="logout nav-item">
+            <li *ngIf="isLoggedIn" class="logout nav-item">
               <a class="nav-link waves-light" mdbRippleRadius (click)="logout()"><span>Hello {{Username}}</span> - Logout</a></li>
         </ul>
     </links>

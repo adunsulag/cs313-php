@@ -1,9 +1,12 @@
 .amplify-container {
+    padding: 40px;
     .amplify-form-header {
         font-size: 1.5em;
         text-align: center;
         display: block;
         font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 20px;
     }
     .amplify-form-button{
         background-color: #4285F4;
@@ -37,6 +40,11 @@
     }
     a.amplify-form-link:hover {
         color: #0056b3;
+    }
+    .amplify-amplify-form-row,
+    .amplify-form-row
+    ,.amplify-form-action {
+        margin-bottom: 20px;
     }
 }
 .mydp-picker {

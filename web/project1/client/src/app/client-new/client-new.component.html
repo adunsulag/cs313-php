@@ -14,5 +14,9 @@
     <input type="text" class="form-control" name="name" [(ngModel)]="editItem.name" />
     <p class="alert alert-danger" *ngIf="nameInvalid">Name cannot be empty</p>
   </label>
-  <a  class="btn btn-primary" (click)="save()">Save</a>
+  <div class="row">
+    <div class="col">
+      <a (click)="save()" class="btn btn-primary">Save</a>
+    </div>
+  </div>
 </form>

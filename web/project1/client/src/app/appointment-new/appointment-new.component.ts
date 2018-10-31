@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TherapistService } from '../services/therapist.service';
 import { ClientService } from '../services/client.service';
 import { AlertService } from '../services/alert.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AppointmentService } from '../services/appointment.service';
 import * as moment from 'moment';
 @Component({
@@ -28,7 +28,8 @@ export class AppointmentNewComponent implements OnInit {
     , private clientService:ClientService
     , private alertService:AlertService
     , private appointmentService:AppointmentService
-    , private router:Router) { 
+    , private router:Router
+    , private route:ActivatedRoute) { 
     this._appointment = {};
     this._therapists = [];
     this._clients = [];
@@ -39,10 +40,20 @@ export class AppointmentNewComponent implements OnInit {
     this.hasLoaded = false;
     let therapistsPromise = this.therapistService.list().then((therapists) => {
       this._therapists = therapists;
+      let therapistID = this.route.snapshot.queryParams['therapist'];
+      let therapist = therapists.find(t => t.id == therapistID);
+      if (therapist) {
+        this.editItem.therapistID = therapistID;
+      }
     });
 
     let clientsPromise = this.clientService.list().then((clients) => {
       this._clients = clients;
+      let clientID = this.route.snapshot.queryParams['client'];
+      let client = clients.find(t => t.id == clientID);
+      if (client) {
+        this.editItem.clientID = clientID;
+      }
     });
     Promise.all([therapistsPromise, clientsPromise]).then((results) =>{
       this.hasLoaded = true;

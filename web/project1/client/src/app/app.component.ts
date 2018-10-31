@@ -11,26 +11,23 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'Therapist Admin History Tracker';
-  private _isNotLoggedIn:boolean;
   private _user:any;
 
   constructor(private authService:AuthService, private router:Router) {
-    
-  this._isNotLoggedIn = true;
-  this.authService.authStateChange()
-        .subscribe(authState => {
-            this._isNotLoggedIn = !(authState.state === 'signedIn');
-            if (!authState.user) {
-                this._user = null;
-            } else {
-                this._user = authState.user;
-            }
-        });
   }
 
   ngOnInit() {
+    this.authService.authStateChange()
+    .subscribe(authState => {
+      this._user = null;
+        if (authState.state == 'signedIn') {
+          this._user = authState.user;
+        }
+        else if (authState.state == 'signedOut') {
+          this.router.navigate(["/login"]);
+        }
+    });
     this.authService.currentAuthenticatedUser().then((user) =>{
-      this._isNotLoggedIn = false;
       this._user = user;
     })
     .catch((error) => {
@@ -52,13 +49,11 @@ export class AppComponent {
     return this._user ? this._user.username : '';
   }
 
-  public get isNotLoggedIn() {
-    return this._isNotLoggedIn;
+  public get isLoggedIn() {
+    return this.authService.isLoggedIn();
   }
 
   public logout() {
-    this._isNotLoggedIn = true;
-    this._user = null;
     this.authService.signOut()
     .then(data => {
       console.log(data)
